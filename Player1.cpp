@@ -28,10 +28,10 @@ void Player1::Input(SDL_Event* evt, vector<GameObject*> *gameObjects, GameObject
 		case SDLK_UP:
 			SetTrustPressed(true);
 			break;
-		case SDLK_RCTRL:
+		case SDLK_o:
 			gameObjects->push_back(Shoot("bullet1"));
 			break;
-		case SDLK_RSHIFT:
+		case SDLK_l:
 			if (m_missile == NULL || !m_missile->IsActive())
 			{
 				gameObjects->push_back(ShootMissile("missile1", target));

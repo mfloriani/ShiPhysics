@@ -83,6 +83,7 @@ bool Initialize()
 		printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
 		return false;
 	}
+
 	return true;
 }
 
@@ -181,6 +182,7 @@ bool Load()
 		printf("Failed to load Battle2.mp3! SDL_mixer Error: %s\n", Mix_GetError());
 		return false;
 	}
+	
 
 	gShot = Mix_LoadWAV("shot1.wav");
 	if (gShot == NULL)
@@ -188,6 +190,7 @@ bool Load()
 		printf("Failed to load shot1.wav! SDL_mixer Error: %s\n", Mix_GetError());
 		return false;
 	}
+	
 
 	gExplosion = Mix_LoadWAV("explosion1.wav");
 	if (gExplosion == NULL)
@@ -202,6 +205,7 @@ bool Load()
 		printf("Failed to load missile1.wav! SDL_mixer Error: %s\n", Mix_GetError());
 		return false;
 	}
+	
 
 	gFont = TTF_OpenFont("arial.ttf", 18);
 	if (gFont == NULL)
@@ -209,6 +213,11 @@ bool Load()
 		printf("Failed to load font! SDL_ttf Error: %s\n", TTF_GetError());
 		return false;
 	}
+
+	Mix_VolumeMusic(20);
+	Mix_VolumeChunk(gMissile, 20);
+	Mix_VolumeChunk(gShot, 20);
+	// Mix_VolumeChunk(gExplosion, 20);
 
 	CreateArena();
 
