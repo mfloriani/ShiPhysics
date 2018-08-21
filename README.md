@@ -1,5 +1,5 @@
 # ShiPhysics
-Game prototype developed during the gamedev postgraduation course at PUCPR in 2016.
+Game prototype developed during the gamedev postgraduation course in 2016.
 
 # Tech
 * C++
