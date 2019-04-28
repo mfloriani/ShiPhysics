@@ -61,6 +61,7 @@ void GameObject::Update(float secs)
 
 void GameObject::Draw(float secs)
 {
+	//cout << m_tag <<" " << m_position << endl;
 	if (!m_active) return;
 	m_sprite->Render(m_position.x, m_position.y, NULL, m_angleDegree, NULL, SDL_FLIP_NONE);
 }
