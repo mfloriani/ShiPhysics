@@ -86,7 +86,9 @@ Vector2D Ship::CalculateForces()
 void Ship::Draw(float secs)
 {
 	if (m_currentState == GameObject::States::alive)
+	{
 		GameObject::Draw(secs);
+	}
 	else if (m_currentState == GameObject::States::dying)
 	{
 		//printf("x=%f | y=%f \n", m_position.x, m_position.y);

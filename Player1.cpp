@@ -36,7 +36,7 @@ void Player1::Input(SDL_Event* evt, vector<GameObject*> *gameObjects, GameObject
 			{
 				gameObjects->push_back(ShootMissile("missile1", target));
 			}
-			break;			
+			break;
 		}
 	}
 	else if (evt->type == SDL_KEYUP)

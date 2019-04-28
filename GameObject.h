@@ -23,6 +23,7 @@ public:
 	Vector2D GetPosition();
 	Vector2D GetDirection();
 	Vector2D GetMomentum();
+	float GetMaxVelocity()const { return m_maxVelocity; };
 	string GetTag();
 	bool IsActive();
 	enum States{alive, dying, respawning, dead};

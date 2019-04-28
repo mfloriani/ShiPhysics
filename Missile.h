@@ -4,15 +4,14 @@
 #include "SDL_mixer.h"
 #include "GameObject.h"
 #include "Animation.h"
+#include "SteeringBehavior.h"
 
 class Missile :	public GameObject
 {
 public:
 	Missile(string tag, Vector2D position, Texture* sprite, GameObject* target, Mix_Chunk* explosion, Animation* explosionAnim);
-	~Missile();
-	Vector2D Seek(Vector2D targetPos);
-	Vector2D Pursuit();
-	Vector2D Flee();
+	~Missile() {};
+	
 	void virtual Update(float secs);
 	void virtual Draw(float secs);
 	void SetFlare(GameObject* flare);
@@ -26,6 +25,7 @@ private:
 	bool m_fleeing;
 	Mix_Chunk* m_explosionAudio;
 	Animation* m_explosionAnim;
+	SteeringBehavior* m_steering;
 };
 
 #endif

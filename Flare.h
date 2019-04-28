@@ -9,7 +9,6 @@ public:
 	Flare(string tag, Vector2D position, Texture* sprite, Vector2D direction);
 	~Flare();
 	void virtual Update(float secs);
-	Vector2D Seek(Vector2D targetPos);
 	
 private:
 	float m_duration;
