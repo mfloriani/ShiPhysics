@@ -1,5 +1,6 @@
 # ShiPhysics
-Game prototype developed during the gamedev postgraduation course in 2016.
+
+Spaceship game prototype developed to apply steering behaviors.
 
 # Tech
 * C++
