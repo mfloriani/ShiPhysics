@@ -1,8 +1,8 @@
 #ifndef __ASTEROID_H__
 #define __ASTEROID_H__
 
-#include "GameObject.h"
-#include "Animation.h"
+#include "../engine/GameObject.h"
+#include "../engine/Animation.h"
 
 class Asteroid : public GameObject
 {

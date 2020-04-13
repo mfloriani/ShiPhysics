@@ -3,6 +3,9 @@
 
 #include <vector>
 #include <string>
+#include "../engine/Texture.h"
+#include "../engine/GameObject.h"
+#include "../engine/Animation.h"
 #include "Asteroid.h"
 #include "Ship.h"
 

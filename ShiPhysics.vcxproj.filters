@@ -1,137 +1,201 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <Filter Include="engine">
+      <UniqueIdentifier>{a95363a9-3324-4a5e-9254-34a474d75d11}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    <Filter Include="game">
+      <UniqueIdentifier>{fa688f55-c7b8-476d-9f84-15dfad662559}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Math">
-      <UniqueIdentifier>{437e168a-57ed-4931-9755-f68975a942a1}</UniqueIdentifier>
+    <Filter Include="assets">
+      <UniqueIdentifier>{09e59806-de90-4d34-9077-8cfddf172ff4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="AI">
-      <UniqueIdentifier>{b9a13ee7-86de-4946-a6a5-f3c9ceb34fa6}</UniqueIdentifier>
+    <Filter Include="lib">
+      <UniqueIdentifier>{dc49a0ea-cb0b-4cbe-8a30-67261903af1e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="engine\Animation.cpp">
+      <Filter>engine</Filter>
     </ClCompile>
-    <ClCompile Include="Ship.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="engine\GameObject.cpp">
+      <Filter>engine</Filter>
     </ClCompile>
-    <ClCompile Include="Texture.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="engine\SteeringBehavior.cpp">
+      <Filter>engine</Filter>
     </ClCompile>
-    <ClCompile Include="Timer.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="engine\Texture.cpp">
+      <Filter>engine</Filter>
     </ClCompile>
-    <ClCompile Include="Bullet.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="engine\Timer.cpp">
+      <Filter>engine</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="game\Arena.cpp">
+      <Filter>game</Filter>
     </ClCompile>
-    <ClCompile Include="Asteroid.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="game\Asteroid.cpp">
+      <Filter>game</Filter>
     </ClCompile>
-    <ClCompile Include="Arena.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="game\Bullet.cpp">
+      <Filter>game</Filter>
     </ClCompile>
-    <ClCompile Include="Player1.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="game\Flare.cpp">
+      <Filter>game</Filter>
     </ClCompile>
-    <ClCompile Include="Player2.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="game\Main.cpp">
+      <Filter>game</Filter>
     </ClCompile>
-    <ClCompile Include="Missile.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="game\Missile.cpp">
+      <Filter>game</Filter>
     </ClCompile>
-    <ClCompile Include="Flare.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="game\Player1.cpp">
+      <Filter>game</Filter>
     </ClCompile>
-    <ClCompile Include="Animation.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="game\Player2.cpp">
+      <Filter>game</Filter>
     </ClCompile>
-    <ClCompile Include="AffineTransform.cpp">
-      <Filter>Math</Filter>
+    <ClCompile Include="game\Ship.cpp">
+      <Filter>game</Filter>
     </ClCompile>
-    <ClCompile Include="MathUtil.cpp">
-      <Filter>Math</Filter>
+    <ClCompile Include="lib\AffineTransform.cpp">
+      <Filter>lib</Filter>
     </ClCompile>
-    <ClCompile Include="Matrix3.cpp">
-      <Filter>Math</Filter>
+    <ClCompile Include="lib\MathUtil.cpp">
+      <Filter>lib</Filter>
     </ClCompile>
-    <ClCompile Include="Vector2D.cpp">
-      <Filter>Math</Filter>
+    <ClCompile Include="lib\Matrix3.cpp">
+      <Filter>lib</Filter>
     </ClCompile>
-    <ClCompile Include="Vector3D.cpp">
-      <Filter>Math</Filter>
+    <ClCompile Include="lib\Vector2D.cpp">
+      <Filter>lib</Filter>
     </ClCompile>
-    <ClCompile Include="SteeringBehavior.cpp">
-      <Filter>AI</Filter>
+    <ClCompile Include="lib\Vector3D.cpp">
+      <Filter>lib</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Ship.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="engine\Animation.h">
+      <Filter>engine</Filter>
     </ClInclude>
-    <ClInclude Include="Texture.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="engine\GameObject.h">
+      <Filter>engine</Filter>
     </ClInclude>
-    <ClInclude Include="Timer.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="engine\SteeringBehavior.h">
+      <Filter>engine</Filter>
     </ClInclude>
-    <ClInclude Include="Bullet.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="engine\Texture.h">
+      <Filter>engine</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="engine\Timer.h">
+      <Filter>engine</Filter>
     </ClInclude>
-    <ClInclude Include="Asteroid.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="game\Arena.h">
+      <Filter>game</Filter>
     </ClInclude>
-    <ClInclude Include="Arena.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="game\Asteroid.h">
+      <Filter>game</Filter>
     </ClInclude>
-    <ClInclude Include="Player1.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="game\Bullet.h">
+      <Filter>game</Filter>
     </ClInclude>
-    <ClInclude Include="Player2.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="game\Flare.h">
+      <Filter>game</Filter>
     </ClInclude>
-    <ClInclude Include="Missile.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="game\Missile.h">
+      <Filter>game</Filter>
     </ClInclude>
-    <ClInclude Include="Config.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="game\Player1.h">
+      <Filter>game</Filter>
     </ClInclude>
-    <ClInclude Include="Flare.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="game\Player2.h">
+      <Filter>game</Filter>
     </ClInclude>
-    <ClInclude Include="Animation.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="game\Ship.h">
+      <Filter>game</Filter>
     </ClInclude>
-    <ClInclude Include="AffineTransform.h">
-      <Filter>Math</Filter>
+    <ClInclude Include="lib\AffineTransform.h">
+      <Filter>lib</Filter>
     </ClInclude>
-    <ClInclude Include="MathUtil.h">
-      <Filter>Math</Filter>
+    <ClInclude Include="lib\MathUtil.h">
+      <Filter>lib</Filter>
     </ClInclude>
-    <ClInclude Include="Matrix3.h">
-      <Filter>Math</Filter>
+    <ClInclude Include="lib\Matrix3.h">
+      <Filter>lib</Filter>
     </ClInclude>
-    <ClInclude Include="Vector2D.h">
-      <Filter>Math</Filter>
+    <ClInclude Include="lib\Vector2D.h">
+      <Filter>lib</Filter>
     </ClInclude>
-    <ClInclude Include="Vector3D.h">
-      <Filter>Math</Filter>
+    <ClInclude Include="lib\Vector3D.h">
+      <Filter>lib</Filter>
     </ClInclude>
-    <ClInclude Include="SteeringBehavior.h">
-      <Filter>AI</Filter>
+    <ClInclude Include="engine\Config.h">
+      <Filter>engine</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="assets\arial.ttf">
+      <Filter>assets</Filter>
+    </Font>
+    <Font Include="assets\lazy.ttf">
+      <Filter>assets</Filter>
+    </Font>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\arial32.png">
+      <Filter>assets</Filter>
+    </Image>
+    <Image Include="assets\asteroid.png">
+      <Filter>assets</Filter>
+    </Image>
+    <Image Include="assets\bullet1.png">
+      <Filter>assets</Filter>
+    </Image>
+    <Image Include="assets\explosion_spritesheet.png">
+      <Filter>assets</Filter>
+    </Image>
+    <Image Include="assets\flare.png">
+      <Filter>assets</Filter>
+    </Image>
+    <Image Include="assets\missile.png">
+      <Filter>assets</Filter>
+    </Image>
+    <Image Include="assets\missile_.png">
+      <Filter>assets</Filter>
+    </Image>
+    <Image Include="assets\sample-gameplay.png">
+      <Filter>assets</Filter>
+    </Image>
+    <Image Include="assets\ship1.png">
+      <Filter>assets</Filter>
+    </Image>
+    <Image Include="assets\ship1_.png">
+      <Filter>assets</Filter>
+    </Image>
+    <Image Include="assets\ship1_old.png">
+      <Filter>assets</Filter>
+    </Image>
+    <Image Include="assets\ship2.png">
+      <Filter>assets</Filter>
+    </Image>
+    <Image Include="assets\ship2_.png">
+      <Filter>assets</Filter>
+    </Image>
+    <Image Include="assets\ship2_old.png">
+      <Filter>assets</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="assets\Battle2.mp3">
+      <Filter>assets</Filter>
+    </Media>
+    <Media Include="assets\explosion1.wav">
+      <Filter>assets</Filter>
+    </Media>
+    <Media Include="assets\missile1.wav">
+      <Filter>assets</Filter>
+    </Media>
+    <Media Include="assets\shot1.wav">
+      <Filter>assets</Filter>
+    </Media>
   </ItemGroup>
 </Project>

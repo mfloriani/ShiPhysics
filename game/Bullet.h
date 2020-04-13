@@ -1,9 +1,9 @@
 #ifndef __BULLET_H__
 #define __BULLET_H__
+
 #include <SDL.h>
-#include "Vector2D.h"
-#include "Texture.h"
-#include "GameObject.h"
+#include "../lib/Vector2D.h"
+#include "../engine/GameObject.h"
 
 using namespace math;
 

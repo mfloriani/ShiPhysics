@@ -2,9 +2,9 @@
 #define __MISSILE_H__
 
 #include "SDL_mixer.h"
-#include "GameObject.h"
-#include "Animation.h"
-#include "SteeringBehavior.h"
+#include "../engine/GameObject.h"
+#include "../engine/Animation.h"
+#include "../engine/SteeringBehavior.h"
 
 class Missile :	public GameObject
 {

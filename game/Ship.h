@@ -3,14 +3,13 @@
 
 #include <SDL_image.h>
 #include <SDL_mixer.h>
-#include "Vector2D.h"
-#include "Texture.h"
-#include "Bullet.h"
-#include "GameObject.h"
 #include <vector>
+#include "../lib/Vector2D.h"
+#include "../engine/GameObject.h"
+#include "../engine/Animation.h"
+#include "Bullet.h"
 #include "Missile.h"
 #include "Flare.h"
-#include "Animation.h"
 
 using namespace math;
 

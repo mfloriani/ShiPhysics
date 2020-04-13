@@ -1,7 +1,7 @@
 #ifndef __FLARE_H__
 #define __FLARE_H__
 
-#include "GameObject.h"
+#include "../engine/GameObject.h"
 
 class Flare : public GameObject
 {

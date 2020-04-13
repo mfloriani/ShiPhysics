@@ -1,7 +1,7 @@
 #ifndef __GAMEOBJECT_H__
 #define __GAMEOBJECT_H__
 
-#include "Vector2D.h"
+#include "../lib/Vector2D.h"
 #include "Texture.h"
 #include <string>
 #include "Config.h"

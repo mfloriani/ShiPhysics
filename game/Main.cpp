@@ -1,21 +1,20 @@
 #include <stdio.h>
 #include <string>
 #include <time.h>
+#include <vector>
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_mixer.h>
+#include "../lib/Vector2D.h"
+#include "../engine/GameObject.h"
+#include "../engine/Timer.h"
+#include "../engine/Config.h"
+#include "../engine/Animation.h"
 #include "Ship.h"
-#include "Texture.h"
-#include "Timer.h"
-#include "Vector2D.h"
-#include <vector>
-#include "GameObject.h"
 #include "Asteroid.h"
 #include "Player1.h"
 #include "Player2.h"
 #include "Arena.h"
-#include "Config.h"
-#include "Animation.h"
 
 using namespace std;
 
@@ -134,19 +133,19 @@ void CreateArena()
 
 bool Load()
 {
-	if (!ship1Texture.LoadFromFile(gRenderer, "ship1.png"))
+	if (!ship1Texture.LoadFromFile(gRenderer, "./assets/ship1.png"))
 		return false;
-	if (!ship2Texture.LoadFromFile(gRenderer, "ship2.png"))
+	if (!ship2Texture.LoadFromFile(gRenderer, "./assets/ship2.png"))
 		return false;
-	if (!bullet1Texture.LoadFromFile(gRenderer, "bullet1.png"))
+	if (!bullet1Texture.LoadFromFile(gRenderer, "./assets/bullet1.png"))
 		return false;
-	if (!missileTexture.LoadFromFile(gRenderer, "missile.png"))
+	if (!missileTexture.LoadFromFile(gRenderer, "./assets/missile.png"))
 		return false;
-	if (!asteroidTexture.LoadFromFile(gRenderer, "asteroid.png"))
+	if (!asteroidTexture.LoadFromFile(gRenderer, "./assets/asteroid.png"))
 		return false;
-	if (!flareTexture.LoadFromFile(gRenderer, "flare.png"))
+	if (!flareTexture.LoadFromFile(gRenderer, "./assets/flare.png"))
 		return false;
-	if (!explosionTexture.LoadFromFile(gRenderer, "explosion_spritesheet.png"))
+	if (!explosionTexture.LoadFromFile(gRenderer, "./assets/explosion_spritesheet.png"))
 		return false;
 
 	gExplosionClips[0].x = 0;
@@ -176,7 +175,7 @@ bool Load()
 
 	explosionAnim = new Animation(&explosionTexture, 5, gExplosionClips);
 
-	gMusic = Mix_LoadMUS("Battle2.mp3");
+	gMusic = Mix_LoadMUS("./assets/Battle2.mp3");
 	if (gMusic == NULL)
 	{
 		printf("Failed to load Battle2.mp3! SDL_mixer Error: %s\n", Mix_GetError());
@@ -184,7 +183,7 @@ bool Load()
 	}
 	
 
-	gShot = Mix_LoadWAV("shot1.wav");
+	gShot = Mix_LoadWAV("./assets/shot1.wav");
 	if (gShot == NULL)
 	{
 		printf("Failed to load shot1.wav! SDL_mixer Error: %s\n", Mix_GetError());
@@ -192,14 +191,14 @@ bool Load()
 	}
 	
 
-	gExplosion = Mix_LoadWAV("explosion1.wav");
+	gExplosion = Mix_LoadWAV("./assets/explosion1.wav");
 	if (gExplosion == NULL)
 	{
 		printf("Failed to load explosion1.wav! SDL_mixer Error: %s\n", Mix_GetError());
 		return false;
 	}
 
-	gMissile = Mix_LoadWAV("missile1.wav");
+	gMissile = Mix_LoadWAV("./assets/missile1.wav");
 	if (gMissile == NULL)
 	{
 		printf("Failed to load missile1.wav! SDL_mixer Error: %s\n", Mix_GetError());
@@ -207,7 +206,7 @@ bool Load()
 	}
 	
 
-	gFont = TTF_OpenFont("arial.ttf", 18);
+	gFont = TTF_OpenFont("./assets/arial.ttf", 18);
 	if (gFont == NULL)
 	{
 		printf("Failed to load font! SDL_ttf Error: %s\n", TTF_GetError());

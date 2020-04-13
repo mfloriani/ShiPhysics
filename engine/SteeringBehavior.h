@@ -1,7 +1,7 @@
 #ifndef __STEERING_BEHAVIOR_H__
 #define __STEERING_BEHAVIOR_H__
 
-#include "Vector2D.h"
+#include "../lib/Vector2D.h"
 #include "GameObject.h"
 
 class SteeringBehavior {
