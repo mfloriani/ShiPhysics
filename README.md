@@ -1,5 +1,6 @@
 # ShiPhysics
-Game prototype developed during the gamedev postgraduation course at PUCPR in 2016.
+
+Spaceship game prototype developed to apply steering behaviors.
 
 # Tech
 * C++
@@ -8,3 +9,4 @@ Game prototype developed during the gamedev postgraduation course at PUCPR in 20
 # Gameplay video
 
 [![Gameplay Video](sample-gameplay.png)](https://youtu.be/o8ll2DMp9Qo-Y "Gameplay")
+>>>>>>> e2a1d9edfae095e97adfd95ed855c5e79a3f8a6e
