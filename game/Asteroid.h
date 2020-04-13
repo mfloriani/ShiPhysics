@@ -7,7 +7,7 @@
 class Asteroid : public GameObject
 {
 public:
-	Asteroid(Vector2D position, float mass, Texture* sprite, Animation* explosionAnim);
+	Asteroid(glm::vec2 position, float mass, SDL_Texture* sprite, Animation* explosionAnim);
 	~Asteroid();
 	void virtual Update(float secs);
 	void virtual Draw(float secs);

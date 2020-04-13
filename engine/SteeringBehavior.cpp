@@ -5,31 +5,30 @@ SteeringBehavior::SteeringBehavior(GameObject* agent)
 	m_agent = agent;
 }
 
-math::Vector2D SteeringBehavior::Seek(math::Vector2D targetPos)
+glm::vec2 SteeringBehavior::Seek(glm::vec2 targetPos)
 {
-	math::Vector2D desiredVel = ((targetPos - m_agent->GetPosition()).normalize()) * m_agent->GetMaxVelocity();
+	glm::vec2 desiredVel = glm::normalize(targetPos - m_agent->GetPosition()) * m_agent->GetMaxVelocity();
 	return (desiredVel - m_agent->GetMomentum());
 }
 
-math::Vector2D SteeringBehavior::Pursuit()
+glm::vec2 SteeringBehavior::Pursuit()
 {
-	math::Vector2D toEvader = m_target->GetPosition() - m_agent->GetPosition();
-	double relativeDir = m_agent->GetDirection().dot(m_target->GetDirection());
-	if (toEvader.dot(m_agent->GetDirection()) > 0 && relativeDir < -0.95) //acos(0.95) = 18 degrees
+	glm::vec2 toEvader = m_target->GetPosition() - m_agent->GetPosition();
+	double relativeDir = glm::dot(m_agent->GetDirection(), m_target->GetDirection());
+	if (glm::dot(toEvader, m_agent->GetDirection()) > 0 && relativeDir < -0.95) //acos(0.95) = 18 degrees
 	{
 		return Seek(m_target->GetPosition());
 	}
 
-	double lookAheadTime = toEvader.size() / (m_agent->GetMaxVelocity() + m_target->GetMomentum().size());
-	math::Vector2D seek = m_target->GetPosition() + m_target->GetMomentum() * lookAheadTime;
+	float lookAheadTime = glm::length(toEvader) / (m_agent->GetMaxVelocity() + glm::length(m_target->GetMomentum()));
+	glm::vec2 seek = m_target->GetPosition() + m_target->GetMomentum() * lookAheadTime;
 
 	return Seek(seek);
 }
 
-math::Vector2D SteeringBehavior::Flee()
+glm::vec2 SteeringBehavior::Flee()
 {
-	math::Vector2D desired = m_agent->GetPosition() - m_target->GetPosition();
-	desired.normalize();
+	glm::vec2 desired = glm::normalize(m_agent->GetPosition() - m_target->GetPosition());
 	desired *= m_agent->GetMaxVelocity();
 	return (desired - m_agent->GetMomentum());
 }

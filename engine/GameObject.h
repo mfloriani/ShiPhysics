@@ -1,50 +1,46 @@
 #ifndef __GAMEOBJECT_H__
 #define __GAMEOBJECT_H__
 
-#include "../lib/Vector2D.h"
-#include "Texture.h"
+#include "../lib/glm/glm.hpp"
 #include <string>
-#include "Config.h"
-
-using namespace math;
-using namespace std;
+#include <SDL.h>
 
 class GameObject
 {
 public:
-	GameObject(string tag, Vector2D position, float mass, Texture* sprite);
-	GameObject(string tag, Vector2D position, float mass, Texture* sprite, Vector2D direction);
-	GameObject(string tag, Vector2D position, float mass, Texture* sprite, float angleDegree);
+	GameObject(std::string tag, glm::vec2 position, float mass, SDL_Texture* sprite);
+	GameObject(std::string tag, glm::vec2 position, float mass, SDL_Texture* sprite, glm::vec2 direction);
+	
 	virtual ~GameObject();
 
 	void virtual Update(float secs);
 	void virtual Draw(float secs);
 	SDL_Rect GetCollider();
-	Vector2D GetPosition();
-	Vector2D GetDirection();
-	Vector2D GetMomentum();
+	glm::vec2 GetPosition();
+	glm::vec2 GetDirection();
+	glm::vec2 GetMomentum();
 	float GetMaxVelocity()const { return m_maxVelocity; };
-	string GetTag();
+	std::string GetTag();
 	bool IsActive();
 	enum States{alive, dying, respawning, dead};
 	int GetCurrentState();
 
 protected:
-	Vector2D m_position;
-	Vector2D m_momentum;
-	Texture* m_sprite;
+	glm::vec2 m_position;
+	glm::vec2 m_momentum;
+	SDL_Texture* m_sprite;
 	SDL_Rect m_collider;
-	Vector2D m_direction;
+	glm::vec2 m_direction;
 	float m_mass;
 	float m_angleRadian;
 	float m_angleDegree;
 	float m_maxVelocity;
-	string m_tag;
+	std::string m_tag;
 	bool m_active;
 	int m_currentState;
 	
-	//Vector2D virtual CalculateSteering();
-	Vector2D virtual CalculateForces();
+	//glm::vec2 virtual CalculateSteering();
+	glm::vec2 virtual CalculateForces();
 	void SetCollider();
 	void GameObject::UpdateDirection();
 

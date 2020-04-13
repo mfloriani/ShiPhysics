@@ -1,7 +1,15 @@
 #include "Player1.h"
 
 
-Player1::Player1(Texture* sprite, Texture* bulletSprite, Mix_Chunk* bulletAudio, Mix_Chunk* missileAudio, Mix_Chunk* explosionAudio, Texture* missileSprite, Texture* flareTexture, Animation* explosionAnim) :
+Player1::Player1(
+	SDL_Texture* sprite, 
+	SDL_Texture* bulletSprite, 
+	Mix_Chunk* bulletAudio, 
+	Mix_Chunk* missileAudio, 
+	Mix_Chunk* explosionAudio, 
+	SDL_Texture* missileSprite, 
+	SDL_Texture* flareTexture, 
+	Animation* explosionAnim) :
 Ship("player1", 1, sprite, bulletSprite, bulletAudio, missileAudio, explosionAudio, missileSprite, flareTexture, explosionAnim)
 {
 }
@@ -11,7 +19,7 @@ Player1::~Player1()
 {
 }
 
-void Player1::Input(SDL_Event* evt, vector<GameObject*> *gameObjects, GameObject* target)
+void Player1::Input(SDL_Event* evt, std::vector<GameObject*> *gameObjects, GameObject* target)
 {
 	if (!m_active) return;
 

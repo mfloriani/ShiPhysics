@@ -12,9 +12,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engine\Animation.cpp" />
+    <ClCompile Include="engine\AssetManager.cpp" />
+    <ClCompile Include="engine\Engine.cpp" />
+    <ClCompile Include="engine\FontManager.cpp" />
     <ClCompile Include="engine\GameObject.cpp" />
     <ClCompile Include="engine\SteeringBehavior.cpp" />
-    <ClCompile Include="engine\Texture.cpp" />
+    <ClCompile Include="engine\XTexture.cpp" />
+    <ClCompile Include="engine\TextureManager.cpp" />
     <ClCompile Include="engine\Timer.cpp" />
     <ClCompile Include="game\Arena.cpp" />
     <ClCompile Include="game\Asteroid.cpp" />
@@ -25,18 +29,20 @@
     <ClCompile Include="game\Player1.cpp" />
     <ClCompile Include="game\Player2.cpp" />
     <ClCompile Include="game\Ship.cpp" />
-    <ClCompile Include="lib\AffineTransform.cpp" />
-    <ClCompile Include="lib\MathUtil.cpp" />
-    <ClCompile Include="lib\Matrix3.cpp" />
-    <ClCompile Include="lib\Vector2D.cpp" />
-    <ClCompile Include="lib\Vector3D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine\Animation.h" />
-    <ClInclude Include="engine\Config.h" />
+    <ClInclude Include="engine\AssetManager.h" />
+    <ClInclude Include="engine\Component.h" />
+    <ClInclude Include="engine\Constants.h" />
+    <ClInclude Include="engine\Engine.h" />
+    <ClInclude Include="engine\FontManager.h" />
     <ClInclude Include="engine\GameObject.h" />
+    <ClInclude Include="engine\SpriteComponent.h" />
     <ClInclude Include="engine\SteeringBehavior.h" />
-    <ClInclude Include="engine\Texture.h" />
+    <ClInclude Include="engine\TextComponent.h" />
+    <ClInclude Include="engine\XTexture.h" />
+    <ClInclude Include="engine\TextureManager.h" />
     <ClInclude Include="engine\Timer.h" />
     <ClInclude Include="game\Arena.h" />
     <ClInclude Include="game\Asteroid.h" />
@@ -46,11 +52,6 @@
     <ClInclude Include="game\Player1.h" />
     <ClInclude Include="game\Player2.h" />
     <ClInclude Include="game\Ship.h" />
-    <ClInclude Include="lib\AffineTransform.h" />
-    <ClInclude Include="lib\MathUtil.h" />
-    <ClInclude Include="lib\Matrix3.h" />
-    <ClInclude Include="lib\Vector2D.h" />
-    <ClInclude Include="lib\Vector3D.h" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="assets\arial.ttf" />
@@ -121,6 +122,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>

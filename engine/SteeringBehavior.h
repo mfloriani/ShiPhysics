@@ -1,7 +1,7 @@
 #ifndef __STEERING_BEHAVIOR_H__
 #define __STEERING_BEHAVIOR_H__
 
-#include "../lib/Vector2D.h"
+#include "../lib/glm/glm.hpp"
 #include "GameObject.h"
 
 class SteeringBehavior {
@@ -10,9 +10,9 @@ public:
 	SteeringBehavior(GameObject* agent);
 	~SteeringBehavior() {};
 
-	math::Vector2D Seek(math::Vector2D targetPos);
-	math::Vector2D Pursuit();
-	math::Vector2D Flee();
+	glm::vec2 Seek(glm::vec2 targetPos);
+	glm::vec2 Pursuit();
+	glm::vec2 Flee();
 
 	void SetTarget(GameObject* target) { m_target = target; }
 
