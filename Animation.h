@@ -2,7 +2,6 @@
 #define __ANIMATION_H__
 
 #include "SDL.h"
-
 #include "Texture.h"
 
 

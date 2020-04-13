@@ -11,7 +11,6 @@ GameObject(tag, position, 1, sprite), m_target(target), m_fuel(3), m_flare(NULL)
 
 void Missile::Update(float secs)
 {
-	//Vector2D vel = Seek(m_target->GetPosition());
 	Vector2D vel;
 	if (m_flare != NULL && !m_fleeing)
 	{
@@ -34,7 +33,6 @@ void Missile::Update(float secs)
 	}
 	else
 	{
-		//vel = m_steering->Seek(m_target->GetPosition());
 		vel = m_steering->Pursuit();
 	}
 

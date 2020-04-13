@@ -227,8 +227,7 @@ bool Load()
 void CalculateFPS()
 {
 	float avgFPS = countedFrames / (fpsTimer.getTicks() / 1000.f);
-	if (avgFPS > 2000000)
-		avgFPS = 0;
+	if (avgFPS > 2000000) avgFPS = 0;
 
 	std::string fps;
 	fps = "FPS " + std::to_string(avgFPS);
@@ -260,7 +259,9 @@ int main(int argc, char* args[])
 				while (SDL_PollEvent(&evt) != 0)
 				{
 					if (evt.type == SDL_QUIT || (evt.type == SDL_KEYDOWN && evt.key.keysym.sym == SDLK_ESCAPE))
+					{
 						quit = true;
+					}	
 					else if (evt.type == SDL_KEYDOWN)
 					{
 						switch (evt.key.keysym.sym)

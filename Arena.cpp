@@ -75,14 +75,20 @@ void Arena::Update(float secs)
 	{
 		if ((*obj) == NULL) continue;//vai pro pr�ximo obj
 		
-		if ((*obj)->GetCurrentState() == GameObject::States::dying) 
+		if ((*obj)->GetCurrentState() == GameObject::States::dying)
+		{
 			continue;
+		}	
 		else if ((*obj)->GetCurrentState() == GameObject::States::dead)
 		{
 			if ((*obj)->GetTag() == "asteroid")
+			{
 				(*obj) = CreateAsteroid();
+			}
 			else
+			{
 				(*obj) = NULL;
+			}	
 			continue;
 		}
 
