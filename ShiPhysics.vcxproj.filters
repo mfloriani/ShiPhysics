@@ -10,9 +10,6 @@
     <Filter Include="assets">
       <UniqueIdentifier>{09e59806-de90-4d34-9077-8cfddf172ff4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="lib">
-      <UniqueIdentifier>{dc49a0ea-cb0b-4cbe-8a30-67261903af1e}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engine\Animation.cpp">
@@ -22,9 +19,6 @@
       <Filter>engine</Filter>
     </ClCompile>
     <ClCompile Include="engine\SteeringBehavior.cpp">
-      <Filter>engine</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\Texture.cpp">
       <Filter>engine</Filter>
     </ClCompile>
     <ClCompile Include="engine\Timer.cpp">
@@ -57,6 +51,21 @@
     <ClCompile Include="game\Ship.cpp">
       <Filter>game</Filter>
     </ClCompile>
+    <ClCompile Include="engine\TextureManager.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\Engine.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\AssetManager.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XTexture.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\FontManager.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine\Animation.h">
@@ -66,9 +75,6 @@
       <Filter>engine</Filter>
     </ClInclude>
     <ClInclude Include="engine\SteeringBehavior.h">
-      <Filter>engine</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\Texture.h">
       <Filter>engine</Filter>
     </ClInclude>
     <ClInclude Include="engine\Timer.h">
@@ -98,7 +104,31 @@
     <ClInclude Include="game\Ship.h">
       <Filter>game</Filter>
     </ClInclude>
-    <ClInclude Include="engine\Config.h">
+    <ClInclude Include="engine\TextureManager.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\Engine.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\AssetManager.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\Constants.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XTexture.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\FontManager.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\TextComponent.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\SpriteComponent.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\Component.h">
       <Filter>engine</Filter>
     </ClInclude>
   </ItemGroup>

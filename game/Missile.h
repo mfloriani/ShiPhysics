@@ -9,7 +9,7 @@
 class Missile :	public GameObject
 {
 public:
-	Missile(string tag, glm::vec2 position, Texture* sprite, GameObject* target, Mix_Chunk* explosion, Animation* explosionAnim);
+	Missile(std::string tag, glm::vec2 position, SDL_Texture* sprite, GameObject* target, Mix_Chunk* explosion, Animation* explosionAnim);
 	~Missile() {};
 	
 	void virtual Update(float secs);

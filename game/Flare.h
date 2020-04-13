@@ -6,7 +6,7 @@
 class Flare : public GameObject
 {
 public:
-	Flare(string tag, glm::vec2 position, Texture* sprite, glm::vec2 direction);
+	Flare(std::string tag, glm::vec2 position, SDL_Texture* sprite, glm::vec2 direction);
 	~Flare();
 	void virtual Update(float secs);
 	

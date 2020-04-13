@@ -1,16 +1,28 @@
 #include "Arena.h"
+#include "../engine/Engine.h"
+#include "../engine/Constants.h"
 
-//TODO: move this thing to a game class or something
-SDL_Renderer* Arena::m_renderer = nullptr;
-
-Arena::Arena(Ship* player1, Ship* player2, Texture* asteroidTex, SDL_Rect* camera, Mix_Chunk* explosion, TTF_Font* font, SDL_Renderer* renderer, Animation* explosionAnim) :
-m_asteroidTexture(asteroidTex), m_camera(camera), m_player1(player1), m_player2(player2), m_explosionAudio(explosion), m_font(font),  m_gameover(false),
-m_explosionAnim(explosionAnim)
+Arena::Arena(
+	Ship* player1,
+	Ship* player2,
+	SDL_Texture* asteroidTex,
+	Mix_Chunk* explosion,
+	Animation* explosionAnim) :
+	m_asteroidSDL_Texture(asteroidTex),
+	m_player1(player1),
+	m_player2(player2),
+	m_explosionAudio(explosion),
+	m_gameover(false),
+	m_explosionAnim(explosionAnim),
+	m_p1Armor({ UI_ARMOR_P1_X, UI_ARMOR_P1_Y }, "100", UI_FONT_FAMILY, { 255, 0, 0 }),
+	m_p1Lives({ UI_LIFE_P1_X, UI_LIFE_P1_Y }, "3", UI_FONT_FAMILY, { 255, 0, 0 }),
+	m_p2Armor({ UI_ARMOR_P2_X, UI_ARMOR_P2_Y }, "100", UI_FONT_FAMILY, { 0, 0, 255 }),
+	m_p2Lives({ UI_LIFE_P2_X, UI_LIFE_P2_Y }, "3", UI_FONT_FAMILY, { 0, 0, 255 }),
+	m_gameoverText({ UI_GAMEOVER_X, UI_GAMEOVER_Y }, "", UI_FONT_FAMILY, { 255, 255, 255 })
 {
-	m_renderer = renderer;
 
-	m_p1InitialPosition = glm::vec2(400, 25);
-	m_p2InitialPosition = glm::vec2(400, 550);
+	m_p1InitialPosition = glm::vec2(WINDOW_WIDTH/2, 16);
+	m_p2InitialPosition = glm::vec2(WINDOW_WIDTH/2, WINDOW_HEIGHT - 32);
 
 	SpawnPlayer1();
 	SpawnPlayer2();
@@ -22,11 +34,7 @@ m_explosionAnim(explosionAnim)
 
 Arena::~Arena()
 {
-	m_p1Armor.Free();
-	m_p1Lifes.Free();
-	m_p2Armor.Free();
-	m_p2Lifes.Free();
-	m_gameoverText.Free();
+
 }
 
 void Arena::Input(SDL_Event* evt)
@@ -77,12 +85,12 @@ void Arena::Update(float secs)
 
 	for (obj = m_gameObjects.begin(); obj != m_gameObjects.end(); ++obj)
 	{
-		if ((*obj) == NULL) continue;//vai pro pr�ximo obj
-		
+		if ((*obj) == NULL) continue;
+
 		if ((*obj)->GetCurrentState() == GameObject::States::dying)
 		{
 			continue;
-		}	
+		}
 		else if ((*obj)->GetCurrentState() == GameObject::States::dead)
 		{
 			if ((*obj)->GetTag() == "asteroid")
@@ -92,7 +100,7 @@ void Arena::Update(float secs)
 			else
 			{
 				(*obj) = NULL;
-			}	
+			}
 			continue;
 		}
 
@@ -112,7 +120,7 @@ void Arena::Update(float secs)
 		}
 
 		(*obj)->Update(secs);
-			
+
 		if ((*obj)->GetTag() == "bullet1")
 		{
 			if (SDL_HasIntersection(&m_player2->GetCollider(), &(*obj)->GetCollider()))
@@ -153,7 +161,7 @@ void Arena::Update(float secs)
 				m_player1->Explode();
 				continue;
 			}
-			
+
 			if (SDL_HasIntersection(&m_player2->GetCollider(), &(*obj)->GetCollider()))
 			{
 				Asteroid* asteroid = dynamic_cast<Asteroid*>(*obj);
@@ -184,12 +192,12 @@ void Arena::Update(float secs)
 				//(*obj) = NULL;//acaba com o objeto
 				continue;//pr�ximo obj da fila
 			}
-			
+
 			GameObject* flare = HasFlare();
 			missile->SetFlare(flare);
 		}
-		
-		if (!SDL_HasIntersection(&(*obj)->GetCollider(), m_camera))//objeto continua na tela?
+
+		if (!SDL_HasIntersection(&(*obj)->GetCollider(), ecs::Engine::Camera))//objeto continua na tela?
 		{
 			if ((*obj)->GetTag() == "asteroid")
 				(*obj) = CreateAsteroid();//criar novo aster�ide sempre que sair da tela
@@ -207,14 +215,14 @@ void Arena::Update(float secs)
 				(*obj) = NULL;//acaba com o objeto
 		}
 	}
-	
+
 	UpdateHUD();
 
 	if (!m_player1->HasArmor() && m_player1->HasLives() && m_player1->GetCurrentState() == GameObject::States::alive)
 		SpawnPlayer1();
 	else if (!m_player1->HasLives())
 		GameOver("Player 2 venceu!!! Aperte ENTER para recomecar.");
-		
+
 
 	if (!m_player2->HasArmor() && m_player2->HasLives() && m_player2->GetCurrentState() == GameObject::States::alive)
 		SpawnPlayer2();
@@ -223,41 +231,37 @@ void Arena::Update(float secs)
 
 }
 
-void Arena::GameOver(string message)
+void Arena::GameOver(std::string message)
 {
 	m_gameover = true;
-	SDL_Color color = { 255, 255, 255 };
-	m_gameoverText.LoadFromRenderedText(m_renderer, message, color, m_font);
+	m_gameoverText.SetText(message);
 }
 
 void Arena::UpdateHUD()
 {
-	string armor;
-	string lives;
-	SDL_Color color;
-
-	color = { 255, 0, 0 };
-	armor = "Player 1    Armor: " + to_string(m_player1->GetArmor());
-	lives = "Lives: " + to_string(m_player1->GetLives());
-
-	m_p1Armor.LoadFromRenderedText(m_renderer, armor, color, m_font);
-	m_p1Lifes.LoadFromRenderedText(m_renderer, lives, color, m_font);
+	std::string armor;
+	std::string lives;
 	
-	color = { 0, 0, 255 };
-	armor = "Player 2    Armor: " + to_string(m_player2->GetArmor());
-	lives = "Lives: " + to_string(m_player2->GetLives());
+	armor = "Player 1    Armor: " + std::to_string(m_player1->GetArmor());
+	lives = "Lives: " + std::to_string(m_player1->GetLives());
 
-	m_p2Armor.LoadFromRenderedText(m_renderer, armor, color, m_font);
-	m_p2Lifes.LoadFromRenderedText(m_renderer, lives, color, m_font);
+	m_p1Armor.SetText(armor);
+	m_p1Lives.SetText(lives);
+
+	armor = "Player 2    Armor: " + std::to_string(m_player2->GetArmor());
+	lives = "Lives: " + std::to_string(m_player2->GetLives());
+
+	m_p2Armor.SetText(armor);
+	m_p2Lives.SetText(lives);
 }
 
 void Arena::DrawHUD()
 {
-	m_p1Armor.Render(280, 0);
-	m_p1Lifes.Render(480, 0);
+	m_p1Armor.Render();
+	m_p1Lives.Render();
 
-	m_p2Armor.Render(280, 580);
-	m_p2Lifes.Render(480, 580);
+	m_p2Armor.Render();
+	m_p2Lives.Render();
 }
 
 void Arena::Draw(float secs)
@@ -267,20 +271,18 @@ void Arena::Draw(float secs)
 
 	for (obj = m_gameObjects.begin(); obj != m_gameObjects.end(); ++obj)
 	{
-		if ((*obj) != NULL)
-			(*obj)->Draw(secs);
+		if ((*obj) != NULL) (*obj)->Draw(secs);
 	}
 	DrawHUD();
 
-	if (m_gameover)
-		m_gameoverText.Render(230, 300);
+	if (m_gameover) m_gameoverText.Render();
 }
 
 GameObject* Arena::CreateAsteroid()
 {
-	int x = 800;//se começar fora da tela não vai funcionar, pois método UPDATE vai invalidar objeto
-	int y = rand() % 500;
-	return new Asteroid(glm::vec2(x, y), 1, m_asteroidTexture, m_explosionAnim);
+	int x = WINDOW_WIDTH;
+	int y = rand() % WINDOW_HEIGHT;
+	return new Asteroid(glm::vec2(x, y), 1, m_asteroidSDL_Texture, m_explosionAnim);
 }
 
 void Arena::SpawnPlayer1()

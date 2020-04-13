@@ -1,8 +1,20 @@
 #include "Missile.h"
 
 
-Missile::Missile(string tag, glm::vec2 position, Texture* sprite, GameObject* target, Mix_Chunk* explosion, Animation* explosionAnim) :
-GameObject(tag, position, 1, sprite), m_target(target), m_fuel(3), m_flare(NULL), m_fleeing(false), m_explosionAudio(explosion), m_explosionAnim(explosionAnim)
+Missile::Missile(
+	std::string tag, 
+	glm::vec2 position, 
+	SDL_Texture* sprite, 
+	GameObject* target, 
+	Mix_Chunk* explosion, 
+	Animation* explosionAnim) :
+	GameObject(tag, position, 1, sprite), 
+	m_target(target), 
+	m_fuel(3), 
+	m_flare(NULL), 
+	m_fleeing(false), 
+	m_explosionAudio(explosion), 
+	m_explosionAnim(explosionAnim)
 {
 	m_maxVelocity = 5;
 	m_steering = new SteeringBehavior(this);

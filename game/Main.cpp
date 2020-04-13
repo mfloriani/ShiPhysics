@@ -5,38 +5,25 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_mixer.h>
+#include <SDL_ttf.h>
 #include "../engine/GameObject.h"
 #include "../engine/Timer.h"
-#include "../engine/Config.h"
 #include "../engine/Animation.h"
 #include "Ship.h"
 #include "Asteroid.h"
 #include "Player1.h"
 #include "Player2.h"
 #include "Arena.h"
-
-using namespace std;
-
-SDL_Rect camera = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
-SDL_Window* gWindow = NULL;
-SDL_Renderer* gRenderer = NULL;
-TTF_Font *gFont = NULL;
+#include "../engine/AssetManager.h"
+#include "../engine/Engine.h"
 
 Timer fpsTimer;
 int countedFrames = 0;
-Texture ship1Texture;
-Texture ship2Texture;
-Texture bullet1Texture;
-Texture missileTexture;
-Texture asteroidTexture;
-Texture flareTexture;
-Texture explosionTexture;
 
 Animation* explosionAnim = NULL;
 
 const int EXPLOSION_ANIM_FRAMES = 5;
 SDL_Rect gExplosionClips[EXPLOSION_ANIM_FRAMES];
-
 
 Mix_Music* gMusic;
 Mix_Chunk* gShot;
@@ -44,65 +31,52 @@ Mix_Chunk* gExplosion;
 Mix_Chunk* gMissile;
 
 Arena* arena = nullptr;
+ecs::Engine* engine = new ecs::Engine;
 
-
-bool Initialize()
-{
-	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0)
-	{
-		printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
-		return false;
-	}
-	gWindow = SDL_CreateWindow("ShiPhysics", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
-	if (gWindow == NULL)
-	{
-		printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
-		return false;
-	}
-	gRenderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-	if (gRenderer == NULL)
-	{
-		printf("Renderer could not be created! SDL_Error: %s\n", SDL_GetError());
-		return false;
-	}
-	int imgFlags = IMG_INIT_PNG;
-	if (!(IMG_Init(imgFlags)&imgFlags))
-	{
-		printf("SDL_image cound not initialize! SDL_Image Error: %s\n", IMG_GetError());
-		return false;
-	}
-	if (TTF_Init() == -1)
-	{
-		printf("SDL_ttf could not initialize! SDL_ttf Error: %s\n", TTF_GetError());
-		return false;
-	}
-	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
-	{
-		printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
-		return false;
-	}
-
-	return true;
-}
+//bool Initialize()
+//{
+//	
+//
+//	if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
+//	{
+//		printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
+//		return false;
+//	}
+//	gWindow = SDL_CreateWindow("ShiPhysics", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+//	if (gWindow == NULL)
+//	{
+//		printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
+//		return false;
+//	}
+//	gRenderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+//	if (gRenderer == NULL)
+//	{
+//		printf("Renderer could not be created! SDL_Error: %s\n", SDL_GetError());
+//		return false;
+//	}
+//	int imgFlags = IMG_INIT_PNG;
+//	if (!(IMG_Init(imgFlags)&imgFlags))
+//	{
+//		printf("SDL_image cound not initialize! SDL_Image Error: %s\n", IMG_GetError());
+//		return false;
+//	}
+//	if (TTF_Init() == -1)
+//	{
+//		printf("SDL_ttf could not initialize! SDL_ttf Error: %s\n", TTF_GetError());
+//		return false;
+//	}
+//	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
+//	{
+//		printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
+//		return false;
+//	}
+//
+//	return true;
+//}
 
 void Shutdown()
 {
-	ship1Texture.Free();
-	ship2Texture.Free();
-	bullet1Texture.Free();
-	missileTexture.Free();
-	asteroidTexture.Free();
-	flareTexture.Free();
-	explosionTexture.Free();
-
 	arena = NULL;
-	
-	TTF_CloseFont(gFont);
-	gFont = NULL;
-	SDL_DestroyRenderer(gRenderer);
-	gRenderer = NULL;
-	SDL_DestroyWindow(gWindow);
-	gWindow = NULL;
 
 	Mix_FreeChunk(gShot);
 	Mix_FreeChunk(gExplosion);
@@ -113,39 +87,49 @@ void Shutdown()
 
 	Mix_FreeMusic(gMusic);
 	gMusic = NULL;
-	
-	explosionAnim = NULL;
 
-	Mix_Quit();
-	TTF_Quit();
-	IMG_Quit();
-	SDL_Quit();
+	explosionAnim = NULL;
 }
 
 void CreateArena()
 {
-	Ship* player1 = new Player1(&ship1Texture, &bullet1Texture, gShot, gMissile, gExplosion, &missileTexture, &flareTexture, explosionAnim);
-	Ship* player2 = new Player2(&ship2Texture, &bullet1Texture, gShot, gMissile, gExplosion, &missileTexture, &flareTexture, explosionAnim);
+	Ship* player1 = new Player1(
+		engine->AssetMgr->GetTexture("ship1"),
+		engine->AssetMgr->GetTexture("bullet1"),
+		gShot,
+		gMissile,
+		gExplosion,
+		engine->AssetMgr->GetTexture("missile"),
+		engine->AssetMgr->GetTexture("flare"),
+		explosionAnim);
 
-	arena = new Arena(player1, player2, &asteroidTexture, &camera, gExplosion, gFont, gRenderer, explosionAnim);
+	Ship* player2 = new Player2(
+		engine->AssetMgr->GetTexture("ship2"),
+		engine->AssetMgr->GetTexture("bullet1"),
+		gShot,
+		gMissile,
+		gExplosion,
+		engine->AssetMgr->GetTexture("missile"),
+		engine->AssetMgr->GetTexture("flare"),
+		explosionAnim);
+
+	arena = new Arena(
+		player1,
+		player2,
+		engine->AssetMgr->GetTexture("asteroid"),
+		gExplosion,
+		explosionAnim);
 }
 
 bool Load()
 {
-	if (!ship1Texture.LoadFromFile(gRenderer, "./assets/ship1.png"))
-		return false;
-	if (!ship2Texture.LoadFromFile(gRenderer, "./assets/ship2.png"))
-		return false;
-	if (!bullet1Texture.LoadFromFile(gRenderer, "./assets/bullet1.png"))
-		return false;
-	if (!missileTexture.LoadFromFile(gRenderer, "./assets/missile.png"))
-		return false;
-	if (!asteroidTexture.LoadFromFile(gRenderer, "./assets/asteroid.png"))
-		return false;
-	if (!flareTexture.LoadFromFile(gRenderer, "./assets/flare.png"))
-		return false;
-	if (!explosionTexture.LoadFromFile(gRenderer, "./assets/explosion_spritesheet.png"))
-		return false;
+	if (!engine->AssetMgr->AddTexture("ship1", "./assets/ship1.png")) return false;
+	if (!engine->AssetMgr->AddTexture("ship2", "./assets/ship2.png")) return false;
+	if (!engine->AssetMgr->AddTexture("bullet1", "./assets/bullet1.png")) return false;
+	if (!engine->AssetMgr->AddTexture("missile", "./assets/missile.png")) return false;
+	if (!engine->AssetMgr->AddTexture("asteroid", "./assets/asteroid.png")) return false;
+	if (!engine->AssetMgr->AddTexture("flare", "./assets/flare.png")) return false;
+	if (!engine->AssetMgr->AddTexture("explosion_spritesheet", "./assets/explosion_spritesheet.png")) return false;
 
 	gExplosionClips[0].x = 0;
 	gExplosionClips[0].y = 0;
@@ -172,7 +156,7 @@ bool Load()
 	gExplosionClips[4].w = 60;
 	gExplosionClips[4].h = 59;
 
-	explosionAnim = new Animation(&explosionTexture, 5, gExplosionClips);
+	explosionAnim = new Animation(engine->AssetMgr->GetTexture("explosion_spritesheet"), 5, gExplosionClips);
 
 	gMusic = Mix_LoadMUS("./assets/Battle2.mp3");
 	if (gMusic == NULL)
@@ -180,7 +164,7 @@ bool Load()
 		printf("Failed to load Battle2.mp3! SDL_mixer Error: %s\n", Mix_GetError());
 		return false;
 	}
-	
+
 
 	gShot = Mix_LoadWAV("./assets/shot1.wav");
 	if (gShot == NULL)
@@ -188,7 +172,7 @@ bool Load()
 		printf("Failed to load shot1.wav! SDL_mixer Error: %s\n", Mix_GetError());
 		return false;
 	}
-	
+
 
 	gExplosion = Mix_LoadWAV("./assets/explosion1.wav");
 	if (gExplosion == NULL)
@@ -203,14 +187,9 @@ bool Load()
 		printf("Failed to load missile1.wav! SDL_mixer Error: %s\n", Mix_GetError());
 		return false;
 	}
-	
 
-	gFont = TTF_OpenFont("./assets/arial.ttf", 18);
-	if (gFont == NULL)
-	{
-		printf("Failed to load font! SDL_ttf Error: %s\n", TTF_GetError());
-		return false;
-	}
+
+	ecs::Engine::AssetMgr->AddFont("arial", "./assets/arial.ttf", 18);
 
 	Mix_VolumeMusic(20);
 	Mix_VolumeChunk(gMissile, 20);
@@ -222,69 +201,66 @@ bool Load()
 	return true;
 }
 
-void CalculateFPS()
-{
-	float avgFPS = countedFrames / (fpsTimer.getTicks() / 1000.f);
-	if (avgFPS > 2000000) avgFPS = 0;
-
-	std::string fps;
-	fps = "FPS " + std::to_string(avgFPS);
-	SDL_SetWindowTitle(gWindow, fps.c_str());
-}
-
-
-
 int main(int argc, char* args[])
 {
-	srand(time(NULL));
-	if (Initialize())
+	srand((unsigned int)time(NULL));
+
+	if (!engine->Init())
 	{
-		if (Load())
-		{
-			bool quit = false;
-			SDL_Event evt;
-			fpsTimer.start();
-			Uint32 before = SDL_GetTicks();
-			Uint32 now = 0;
-			Mix_PlayMusic(gMusic,-1);
-
-			while (!quit)
-			{
-				now = SDL_GetTicks() - before;
-				before = SDL_GetTicks();
-				float secs = now / 1000.0f;
-
-				while (SDL_PollEvent(&evt) != 0)
-				{
-					if (evt.type == SDL_QUIT || (evt.type == SDL_KEYDOWN && evt.key.keysym.sym == SDLK_ESCAPE))
-					{
-						quit = true;
-					}	
-					else if (evt.type == SDL_KEYDOWN)
-					{
-						switch (evt.key.keysym.sym)
-						{
-							case SDLK_RETURN:
-								CreateArena();
-								break;
-						}
-					}
-					arena->Input(&evt);
-				}
-				CalculateFPS();
-				arena->Update(secs);
-				
-				SDL_SetRenderDrawColor(gRenderer, 0, 0, 0, 0xFF);
-				//SDL_SetRenderDrawColor(gRenderer, 255, 255, 255, 0xFF);
-				SDL_RenderClear(gRenderer);
-				arena->Draw(secs);
-				
-				SDL_RenderPresent(gRenderer);
-				++countedFrames;
-			}
-		}
+		engine->Quit();
+		return 1;
 	}
 
+	if (!Load())
+	{
+		engine->Quit();
+		return 1;
+	}
+
+	bool quit = false;
+	SDL_Event evt;
+	fpsTimer.start();
+	Uint32 before = SDL_GetTicks();
+	Uint32 now = 0;
+	Mix_PlayMusic(gMusic, -1);
+
+	while (!quit)
+	{
+		now = SDL_GetTicks() - before;
+		before = SDL_GetTicks();
+		float secs = now / 1000.0f;
+
+		while (SDL_PollEvent(&evt) != 0)
+		{
+			if (evt.type == SDL_QUIT || (evt.type == SDL_KEYDOWN && evt.key.keysym.sym == SDLK_ESCAPE))
+			{
+				quit = true;
+			}
+			else if (evt.type == SDL_KEYDOWN)
+			{
+				switch (evt.key.keysym.sym)
+				{
+				case SDLK_RETURN:
+					CreateArena();
+					break;
+				}
+			}
+			arena->Input(&evt);
+		}
+		arena->Update(secs);
+
+		SDL_SetRenderDrawColor(engine->Renderer, 0, 0, 0, 0xFF);
+		SDL_RenderClear(engine->Renderer);
+		arena->Draw(secs);
+
+		SDL_RenderPresent(engine->Renderer);
+		++countedFrames;
+	}
+
+
 	Shutdown();
+
+	engine->Quit();
+
 	return 0;
 }

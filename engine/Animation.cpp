@@ -1,8 +1,14 @@
 #include "Animation.h"
+#include "TextureManager.h"
 
-
-Animation::Animation(Texture* spriteSheet, int frames, SDL_Rect frameClips[]):
-m_spriteSheet(spriteSheet), m_frames(frames), m_currentFrame(0), m_currentFrameTime(0)
+Animation::Animation(
+	SDL_Texture* spriteSheet, 
+	int frames, 
+	SDL_Rect frameClips[]):
+	m_spriteSheet(spriteSheet), 
+	m_frames(frames), 
+	m_currentFrame(0), 
+	m_currentFrameTime(0)
 {
 	for (int i = 0; i < frames; i++)
 	{
@@ -27,6 +33,8 @@ bool Animation::Draw(float secs, int x, int y)
 			return true;
 		}
 	}
-	SDL_Rect currentClip = m_frameClips[m_currentFrame];
-	m_spriteSheet->Render(x, y, &currentClip);
+	SDL_Rect clip = m_frameClips[m_currentFrame];
+	SDL_Rect dstRect { x,  y, 60, 59 }; //remove fixed size
+	ecs::TextureManager::Render(m_spriteSheet, &clip, &dstRect);
+
 }

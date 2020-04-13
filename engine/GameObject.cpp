@@ -1,15 +1,33 @@
 #include "GameObject.h"
 #include "../lib/glm/gtx/rotate_vector.hpp"
 #include "../game/Arena.h"
+#include "TextureManager.h"
+#include "../engine/Constants.h"
 
-GameObject::GameObject(string tag, glm::vec2 position, float mass, Texture* sprite) : m_position(position), m_direction(glm::vec2(1,0)), m_mass(mass), m_sprite(sprite), m_angleRadian(0.0f), m_angleDegree(0.0f), m_tag(tag), m_active(true), 
-m_currentState(GameObject::States::alive)
+GameObject::GameObject(std::string tag, glm::vec2 position, float mass, SDL_Texture* sprite) : 
+	m_position(position), 
+	m_direction(glm::vec2(1,0)), 
+	m_mass(mass), 
+	m_sprite(sprite), 
+	m_angleRadian(0.0f), 
+	m_angleDegree(0.0f), 
+	m_tag(tag), 
+	m_active(true),
+	m_currentState(GameObject::States::alive)
 {
 	UpdateDirection();
 	SetCollider();
 }
 
-GameObject::GameObject(string tag, glm::vec2 position, float mass, Texture* sprite, glm::vec2 direction) : m_position(position), m_mass(mass), m_sprite(sprite), m_angleRadian(0.0f), m_angleDegree(0.0f), m_direction(direction), m_tag(tag), m_active(true)
+GameObject::GameObject(std::string tag, glm::vec2 position, float mass, SDL_Texture* sprite, glm::vec2 direction) :
+	m_position(position), 
+	m_mass(mass), 
+	m_sprite(sprite), 
+	m_angleRadian(0.0f), 
+	m_angleDegree(0.0f), 
+	m_direction(direction), 
+	m_tag(tag), 
+	m_active(true)
 {
 	SetCollider();
 }
@@ -21,14 +39,9 @@ GameObject::~GameObject()
 
 void GameObject::SetCollider()
 {
-	if (m_sprite != NULL)
+	if (m_sprite)
 	{
-		SDL_Rect boxCollider;
-		boxCollider.x = m_position.x;
-		boxCollider.y = m_position.y;
-		boxCollider.w = m_sprite->GetWidth();
-		boxCollider.h = m_sprite->GetHeight();
-		m_collider = boxCollider;
+		m_collider = SDL_Rect{ (int)m_position.x, (int)m_position.y, SHIP_SIZE, SHIP_SIZE };
 	}
 }
 
@@ -67,7 +80,12 @@ void GameObject::Draw(float secs)
 		SDL_SetRenderDrawColor(Arena::m_renderer, 255, 0, 0, SDL_ALPHA_OPAQUE);
 		SDL_RenderDrawLine(Arena::m_renderer, m_position.x, m_position.y, dirOffset.x, dirOffset.y);
 	}*/
-	m_sprite->Render(m_position.x, m_position.y, NULL, m_angleDegree, NULL, SDL_FLIP_NONE);
+	//m_sprite->Render(m_position.x, m_position.y, NULL, m_angleDegree, NULL, SDL_FLIP_NONE);
+	
+	SDL_Rect rect { (int)m_position.x,  (int)m_position.y };
+	SDL_QueryTexture(m_sprite, NULL, NULL, &rect.w, &rect.h);
+
+	ecs::TextureManager::Render(m_sprite, &rect, m_angleDegree);
 }
 
 SDL_Rect GameObject::GetCollider()
@@ -90,7 +108,7 @@ glm::vec2 GameObject::GetMomentum()
 	return m_momentum;
 }
 
-string GameObject::GetTag()
+std::string GameObject::GetTag()
 {
 	return m_tag;
 }

@@ -4,16 +4,23 @@
 
 #include <vector>
 #include <string>
-#include "../engine/Texture.h"
 #include "../engine/GameObject.h"
 #include "../engine/Animation.h"
 #include "Asteroid.h"
 #include "Ship.h"
+#include <SDL_ttf.h>
+#include "../engine/TextComponent.h"
+
 
 class Arena
 {
 public:
-	Arena(Ship* player1, Ship* player2, Texture* asteroidTex, SDL_Rect* camera, Mix_Chunk* explosion, TTF_Font* font, SDL_Renderer* renderer, Animation* explosionAnim);
+	Arena(
+		Ship* player1, 
+		Ship* player2, 
+		SDL_Texture* asteroidTex, 
+		Mix_Chunk* explosion, 
+		Animation* explosionAnim);
 	~Arena();
 
 	void Input(SDL_Event* evt);
@@ -22,21 +29,19 @@ public:
 	void DrawHUD();
 	void UpdateHUD();
 
-	Texture* m_asteroidTexture;
-	TTF_Font* m_font;
-	static SDL_Renderer* m_renderer;
-	Texture m_p1Armor;
-	Texture m_p1Lifes;
-	Texture m_p2Armor;
-	Texture m_p2Lifes;
-	Texture m_gameoverText;
+	SDL_Texture* m_asteroidSDL_Texture;
+	
+	ecs::TextComponent m_p1Armor;
+	ecs::TextComponent m_p1Lives;
+	ecs::TextComponent m_p2Armor;
+	ecs::TextComponent m_p2Lives;
+	ecs::TextComponent m_gameoverText;
 	
 
 private:
-	vector<GameObject*> m_gameObjects;
-	vector<GameObject*>::iterator obj;
-	vector<GameObject*>::iterator obj2;
-	SDL_Rect* m_camera;
+	std::vector<GameObject*> m_gameObjects;
+	std::vector<GameObject*>::iterator obj;
+	std::vector<GameObject*>::iterator obj2;
 	Ship* m_player1;
 	Ship* m_player2;
 	Mix_Chunk* m_explosionAudio;
@@ -49,7 +54,7 @@ private:
 	bool HasAsteroidCollision(GameObject* obj);
 	void SpawnPlayer1();
 	void SpawnPlayer2();
-	void GameOver(string message);
+	void GameOver(std::string message);
 	GameObject* HasFlare();
 
 };

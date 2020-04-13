@@ -8,7 +8,7 @@
 class Bullet : public GameObject
 {
 public:
-	Bullet(string tag, Texture* sprite, glm::vec2 position, glm::vec2 direction);
+	Bullet(std::string tag, SDL_Texture* sprite, glm::vec2 position, glm::vec2 direction);
 	~Bullet();
 	void virtual Update(float secs);
 

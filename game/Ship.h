@@ -17,10 +17,20 @@ class Ship : public GameObject
 public:
 	enum Rotation{NONE, LEFT, RIGHT};
 	
-	Ship(string tag, float mass, Texture* sprite, Texture* bulletSprite, Mix_Chunk* bulletAudio, Mix_Chunk* missileAudio, Mix_Chunk* explosionAudio, Texture* missileSprite, Texture* flareSprite, Animation* explosionAnim);
+	Ship(
+		std::string tag, 
+		float mass, 
+		SDL_Texture* sprite, 
+		SDL_Texture* bulletSprite, 
+		Mix_Chunk* bulletAudio, 
+		Mix_Chunk* missileAudio, 
+		Mix_Chunk* explosionAudio, 
+		SDL_Texture* missileSprite, 
+		SDL_Texture* flareSprite, 
+		Animation* explosionAnim);
 	~Ship();
 
-	void virtual Input(SDL_Event* evt, vector<GameObject*> *gameObjects, GameObject* target);
+	void virtual Input(SDL_Event* evt, std::vector<GameObject*> *gameObjects, GameObject* target);
 	void virtual Update(float secs);
 	void virtual Draw(float secs);
 	void SetDamageByBullet(int damage);
@@ -39,23 +49,23 @@ protected:
 	void SetRotation(Rotation rotation);
 	void SetTrustPressed(bool pressed);
 	glm::vec2 virtual CalculateForces();
-	Bullet* Shoot(string tag);
-	Missile* ShootMissile(string tag, GameObject* target);
-	Flare* ReleaseFlare(string tag, glm::vec2 direction);
+	Bullet* Shoot(std::string tag);
+	Missile* ShootMissile(std::string tag, GameObject* target);
+	Flare* ReleaseFlare(std::string tag, glm::vec2 direction);
 	
 	Rotation m_rotation;
 	bool m_trustPressed;
 	int m_lives;
 	int m_armor;
-	Texture* m_bulletSprite;
-	Texture* m_missileSprite;
+	SDL_Texture* m_bulletSprite;
+	SDL_Texture* m_missileSprite;
 	Mix_Chunk* m_bulletAudio;
 	Mix_Chunk* m_MissileAudio;
 	Mix_Chunk* m_explosionAudio;
 	Missile* m_missile;
 	glm::vec2 m_cannonPos;
 	Flare* m_flare;
-	Texture* m_flareSprite;
+	SDL_Texture* m_flareSprite;
 	Animation* m_explosionAnim;
 	float m_respawnTime;
 

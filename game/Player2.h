@@ -6,10 +6,18 @@
 class Player2 :	public Ship
 {
 public:
-	Player2(Texture* sprite, Texture* bulletSprite, Mix_Chunk* bulletAudio, Mix_Chunk* missileAudio, Mix_Chunk* explosionAudio, Texture* missileSprite, Texture* flareTexture, Animation* explosionAnim);
+	Player2(
+		SDL_Texture* sprite, 
+		SDL_Texture* bulletSprite, 
+		Mix_Chunk* bulletAudio, 
+		Mix_Chunk* missileAudio, 
+		Mix_Chunk* explosionAudio, 
+		SDL_Texture* missileSprite, 
+		SDL_Texture* flareTexture, 
+		Animation* explosionAnim);
 	~Player2();
 
-	void Input(SDL_Event* evt, vector<GameObject*> *gameObjects, GameObject* target);
+	void Input(SDL_Event* evt, std::vector<GameObject*> *gameObjects, GameObject* target);
 };
 
 #endif

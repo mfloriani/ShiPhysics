@@ -1,7 +1,7 @@
 #include "Flare.h"
 
 
-Flare::Flare(string tag, glm::vec2 position, Texture* sprite, glm::vec2 direction) : GameObject(tag, position, 1, sprite, direction), m_duration(5)
+Flare::Flare(std::string tag, glm::vec2 position, SDL_Texture* sprite, glm::vec2 direction) : GameObject(tag, position, 1, sprite, direction), m_duration(5)
 {
 	
 }
