@@ -1,7 +1,7 @@
 #include "Missile.h"
 
 
-Missile::Missile(string tag, Vector2D position, Texture* sprite, GameObject* target, Mix_Chunk* explosion, Animation* explosionAnim) :
+Missile::Missile(string tag, glm::vec2 position, Texture* sprite, GameObject* target, Mix_Chunk* explosion, Animation* explosionAnim) :
 GameObject(tag, position, 1, sprite), m_target(target), m_fuel(3), m_flare(NULL), m_fleeing(false), m_explosionAudio(explosion), m_explosionAnim(explosionAnim)
 {
 	m_maxVelocity = 5;
@@ -11,10 +11,10 @@ GameObject(tag, position, 1, sprite), m_target(target), m_fuel(3), m_flare(NULL)
 
 void Missile::Update(float secs)
 {
-	Vector2D vel;
+	glm::vec2 vel;
 	if (m_flare != NULL && !m_fleeing)
 	{
-		float dist = ((m_position - m_flare->GetPosition()).size());
+		float dist = glm::length(m_position - m_flare->GetPosition());
 		//printf("dist=%f \n", dist);
 		if (dist < 100) m_fleeing = true;
 	}
@@ -24,7 +24,7 @@ void Missile::Update(float secs)
 		if (m_flare == NULL)
 		{
 			m_fleeing = false;
-			vel = Vector2D();
+			vel = glm::vec2();
 		}
 		else
 		{
@@ -38,7 +38,7 @@ void Missile::Update(float secs)
 
 	m_momentum += vel;
 	m_position += m_momentum;
-	m_direction = m_momentum.normalize();
+	m_direction = glm::normalize(m_momentum);
 	SetCollider();
 	
 	m_fuel -= secs;

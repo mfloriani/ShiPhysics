@@ -4,14 +4,12 @@
 #include <SDL_image.h>
 #include <SDL_mixer.h>
 #include <vector>
-#include "../lib/Vector2D.h"
+#include "../lib/glm/glm.hpp"
 #include "../engine/GameObject.h"
 #include "../engine/Animation.h"
 #include "Bullet.h"
 #include "Missile.h"
 #include "Flare.h"
-
-using namespace math;
 
 class Ship : public GameObject
 {
@@ -32,18 +30,18 @@ public:
 	bool HasLives();
 	int GetArmor();
 	int GetLives();
-	void Respawn(Vector2D position);
+	void Respawn(glm::vec2 position);
 	void ArmNewMissile();
 	void ArmNewFlare();
-	void MissileExploded(Vector2D explosionSite);
+	void MissileExploded(glm::vec2 explosionSite);
 
 protected:
 	void SetRotation(Rotation rotation);
 	void SetTrustPressed(bool pressed);
-	Vector2D virtual CalculateForces();
+	glm::vec2 virtual CalculateForces();
 	Bullet* Shoot(string tag);
 	Missile* ShootMissile(string tag, GameObject* target);
-	Flare* ReleaseFlare(string tag, Vector2D direction);
+	Flare* ReleaseFlare(string tag, glm::vec2 direction);
 	
 	Rotation m_rotation;
 	bool m_trustPressed;
@@ -55,7 +53,7 @@ protected:
 	Mix_Chunk* m_MissileAudio;
 	Mix_Chunk* m_explosionAudio;
 	Missile* m_missile;
-	Vector2D m_cannonPos;
+	glm::vec2 m_cannonPos;
 	Flare* m_flare;
 	Texture* m_flareSprite;
 	Animation* m_explosionAnim;

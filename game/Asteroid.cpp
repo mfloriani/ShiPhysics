@@ -1,7 +1,7 @@
 #include "Asteroid.h"
 
 
-Asteroid::Asteroid(Vector2D position, float mass, Texture* sprite, Animation* explosionAnim) : GameObject("asteroid", position, mass, sprite), m_explosionAnim(explosionAnim)
+Asteroid::Asteroid(glm::vec2 position, float mass, Texture* sprite, Animation* explosionAnim) : GameObject("asteroid", position, mass, sprite), m_explosionAnim(explosionAnim)
 {
 	
 }
@@ -13,7 +13,7 @@ Asteroid::~Asteroid()
 
 void Asteroid::Update(float secs)
 {
-	m_position += Vector2D(-50,0) * secs;
+	m_position += glm::vec2(-50,0) * secs;
 	SetCollider();
 	m_angleDegree += 180.0f * secs;
 }

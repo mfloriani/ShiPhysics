@@ -5,7 +5,6 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_mixer.h>
-#include "../lib/Vector2D.h"
 #include "../engine/GameObject.h"
 #include "../engine/Timer.h"
 #include "../engine/Config.h"

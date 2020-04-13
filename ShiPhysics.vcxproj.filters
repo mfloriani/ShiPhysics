@@ -57,21 +57,6 @@
     <ClCompile Include="game\Ship.cpp">
       <Filter>game</Filter>
     </ClCompile>
-    <ClCompile Include="lib\AffineTransform.cpp">
-      <Filter>lib</Filter>
-    </ClCompile>
-    <ClCompile Include="lib\MathUtil.cpp">
-      <Filter>lib</Filter>
-    </ClCompile>
-    <ClCompile Include="lib\Matrix3.cpp">
-      <Filter>lib</Filter>
-    </ClCompile>
-    <ClCompile Include="lib\Vector2D.cpp">
-      <Filter>lib</Filter>
-    </ClCompile>
-    <ClCompile Include="lib\Vector3D.cpp">
-      <Filter>lib</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine\Animation.h">
@@ -112,21 +97,6 @@
     </ClInclude>
     <ClInclude Include="game\Ship.h">
       <Filter>game</Filter>
-    </ClInclude>
-    <ClInclude Include="lib\AffineTransform.h">
-      <Filter>lib</Filter>
-    </ClInclude>
-    <ClInclude Include="lib\MathUtil.h">
-      <Filter>lib</Filter>
-    </ClInclude>
-    <ClInclude Include="lib\Matrix3.h">
-      <Filter>lib</Filter>
-    </ClInclude>
-    <ClInclude Include="lib\Vector2D.h">
-      <Filter>lib</Filter>
-    </ClInclude>
-    <ClInclude Include="lib\Vector3D.h">
-      <Filter>lib</Filter>
     </ClInclude>
     <ClInclude Include="engine\Config.h">
       <Filter>engine</Filter>

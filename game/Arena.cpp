@@ -1,12 +1,16 @@
 #include "Arena.h"
 
+//TODO: move this thing to a game class or something
+SDL_Renderer* Arena::m_renderer = nullptr;
 
 Arena::Arena(Ship* player1, Ship* player2, Texture* asteroidTex, SDL_Rect* camera, Mix_Chunk* explosion, TTF_Font* font, SDL_Renderer* renderer, Animation* explosionAnim) :
-m_asteroidTexture(asteroidTex), m_camera(camera), m_player1(player1), m_player2(player2), m_explosionAudio(explosion), m_font(font), m_renderer(renderer), m_gameover(false),
+m_asteroidTexture(asteroidTex), m_camera(camera), m_player1(player1), m_player2(player2), m_explosionAudio(explosion), m_font(font),  m_gameover(false),
 m_explosionAnim(explosionAnim)
 {
-	m_p1InitialPosition = Vector2D(400, 25);
-	m_p2InitialPosition = Vector2D(400, 550);
+	m_renderer = renderer;
+
+	m_p1InitialPosition = glm::vec2(400, 25);
+	m_p2InitialPosition = glm::vec2(400, 550);
 
 	SpawnPlayer1();
 	SpawnPlayer2();
@@ -276,7 +280,7 @@ GameObject* Arena::CreateAsteroid()
 {
 	int x = 800;//se começar fora da tela não vai funcionar, pois método UPDATE vai invalidar objeto
 	int y = rand() % 500;
-	return new Asteroid(Vector2D(x, y), 1, m_asteroidTexture, m_explosionAnim);
+	return new Asteroid(glm::vec2(x, y), 1, m_asteroidTexture, m_explosionAnim);
 }
 
 void Arena::SpawnPlayer1()

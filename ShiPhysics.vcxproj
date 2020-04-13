@@ -25,11 +25,6 @@
     <ClCompile Include="game\Player1.cpp" />
     <ClCompile Include="game\Player2.cpp" />
     <ClCompile Include="game\Ship.cpp" />
-    <ClCompile Include="lib\AffineTransform.cpp" />
-    <ClCompile Include="lib\MathUtil.cpp" />
-    <ClCompile Include="lib\Matrix3.cpp" />
-    <ClCompile Include="lib\Vector2D.cpp" />
-    <ClCompile Include="lib\Vector3D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine\Animation.h" />
@@ -46,11 +41,6 @@
     <ClInclude Include="game\Player1.h" />
     <ClInclude Include="game\Player2.h" />
     <ClInclude Include="game\Ship.h" />
-    <ClInclude Include="lib\AffineTransform.h" />
-    <ClInclude Include="lib\MathUtil.h" />
-    <ClInclude Include="lib\Matrix3.h" />
-    <ClInclude Include="lib\Vector2D.h" />
-    <ClInclude Include="lib\Vector3D.h" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="assets\arial.ttf" />

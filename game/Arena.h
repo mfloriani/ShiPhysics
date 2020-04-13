@@ -1,6 +1,7 @@
 #ifndef __ARENA_H__
 #define __ARENA_H__
 
+
 #include <vector>
 #include <string>
 #include "../engine/Texture.h"
@@ -23,7 +24,7 @@ public:
 
 	Texture* m_asteroidTexture;
 	TTF_Font* m_font;
-	SDL_Renderer* m_renderer;
+	static SDL_Renderer* m_renderer;
 	Texture m_p1Armor;
 	Texture m_p1Lifes;
 	Texture m_p2Armor;
@@ -39,8 +40,8 @@ private:
 	Ship* m_player1;
 	Ship* m_player2;
 	Mix_Chunk* m_explosionAudio;
-	Vector2D m_p1InitialPosition;
-	Vector2D m_p2InitialPosition;
+	glm::vec2 m_p1InitialPosition;
+	glm::vec2 m_p2InitialPosition;
 	bool m_gameover;
 	Animation* m_explosionAnim;
 

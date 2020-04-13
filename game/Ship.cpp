@@ -1,8 +1,8 @@
 #include "Ship.h"
-
+#include "../lib/glm/gtx/rotate_vector.hpp"
 
 Ship::Ship(string tag, float mass, Texture* sprite, Texture* bulletSprite, Mix_Chunk* bulletAudio, Mix_Chunk* missileAudio, Mix_Chunk* explosionAudio, Texture* missileSprite, Texture* flareSprite, Animation* explosionAnim) :
-GameObject(tag, Vector2D(0,0), mass, sprite),
+GameObject(tag, glm::vec2(0,0), mass, sprite),
 m_rotation(Rotation::NONE),
 m_trustPressed(false),
 m_lives(3),
@@ -13,7 +13,7 @@ m_MissileAudio(missileAudio),
 m_explosionAudio(explosionAudio),
 m_missileSprite(missileSprite),
 m_missile(NULL),
-m_cannonPos(Vector2D(16,16)),
+m_cannonPos(glm::vec2(16,16)),
 m_flare(NULL),
 m_flareSprite(flareSprite),
 m_explosionAnim(explosionAnim)
@@ -55,14 +55,14 @@ void Ship::Update(float secs)
 
 	if (m_rotation == Rotation::LEFT)
 	{
-		m_angleRadian -= toRadians(180.0f) * secs;
-		m_angleDegree = toDegrees(m_angleRadian);
+		m_angleRadian -= glm::radians(180.0f) * secs;
+		m_angleDegree = glm::degrees(m_angleRadian);
 		UpdateDirection();
 	}
 	else if (m_rotation == Rotation::RIGHT)
 	{
-		m_angleRadian += toRadians(180.0f) * secs;
-		m_angleDegree = toDegrees(m_angleRadian);
+		m_angleRadian += glm::radians(180.0f) * secs;
+		m_angleDegree = glm::degrees(m_angleRadian);
 		UpdateDirection();
 	}
 
@@ -75,11 +75,14 @@ void Ship::Update(float secs)
 	}
 }
 
-Vector2D Ship::CalculateForces()
+glm::vec2 Ship::CalculateForces()
 {
-	Vector2D forces;
+	glm::vec2 forces(0,0);
 	if (m_trustPressed)
-		forces += Vector2D::newBySizeAngle(100, m_angleRadian);
+	{
+		glm::vec2 force = glm::rotate(glm::vec2(1,0) * 100.f, m_angleRadian);
+		forces += force;
+	}
 	return forces;
 }
 
@@ -112,7 +115,7 @@ void Ship::Draw(float secs)
 Bullet* Ship::Shoot(string tag)
 {
 	Mix_PlayChannel(-1, m_bulletAudio, 0);
-	Vector2D pos = m_position + m_cannonPos;
+	glm::vec2 pos = m_position + m_cannonPos;
 	return new Bullet(tag, m_bulletSprite, pos, m_direction);
 }
 
@@ -126,7 +129,7 @@ Missile* Ship::ShootMissile(string tag, GameObject* target)
 	return m_missile;
 }
 
-Flare* Ship::ReleaseFlare(string tag, Vector2D direction)
+Flare* Ship::ReleaseFlare(string tag, glm::vec2 direction)
 {
 	if (m_flare == NULL)
 	{
@@ -135,9 +138,9 @@ Flare* Ship::ReleaseFlare(string tag, Vector2D direction)
 	return m_flare;
 }
 
-void Ship::MissileExploded(Vector2D explosionSite)
+void Ship::MissileExploded(glm::vec2 explosionSite)
 {
-	float dist = (m_position - explosionSite).size();
+	float dist = glm::length(m_position - explosionSite);
 	//printf("dist=%f \n", dist);
 	if (dist < 50)
 	{
@@ -210,11 +213,11 @@ int Ship::GetLives()
 	return m_lives;
 }
 
-void Ship::Respawn(Vector2D position)
+void Ship::Respawn(glm::vec2 position)
 {
 	m_armor = 100;
 	m_position = position;
-	m_momentum = Vector2D();
+	m_momentum = glm::vec2();
 	m_angleRadian = 0.0f;
 	m_angleDegree = 0.0f;
 	UpdateDirection();

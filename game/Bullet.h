@@ -2,15 +2,13 @@
 #define __BULLET_H__
 
 #include <SDL.h>
-#include "../lib/Vector2D.h"
+#include "../lib/glm/glm.hpp"
 #include "../engine/GameObject.h"
-
-using namespace math;
 
 class Bullet : public GameObject
 {
 public:
-	Bullet(string tag, Texture* sprite, Vector2D position, Vector2D direction);
+	Bullet(string tag, Texture* sprite, glm::vec2 position, glm::vec2 direction);
 	~Bullet();
 	void virtual Update(float secs);
 
