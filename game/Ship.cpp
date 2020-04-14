@@ -105,7 +105,7 @@ void Ship::Draw(float secs)
 	else if (m_currentState == GameObject::States::dying)
 	{
 		//printf("x=%f | y=%f \n", m_position.x, m_position.y);
-		bool ended = m_explosionAnim->Draw(secs, m_position.x, m_position.y);
+		bool ended = m_explosionAnim->Draw(secs, static_cast<int>(m_position.x), static_cast<int>(m_position.y));
 		if (ended)
 		{
 			m_respawnTime = 0;

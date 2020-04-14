@@ -16,6 +16,8 @@
     <ClCompile Include="engine\Engine.cpp" />
     <ClCompile Include="engine\FontManager.cpp" />
     <ClCompile Include="engine\GameObject.cpp" />
+    <ClCompile Include="engine\MusicManager.cpp" />
+    <ClCompile Include="engine\SoundManager.cpp" />
     <ClCompile Include="engine\SteeringBehavior.cpp" />
     <ClCompile Include="engine\XTexture.cpp" />
     <ClCompile Include="engine\TextureManager.cpp" />
@@ -38,6 +40,8 @@
     <ClInclude Include="engine\Engine.h" />
     <ClInclude Include="engine\FontManager.h" />
     <ClInclude Include="engine\GameObject.h" />
+    <ClInclude Include="engine\MusicManager.h" />
+    <ClInclude Include="engine\SoundManager.h" />
     <ClInclude Include="engine\SpriteComponent.h" />
     <ClInclude Include="engine\SteeringBehavior.h" />
     <ClInclude Include="engine\TextComponent.h" />

@@ -25,69 +25,12 @@ Animation* explosionAnim = NULL;
 const int EXPLOSION_ANIM_FRAMES = 5;
 SDL_Rect gExplosionClips[EXPLOSION_ANIM_FRAMES];
 
-Mix_Music* gMusic;
-Mix_Chunk* gShot;
-Mix_Chunk* gExplosion;
-Mix_Chunk* gMissile;
-
 Arena* arena = nullptr;
 ecs::Engine* engine = new ecs::Engine;
-
-//bool Initialize()
-//{
-//	
-//
-//	if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
-//	{
-//		printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
-//		return false;
-//	}
-//	gWindow = SDL_CreateWindow("ShiPhysics", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
-//	if (gWindow == NULL)
-//	{
-//		printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
-//		return false;
-//	}
-//	gRenderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-//	if (gRenderer == NULL)
-//	{
-//		printf("Renderer could not be created! SDL_Error: %s\n", SDL_GetError());
-//		return false;
-//	}
-//	int imgFlags = IMG_INIT_PNG;
-//	if (!(IMG_Init(imgFlags)&imgFlags))
-//	{
-//		printf("SDL_image cound not initialize! SDL_Image Error: %s\n", IMG_GetError());
-//		return false;
-//	}
-//	if (TTF_Init() == -1)
-//	{
-//		printf("SDL_ttf could not initialize! SDL_ttf Error: %s\n", TTF_GetError());
-//		return false;
-//	}
-//	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
-//	{
-//		printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
-//		return false;
-//	}
-//
-//	return true;
-//}
 
 void Shutdown()
 {
 	arena = NULL;
-
-	Mix_FreeChunk(gShot);
-	Mix_FreeChunk(gExplosion);
-	Mix_FreeChunk(gMissile);
-	gShot = NULL;
-	gExplosion = NULL;
-	gMissile = NULL;
-
-	Mix_FreeMusic(gMusic);
-	gMusic = NULL;
-
 	explosionAnim = NULL;
 }
 
@@ -96,9 +39,9 @@ void CreateArena()
 	Ship* player1 = new Player1(
 		engine->AssetMgr->GetTexture("ship1"),
 		engine->AssetMgr->GetTexture("bullet1"),
-		gShot,
-		gMissile,
-		gExplosion,
+		engine->AssetMgr->GetSound("shot1"),
+		engine->AssetMgr->GetSound("missile1"),
+		engine->AssetMgr->GetSound("explosion1"),
 		engine->AssetMgr->GetTexture("missile"),
 		engine->AssetMgr->GetTexture("flare"),
 		explosionAnim);
@@ -106,9 +49,9 @@ void CreateArena()
 	Ship* player2 = new Player2(
 		engine->AssetMgr->GetTexture("ship2"),
 		engine->AssetMgr->GetTexture("bullet1"),
-		gShot,
-		gMissile,
-		gExplosion,
+		engine->AssetMgr->GetSound("shot1"),
+		engine->AssetMgr->GetSound("missile1"),
+		engine->AssetMgr->GetSound("explosion1"),
 		engine->AssetMgr->GetTexture("missile"),
 		engine->AssetMgr->GetTexture("flare"),
 		explosionAnim);
@@ -117,7 +60,7 @@ void CreateArena()
 		player1,
 		player2,
 		engine->AssetMgr->GetTexture("asteroid"),
-		gExplosion,
+		engine->AssetMgr->GetSound("explosion1"),
 		explosionAnim);
 }
 
@@ -158,45 +101,16 @@ bool Load()
 
 	explosionAnim = new Animation(engine->AssetMgr->GetTexture("explosion_spritesheet"), 5, gExplosionClips);
 
-	gMusic = Mix_LoadMUS("./assets/Battle2.mp3");
-	if (gMusic == NULL)
-	{
-		printf("Failed to load Battle2.mp3! SDL_mixer Error: %s\n", Mix_GetError());
-		return false;
-	}
-
-
-	gShot = Mix_LoadWAV("./assets/shot1.wav");
-	if (gShot == NULL)
-	{
-		printf("Failed to load shot1.wav! SDL_mixer Error: %s\n", Mix_GetError());
-		return false;
-	}
-
-
-	gExplosion = Mix_LoadWAV("./assets/explosion1.wav");
-	if (gExplosion == NULL)
-	{
-		printf("Failed to load explosion1.wav! SDL_mixer Error: %s\n", Mix_GetError());
-		return false;
-	}
-
-	gMissile = Mix_LoadWAV("./assets/missile1.wav");
-	if (gMissile == NULL)
-	{
-		printf("Failed to load missile1.wav! SDL_mixer Error: %s\n", Mix_GetError());
-		return false;
-	}
-
+	if (!engine->AssetMgr->AddMusic("battle2", "./assets/Battle2.mp3")) return false;
+	if (!engine->AssetMgr->AddSound("shot1", "./assets/shot1.wav")) return false;
+	if (!engine->AssetMgr->AddSound("explosion1", "./assets/explosion1.wav")) return false;
+	if (!engine->AssetMgr->AddSound("missile1", "./assets/missile1.wav")) return false;
 
 	ecs::Engine::AssetMgr->AddFont("arial", "./assets/arial.ttf", 18);
 
-	Mix_VolumeMusic(20);
-	Mix_VolumeChunk(gMissile, 20);
-	Mix_VolumeChunk(gShot, 20);
-	// Mix_VolumeChunk(gExplosion, 20);
-
 	CreateArena();
+	
+	engine->AssetMgr->PlayMusic("battle2");
 
 	return true;
 }
@@ -222,8 +136,8 @@ int main(int argc, char* args[])
 	fpsTimer.start();
 	Uint32 before = SDL_GetTicks();
 	Uint32 now = 0;
-	Mix_PlayMusic(gMusic, -1);
-
+	
+	
 	while (!quit)
 	{
 		now = SDL_GetTicks() - before;

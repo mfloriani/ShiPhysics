@@ -66,6 +66,12 @@
     <ClCompile Include="engine\FontManager.cpp">
       <Filter>engine</Filter>
     </ClCompile>
+    <ClCompile Include="engine\SoundManager.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\MusicManager.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine\Animation.h">
@@ -129,6 +135,12 @@
       <Filter>engine</Filter>
     </ClInclude>
     <ClInclude Include="engine\Component.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\SoundManager.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\MusicManager.h">
       <Filter>engine</Filter>
     </ClInclude>
   </ItemGroup>
