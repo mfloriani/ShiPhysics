@@ -7,62 +7,22 @@
 #include <SDL_mixer.h>
 #include <SDL_ttf.h>
 #include "../engine/GameObject.h"
-#include "../engine/Timer.h"
-#include "../engine/Animation.h"
-#include "Ship.h"
-#include "Asteroid.h"
-#include "Player1.h"
-#include "Player2.h"
-#include "Arena.h"
 #include "../engine/AssetManager.h"
 #include "../engine/Engine.h"
+#include "../engine/TransformComponent.h"
+#include "../engine/SpriteComponent.h"
+#include "../engine/RigidbodyComponent.h"
+#include "../engine/BoxColliderComponent.h"
+#include "Player1Controller.h"
+#include "Cannon.h"
+#include "MissileLauncher.h"
+#include "FlareLauncher.h"
 
-Timer fpsTimer;
-int countedFrames = 0;
+//Animation* explosionAnim = NULL;
+//const int EXPLOSION_ANIM_FRAMES = 5;
+//SDL_Rect gExplosionClips[EXPLOSION_ANIM_FRAMES];
 
-Animation* explosionAnim = NULL;
-
-const int EXPLOSION_ANIM_FRAMES = 5;
-SDL_Rect gExplosionClips[EXPLOSION_ANIM_FRAMES];
-
-Arena* arena = nullptr;
 ecs::Engine* engine = new ecs::Engine;
-
-void Shutdown()
-{
-	arena = NULL;
-	explosionAnim = NULL;
-}
-
-void CreateArena()
-{
-	Ship* player1 = new Player1(
-		engine->AssetMgr->GetTexture("ship1"),
-		engine->AssetMgr->GetTexture("bullet1"),
-		engine->AssetMgr->GetSound("shot1"),
-		engine->AssetMgr->GetSound("missile1"),
-		engine->AssetMgr->GetSound("explosion1"),
-		engine->AssetMgr->GetTexture("missile"),
-		engine->AssetMgr->GetTexture("flare"),
-		explosionAnim);
-
-	Ship* player2 = new Player2(
-		engine->AssetMgr->GetTexture("ship2"),
-		engine->AssetMgr->GetTexture("bullet1"),
-		engine->AssetMgr->GetSound("shot1"),
-		engine->AssetMgr->GetSound("missile1"),
-		engine->AssetMgr->GetSound("explosion1"),
-		engine->AssetMgr->GetTexture("missile"),
-		engine->AssetMgr->GetTexture("flare"),
-		explosionAnim);
-
-	arena = new Arena(
-		player1,
-		player2,
-		engine->AssetMgr->GetTexture("asteroid"),
-		engine->AssetMgr->GetSound("explosion1"),
-		explosionAnim);
-}
 
 bool Load()
 {
@@ -74,32 +34,32 @@ bool Load()
 	if (!engine->AssetMgr->AddTexture("flare", "./assets/flare.png")) return false;
 	if (!engine->AssetMgr->AddTexture("explosion_spritesheet", "./assets/explosion_spritesheet.png")) return false;
 
-	gExplosionClips[0].x = 0;
-	gExplosionClips[0].y = 0;
-	gExplosionClips[0].w = 60;
-	gExplosionClips[0].h = 59;
+	//gExplosionClips[0].x = 0;
+	//gExplosionClips[0].y = 0;
+	//gExplosionClips[0].w = 60;
+	//gExplosionClips[0].h = 59;
 
-	gExplosionClips[1].x = 60;
-	gExplosionClips[1].y = 0;
-	gExplosionClips[1].w = 60;
-	gExplosionClips[1].h = 59;
+	//gExplosionClips[1].x = 60;
+	//gExplosionClips[1].y = 0;
+	//gExplosionClips[1].w = 60;
+	//gExplosionClips[1].h = 59;
 
-	gExplosionClips[2].x = 120;
-	gExplosionClips[2].y = 0;
-	gExplosionClips[2].w = 60;
-	gExplosionClips[2].h = 59;
+	//gExplosionClips[2].x = 120;
+	//gExplosionClips[2].y = 0;
+	//gExplosionClips[2].w = 60;
+	//gExplosionClips[2].h = 59;
 
-	gExplosionClips[3].x = 180;
-	gExplosionClips[3].y = 0;
-	gExplosionClips[3].w = 60;
-	gExplosionClips[3].h = 59;
+	//gExplosionClips[3].x = 180;
+	//gExplosionClips[3].y = 0;
+	//gExplosionClips[3].w = 60;
+	//gExplosionClips[3].h = 59;
 
-	gExplosionClips[4].x = 240;
-	gExplosionClips[4].y = 0;
-	gExplosionClips[4].w = 60;
-	gExplosionClips[4].h = 59;
+	//gExplosionClips[4].x = 240;
+	//gExplosionClips[4].y = 0;
+	//gExplosionClips[4].w = 60;
+	//gExplosionClips[4].h = 59;
 
-	explosionAnim = new Animation(engine->AssetMgr->GetTexture("explosion_spritesheet"), 5, gExplosionClips);
+	//explosionAnim = new Animation(engine->AssetMgr->GetTexture("explosion_spritesheet"), 5, gExplosionClips);
 
 	if (!engine->AssetMgr->AddMusic("battle2", "./assets/Battle2.mp3")) return false;
 	if (!engine->AssetMgr->AddSound("shot1", "./assets/shot1.wav")) return false;
@@ -108,9 +68,28 @@ bool Load()
 
 	ecs::Engine::AssetMgr->AddFont("arial", "./assets/arial.ttf", 18);
 
-	CreateArena();
-	
 	engine->AssetMgr->PlayMusic("battle2");
+
+	ecs::GameObject* player1 = engine->GameObjectMgr->AddGameObject();
+	player1->AddComponent<ecs::TransformComponent>(glm::vec2(10,10), glm::vec2(0,0), 0.f);
+	player1->AddComponent<ecs::SpriteComponent>("ship1");
+	player1->AddComponent<ecs::BoxColliderComponent>(0, 0, 32, 32);
+	player1->AddComponent<ecs::RigidbodyComponent>();
+	player1->AddComponent<Cannon>(); //TODO: solve inter dependencies between components
+	player1->AddComponent<MissileLauncher>(); //TODO: solve inter dependencies between components
+	player1->AddComponent<Player1Controller>();
+
+	ecs::GameObject* player2 = engine->GameObjectMgr->AddGameObject();
+	player2->AddComponent<ecs::TransformComponent>(glm::vec2(100, 100), glm::vec2(0, 0), 0.f);
+	player2->AddComponent<ecs::SpriteComponent>("ship2");
+	player2->AddComponent<ecs::BoxColliderComponent>(0, 0, 32, 32);
+	player2->AddComponent<ecs::RigidbodyComponent>();
+	player2->AddComponent<FlareLauncher>();
+	player2->AddComponent<Player1Controller>();
+
+	ecs::GameObject* asteroid = engine->GameObjectMgr->AddGameObject();
+	asteroid->AddComponent<ecs::TransformComponent>(glm::vec2(500, 500), glm::vec2(20, 20), 0.f);
+	asteroid->AddComponent<ecs::SpriteComponent>("asteroid");
 
 	return true;
 }
@@ -131,49 +110,7 @@ int main(int argc, char* args[])
 		return 1;
 	}
 
-	bool quit = false;
-	SDL_Event evt;
-	fpsTimer.start();
-	Uint32 before = SDL_GetTicks();
-	Uint32 now = 0;
-	
-	
-	while (!quit)
-	{
-		now = SDL_GetTicks() - before;
-		before = SDL_GetTicks();
-		float secs = now / 1000.0f;
-
-		while (SDL_PollEvent(&evt) != 0)
-		{
-			if (evt.type == SDL_QUIT || (evt.type == SDL_KEYDOWN && evt.key.keysym.sym == SDLK_ESCAPE))
-			{
-				quit = true;
-			}
-			else if (evt.type == SDL_KEYDOWN)
-			{
-				switch (evt.key.keysym.sym)
-				{
-				case SDLK_RETURN:
-					CreateArena();
-					break;
-				}
-			}
-			arena->Input(&evt);
-		}
-		arena->Update(secs);
-
-		SDL_SetRenderDrawColor(engine->Renderer, 0, 0, 0, 0xFF);
-		SDL_RenderClear(engine->Renderer);
-		arena->Draw(secs);
-
-		SDL_RenderPresent(engine->Renderer);
-		++countedFrames;
-	}
-
-
-	Shutdown();
-
+	engine->GameLoop();
 	engine->Quit();
 
 	return 0;

@@ -13,6 +13,7 @@ namespace ecs
 
 	AssetManager::~AssetManager()
 	{
+		Free();
 	}
 
 	bool AssetManager::AddTexture(std::string id, std::string filePath)
@@ -156,20 +157,24 @@ namespace ecs
 		{
 			TextureManager::Free(texture);
 		}
+		_textures.clear();
 
 		for (auto const&[id, font] : _fonts)
 		{
 			FontManager::Free(font);
 		}
+		_fonts.clear();
 
 		for (auto const&[id, sound] : _sounds)
 		{
 			SoundManager::Free(sound);
 		}
+		_sounds.clear();
 
 		for (auto const&[id, music] : _musics)
 		{
 			MusicManager::Free(music);
 		}
+		_musics.clear();
 	}
 }

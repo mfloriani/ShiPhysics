@@ -9,7 +9,7 @@ class Animation
 public:
 	Animation(SDL_Texture* spriteSheet, int frames, SDL_Rect frameClips[]);
 	~Animation();
-	bool Draw(float secs, int x, int y);
+	bool Draw(int x, int y);
 	
 
 private:
