@@ -2,10 +2,12 @@
 #define __RIGIDBODY_COMPONENT_H__
 
 #include "../lib/glm/glm.hpp"
-#include "TransformComponent.h"
+#include "Component.h"
 
 namespace ecs
 {
+	class TransformComponent;
+
 	class RigidbodyComponent : public Component
 	{
 	public:
@@ -13,39 +15,35 @@ namespace ecs
 			m_momentum(glm::vec2(0,0)), 
 			m_force(glm::vec2(0, 0)),
 			m_mass(1), 
-			m_transform(nullptr)
+			m_transform(nullptr),
+			m_maxVelocity(0.1f)
 		{}
 
-		RigidbodyComponent(float mass) : 
+		RigidbodyComponent(float mass, float maxVelocity) : 
 			m_momentum(glm::vec2(0, 0)), 
 			m_force(glm::vec2(0, 0)),
 			m_mass(mass), 
-			m_transform(nullptr)
+			m_transform(nullptr),
+			m_maxVelocity(maxVelocity)
 		{}
 		
-		virtual void Init() override 
-		{
-			m_transform = m_owner->GetComponent<TransformComponent>();
-		}
+		virtual void Init() override;
 
-		virtual void Update(float dt) override 
-		{
-			//TODO: clamp max velocity
-			glm::vec2 acceleration = (m_force / m_mass) * dt;
-			m_transform->m_position += (m_momentum + (acceleration * 0.5f)) * dt;
-			m_momentum += acceleration;
-			m_force = glm::vec2(0, 0);
-		}
+		virtual void Update(float dt) override;
 
 		virtual void Render() override {}
 
 		void AddForce(glm::vec2 force) { m_force += force; }
+		inline float GetMaxVelocity() const { return m_maxVelocity; }
+		inline glm::vec2 GetMomentum() const { return m_momentum; }
 
 	private:
 		glm::vec2			m_momentum;
 		glm::vec2			m_force;
 		float				m_mass;
+		float				m_maxVelocity;
 		TransformComponent* m_transform;
+
 	};
 }
 

@@ -15,9 +15,6 @@
     <ClCompile Include="engine\Animation.cpp">
       <Filter>engine</Filter>
     </ClCompile>
-    <ClCompile Include="engine\SteeringBehavior.cpp">
-      <Filter>engine</Filter>
-    </ClCompile>
     <ClCompile Include="engine\Timer.cpp">
       <Filter>engine</Filter>
     </ClCompile>
@@ -66,12 +63,15 @@
     <ClCompile Include="engine\InputManager.cpp">
       <Filter>engine</Filter>
     </ClCompile>
+    <ClCompile Include="engine\RigidbodyComponent.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\SteeringComponent.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine\Animation.h">
-      <Filter>engine</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\SteeringBehavior.h">
       <Filter>engine</Filter>
     </ClInclude>
     <ClInclude Include="engine\Timer.h">
@@ -160,6 +160,9 @@
     </ClInclude>
     <ClInclude Include="game\FlareLauncher.h">
       <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\SteeringComponent.h">
+      <Filter>engine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

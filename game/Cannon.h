@@ -24,7 +24,7 @@ public:
 		projectile->AddComponent<ecs::SpriteComponent>("bullet1");
 		projectile->AddComponent<ecs::BoxColliderComponent>(0, 0, 10, 10);
 		glm::vec2 force = glm::rotate(glm::vec2(1, 0) * 20.f, m_transform->m_angle);
-		projectile->AddComponent<ecs::RigidbodyComponent>()->AddForce(force);
+		projectile->AddComponent<ecs::RigidbodyComponent>(1.f, 10.f)->AddForce(force);
 		//TODO: handle shooting sound
 	}
 

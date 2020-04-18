@@ -16,10 +16,11 @@
     <ClCompile Include="engine\Engine.cpp" />
     <ClCompile Include="engine\FontManager.cpp" />
     <ClCompile Include="engine\InputManager.cpp" />
+    <ClCompile Include="engine\RigidbodyComponent.cpp" />
     <ClCompile Include="engine\_GameObject.cpp" />
     <ClCompile Include="engine\MusicManager.cpp" />
     <ClCompile Include="engine\SoundManager.cpp" />
-    <ClCompile Include="engine\SteeringBehavior.cpp" />
+    <ClCompile Include="engine\SteeringComponent.cpp" />
     <ClCompile Include="engine\TextureManager.cpp" />
     <ClCompile Include="engine\Timer.cpp" />
     <ClCompile Include="game\Arena.cpp" />
@@ -47,7 +48,7 @@
     <ClInclude Include="engine\MusicManager.h" />
     <ClInclude Include="engine\SoundManager.h" />
     <ClInclude Include="engine\SpriteComponent.h" />
-    <ClInclude Include="engine\SteeringBehavior.h" />
+    <ClInclude Include="engine\SteeringComponent.h" />
     <ClInclude Include="engine\TextComponent.h" />
     <ClInclude Include="engine\TextureManager.h" />
     <ClInclude Include="engine\Timer.h" />
@@ -133,6 +134,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <ShowIncludes>false</ShowIncludes>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
