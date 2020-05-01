@@ -10,6 +10,5 @@ namespace ecs
 		{
 			m_events.push_back(event);
 		}
-		//arena->Input(&evt);
 	}
 }

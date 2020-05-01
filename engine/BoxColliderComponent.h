@@ -3,14 +3,15 @@
 
 #include <SDL.h>
 #include "Component.h"
-#include "TransformComponent.h"
 
 namespace ecs
 {
+	class TransformComponent;
+
 	class BoxColliderComponent : public Component
 	{
 	public:
-		BoxColliderComponent(int offsetX, int offsetY, int width, int height):
+		BoxColliderComponent(int offsetX, int offsetY, int width, int height) :
 			m_offsetX(offsetX),
 			m_offsetY(offsetY),
 			m_width(width),
@@ -19,26 +20,13 @@ namespace ecs
 
 		~BoxColliderComponent() {}
 
-		virtual void Init() override
-		{
-			m_transform = m_owner->GetComponent<TransformComponent>();
-			m_collider.x = static_cast<int>(m_transform->m_position.x) + m_offsetX;
-			m_collider.y = static_cast<int>(m_transform->m_position.y) + m_offsetY;
-			m_collider.w = m_width;
-			m_collider.h = m_height;
-		}
+		virtual void Init() override;
 
-		virtual void Update(float dt) override 
-		{
-			m_collider.x = static_cast<int>(m_transform->m_position.x) + m_offsetX;
-			m_collider.y = static_cast<int>(m_transform->m_position.y) + m_offsetY;
-		}
+		virtual void Update(float dt) override;
 
-		virtual void Render() override 
-		{
-			SDL_SetRenderDrawColor(Engine::Renderer, 255, 0, 0, 255);
-			SDL_RenderDrawRect(Engine::Renderer, &m_collider);
-		}
+		virtual void Render() override;
+
+		const SDL_Rect& GetCollider() const;
 
 	private:
 		SDL_Rect			m_collider;

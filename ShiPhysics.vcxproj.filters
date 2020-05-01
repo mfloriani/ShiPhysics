@@ -24,12 +24,6 @@
     <ClCompile Include="game\Asteroid.cpp">
       <Filter>game</Filter>
     </ClCompile>
-    <ClCompile Include="game\Bullet.cpp">
-      <Filter>game</Filter>
-    </ClCompile>
-    <ClCompile Include="game\Flare.cpp">
-      <Filter>game</Filter>
-    </ClCompile>
     <ClCompile Include="game\Main.cpp">
       <Filter>game</Filter>
     </ClCompile>
@@ -57,9 +51,6 @@
     <ClCompile Include="engine\MusicManager.cpp">
       <Filter>engine</Filter>
     </ClCompile>
-    <ClCompile Include="engine\_GameObject.cpp">
-      <Filter>engine</Filter>
-    </ClCompile>
     <ClCompile Include="engine\InputManager.cpp">
       <Filter>engine</Filter>
     </ClCompile>
@@ -67,6 +58,12 @@
       <Filter>engine</Filter>
     </ClCompile>
     <ClCompile Include="engine\SteeringComponent.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\BoxColliderComponent.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\Subject.cpp">
       <Filter>engine</Filter>
     </ClCompile>
   </ItemGroup>
@@ -81,12 +78,6 @@
       <Filter>game</Filter>
     </ClInclude>
     <ClInclude Include="game\Asteroid.h">
-      <Filter>game</Filter>
-    </ClInclude>
-    <ClInclude Include="game\Bullet.h">
-      <Filter>game</Filter>
-    </ClInclude>
-    <ClInclude Include="game\Flare.h">
       <Filter>game</Filter>
     </ClInclude>
     <ClInclude Include="game\Missile.h">
@@ -131,9 +122,6 @@
     <ClInclude Include="engine\TransformComponent.h">
       <Filter>engine</Filter>
     </ClInclude>
-    <ClInclude Include="engine\_GameObject.h">
-      <Filter>engine</Filter>
-    </ClInclude>
     <ClInclude Include="engine\GameObject.h">
       <Filter>engine</Filter>
     </ClInclude>
@@ -162,6 +150,15 @@
       <Filter>game</Filter>
     </ClInclude>
     <ClInclude Include="engine\SteeringComponent.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\CollisionSystem.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\Observer.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\Subject.h">
       <Filter>engine</Filter>
     </ClInclude>
   </ItemGroup>

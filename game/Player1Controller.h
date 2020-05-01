@@ -50,8 +50,6 @@ public:
 				}
 				case SDLK_RSHIFT:
 				{
-					//SDL_Log("SDLK_RSHIFT pressed");
-					//gameObjects->push_back(Shoot("bullet1"));
 					if (m_cannon)
 					{
 						m_cannon->Shoot();
@@ -61,10 +59,6 @@ public:
 				}
 				case SDLK_RCTRL:
 				{
-					//if (m_missile == NULL || !m_missile->IsActive())
-					//{
-					//	gameObjects->push_back(ShootMissile("missile1", target));
-					//}
 					if (m_missileLauncher)
 					{
 						m_missileLauncher->Launch();

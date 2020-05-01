@@ -13,11 +13,11 @@
 #include "../engine/SpriteComponent.h"
 #include "../engine/RigidbodyComponent.h"
 #include "../engine/BoxColliderComponent.h"
+#include "../engine/SteeringComponent.h"
 #include "Player1Controller.h"
 #include "Cannon.h"
 #include "MissileLauncher.h"
 #include "FlareLauncher.h"
-#include "../engine/SteeringComponent.h"
 
 //Animation* explosionAnim = NULL;
 //const int EXPLOSION_ANIM_FRAMES = 5;
@@ -71,13 +71,15 @@ bool Load()
 
 	//engine->AssetMgr->PlayMusic("battle2");
 
+	//TODO: parameterize fixed values
+
 	ecs::GameObject* player1 = engine->GameObjectMgr->AddGameObject();
 	player1->AddComponent<ecs::TransformComponent>(glm::vec2(10,10), glm::vec2(0,0), 0.f);
 	player1->AddComponent<ecs::SpriteComponent>("ship1");
 	player1->AddComponent<ecs::BoxColliderComponent>(0, 0, 32, 32);
-	player1->AddComponent<ecs::RigidbodyComponent>(1.f, 1.f);
-	player1->AddComponent<Cannon>(); //TODO: solve inter dependencies between components
-	player1->AddComponent<MissileLauncher>(); //TODO: solve inter dependencies between components
+	player1->AddComponent<ecs::RigidbodyComponent>(1.f, 0.5f);
+	player1->AddComponent<Cannon>(500.f); //TODO: solve inter dependencies between components
+	player1->AddComponent<MissileLauncher>(1000.f); //TODO: solve inter dependencies between components
 	player1->AddComponent<Player1Controller>();
 
 	ecs::GameObject* player2 = engine->GameObjectMgr->AddGameObject();
@@ -85,7 +87,7 @@ bool Load()
 	player2->AddComponent<ecs::SpriteComponent>("ship2");
 	player2->AddComponent<ecs::BoxColliderComponent>(0, 0, 32, 32);
 	player2->AddComponent<ecs::RigidbodyComponent>(1.f, 0.01f);
-	player2->AddComponent<FlareLauncher>();
+	player2->AddComponent<FlareLauncher>(1000.f);
 	player2->AddComponent<Player1Controller>();
 
 	ecs::GameObject* asteroid = engine->GameObjectMgr->AddGameObject();
@@ -93,6 +95,7 @@ bool Load()
 	asteroid->AddComponent<ecs::SpriteComponent>("asteroid");
 	glm::vec2 force{ -1,0 };
 	asteroid->AddComponent<ecs::RigidbodyComponent>(1.f, 0.1f)->AddForce(force);
+	asteroid->AddComponent<ecs::BoxColliderComponent>(0, 0, 60, 60);
 	ecs::SteeringComponent* steering = asteroid->AddComponent<ecs::SteeringComponent>();
 	steering->SetTarget(player1);
 	auto current = steering->Enable(ecs::BehaviorsType::Pursuit);
