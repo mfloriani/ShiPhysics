@@ -29,7 +29,7 @@ public:
 	{
 		if (m_cooldown > 0) return;
 
-		ecs::GameObject* flare = ecs::Engine::GameObjectMgr->AddGameObject();
+		ecs::GameObject* flare = ecs::Engine::GameObjectMgr->NewGameObject();
 		flare->AddComponent<ecs::TransformComponent>(m_transform->m_position, m_transform->m_direction, 0.f);
 		flare->AddComponent<ecs::SpriteComponent>("flare");
 		flare->AddComponent<ecs::BoxColliderComponent>(0, 0, 10, 10);

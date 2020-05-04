@@ -6,16 +6,17 @@
 namespace ecs
 {
 	class Observer;
+	class Event;
 
 	class Subject
 	{
 	public:
 		virtual ~Subject() {}
-		virtual void Notify() = 0;
+		virtual void Notify(Event* event);
 		virtual void Register(Observer* observer);
 		virtual void Unregister(Observer* observer);
-	private:
-		std::vector<Observer*> m_observer;
+	protected:
+		std::vector<Observer*> m_observers;
 	};
 }
 

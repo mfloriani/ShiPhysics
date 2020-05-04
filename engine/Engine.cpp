@@ -1,7 +1,13 @@
 #include "Engine.h"
-#include "Constants.h"
 #include <SDL_mixer.h>
 #include <SDL_ttf.h>
+#include <SDL_image.h>
+#include "Constants.h"
+#include "AssetManager.h"
+#include "GameObjectManager.h"
+#include "InputSystem.h"
+#include "PhysicsSystem.h"
+#include "GameObject.h"
 
 namespace ecs
 {
@@ -9,7 +15,9 @@ namespace ecs
 	SDL_Rect*			Engine::Camera = nullptr;
 	AssetManager*		Engine::AssetMgr = nullptr;
 	GameObjectManager*	Engine::GameObjectMgr = nullptr;
-	InputManager*		Engine::InputMgr = nullptr;
+	InputSystem*		Engine::InputSys = nullptr;
+	PhysicsSystem*		Engine::PhysicsSys = nullptr;
+	
 
 	bool Engine::Init()
 	{
@@ -52,7 +60,8 @@ namespace ecs
 		Camera = new SDL_Rect{ 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT };
 		AssetMgr = new AssetManager;
 		GameObjectMgr = new GameObjectManager;
-		InputMgr = new InputManager;
+		InputSys = new InputSystem;
+		PhysicsSys = new PhysicsSystem(GameObjectMgr);
 
 		m_running = true;
 
@@ -61,23 +70,26 @@ namespace ecs
 
 	void Engine::Quit()
 	{
-		delete InputMgr;
-		InputMgr = NULL;
+		delete PhysicsSys;
+		PhysicsSys = nullptr;
+
+		delete InputSys;
+		InputSys = nullptr;
 
 		delete Camera;
-		Camera = NULL;
+		Camera = nullptr;
 
 		delete AssetMgr;
-		AssetMgr = NULL;
+		AssetMgr = nullptr;
 
 		delete GameObjectMgr;
-		GameObjectMgr = NULL;
+		GameObjectMgr = nullptr;
 
 		SDL_DestroyRenderer(Renderer);
-		Renderer = NULL;
+		Renderer = nullptr;
 
 		SDL_DestroyWindow(m_window);
-		m_window = NULL;
+		m_window = nullptr;
 
 		Mix_Quit();
 		TTF_Quit();
@@ -107,12 +119,12 @@ namespace ecs
 
 	void Engine::ProcessInput()
 	{
-		InputMgr->Update();
+		InputSys->Update();
 	}
 
 	void Engine::HandleGameEvents()
 	{
-		for (auto event : InputMgr->GetEvents())
+		for (auto event : InputSys->GetEvents())
 		{
 			if (event.type == SDL_QUIT || (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE))
 			{
@@ -123,7 +135,14 @@ namespace ecs
 
 	void Engine::Update()
 	{
-		GameObjectMgr->Update(m_deltaTime);
+		for (auto go : GameObjectMgr->m_gameObjects)
+		{
+			go->Update(m_deltaTime);
+		}
+
+		PhysicsSys->Update(m_deltaTime);
+
+		GameObjectMgr->AddNewGameObjectsToPipeline();
 	}
 
 	void Engine::Render()
@@ -131,8 +150,10 @@ namespace ecs
 		SDL_SetRenderDrawColor(Renderer, 0, 0, 0, 0xFF);
 		SDL_RenderClear(Renderer);
 
-		//arena->Draw(secs);
-		GameObjectMgr->Render();
+		for (auto go : GameObjectMgr->m_gameObjects)
+		{
+			go->Render();
+		}
 
 		SDL_RenderPresent(Renderer);
 	}

@@ -14,6 +14,8 @@
 #include "../engine/RigidbodyComponent.h"
 #include "../engine/BoxColliderComponent.h"
 #include "../engine/SteeringComponent.h"
+#include "../engine/GameObjectManager.h"
+#include "../engine/PhysicsSystem.h"
 #include "Player1Controller.h"
 #include "Cannon.h"
 #include "MissileLauncher.h"
@@ -73,7 +75,7 @@ bool Load()
 
 	//TODO: parameterize fixed values
 
-	ecs::GameObject* player1 = engine->GameObjectMgr->AddGameObject();
+	ecs::GameObject* player1 = engine->GameObjectMgr->NewGameObject();
 	player1->AddComponent<ecs::TransformComponent>(glm::vec2(10,10), glm::vec2(0,0), 0.f);
 	player1->AddComponent<ecs::SpriteComponent>("ship1");
 	player1->AddComponent<ecs::BoxColliderComponent>(0, 0, 32, 32);
@@ -81,8 +83,8 @@ bool Load()
 	player1->AddComponent<Cannon>(500.f); //TODO: solve inter dependencies between components
 	player1->AddComponent<MissileLauncher>(1000.f); //TODO: solve inter dependencies between components
 	player1->AddComponent<Player1Controller>();
-
-	ecs::GameObject* player2 = engine->GameObjectMgr->AddGameObject();
+	
+	ecs::GameObject* player2 = engine->GameObjectMgr->NewGameObject();
 	player2->AddComponent<ecs::TransformComponent>(glm::vec2(500, 500), glm::vec2(0, 0), 0.f);
 	player2->AddComponent<ecs::SpriteComponent>("ship2");
 	player2->AddComponent<ecs::BoxColliderComponent>(0, 0, 32, 32);
@@ -90,7 +92,7 @@ bool Load()
 	player2->AddComponent<FlareLauncher>(1000.f);
 	player2->AddComponent<Player1Controller>();
 
-	ecs::GameObject* asteroid = engine->GameObjectMgr->AddGameObject();
+	ecs::GameObject* asteroid = engine->GameObjectMgr->NewGameObject();
 	asteroid->AddComponent<ecs::TransformComponent>(glm::vec2(700, 300), glm::vec2(0, 0), 0.f);
 	asteroid->AddComponent<ecs::SpriteComponent>("asteroid");
 	glm::vec2 force{ -1,0 };

@@ -3,19 +3,17 @@
 
 #include <vector>
 #include <map>
-#include "Component.h"
 #include <typeinfo>
 
 namespace ecs
 {
+	class Component;
+
 	class GameObject
 	{
 	public:
 		GameObject() {}
-		~GameObject() 
-		{
-			Free();
-		}
+		~GameObject();
 
 		template<typename T, typename... TArgs>
 		T* AddComponent(TArgs&&... args)
@@ -42,27 +40,9 @@ namespace ecs
 			return m_componentType.count(&typeid(T));
 		}
 
-		void Update(float dt)
-		{
-			for (auto c : m_components)
-			{
-				c->Update(dt);
-			}
-		}
-
-		void Render()
-		{
-			for (auto c : m_components)
-			{
-				c->Render();
-			}
-		}
-
-		void Free()
-		{
-			for (auto c : m_components) delete c;
-			m_components.clear();
-		}
+		void Update(float dt);
+		void Render();
+		void Free();
 
 	private:
 		std::vector<Component*>						m_components;

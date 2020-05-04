@@ -3,11 +3,13 @@
 
 namespace ecs
 {
+	class Event;
+
 	class Observer
 	{
 	public:
 		virtual ~Observer() {}
-		virtual void update() = 0;
+		virtual void OnNotify(Event* event) = 0;
 	};
 }
 

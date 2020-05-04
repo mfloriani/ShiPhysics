@@ -4,21 +4,17 @@
 #include <SDL.h>
 #include "Component.h"
 
+
 namespace ecs
 {
 	class TransformComponent;
+	class CollisionObserver;
 
 	class BoxColliderComponent : public Component
 	{
 	public:
-		BoxColliderComponent(int offsetX, int offsetY, int width, int height) :
-			m_offsetX(offsetX),
-			m_offsetY(offsetY),
-			m_width(width),
-			m_height(height)
-		{}
-
-		~BoxColliderComponent() {}
+		BoxColliderComponent(int offsetX, int offsetY, int width, int height);
+		virtual ~BoxColliderComponent();
 
 		virtual void Init() override;
 
@@ -35,6 +31,7 @@ namespace ecs
 		int					m_offsetY;
 		int					m_width;
 		int					m_height;
+		CollisionObserver*  m_collision;
 	};
 }
 

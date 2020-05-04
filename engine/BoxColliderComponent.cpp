@@ -1,9 +1,30 @@
 #include "BoxColliderComponent.h"
-#include "TransformComponent.h"
 #include "Engine.h"
+#include "TransformComponent.h"
+#include "CollisionObserver.h"
+#include "GameObject.h"
+#include "PhysicsSystem.h"
 
 namespace ecs
 {
+	BoxColliderComponent::BoxColliderComponent(int offsetX, int offsetY, int width, int height) :
+		m_offsetX(offsetX),
+		m_offsetY(offsetY),
+		m_width(width),
+		m_height(height),
+		m_collision(nullptr),
+		m_transform(nullptr)
+	{
+		m_collision = new CollisionObserver();
+		Engine::PhysicsSys->OnCollisionEvent().Register(m_collision);
+	}
+
+	BoxColliderComponent::~BoxColliderComponent()
+	{
+		delete m_collision;
+		m_collision = nullptr;
+	}
+
 	void BoxColliderComponent::Init() 
 	{
 		m_transform = m_owner->GetComponent<TransformComponent>();

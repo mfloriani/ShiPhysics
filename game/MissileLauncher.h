@@ -29,7 +29,7 @@ public:
 	{
 		if (m_cooldown > 0) return;
 
-		ecs::GameObject* missile = ecs::Engine::GameObjectMgr->AddGameObject();
+		ecs::GameObject* missile = ecs::Engine::GameObjectMgr->NewGameObject();
 		missile->AddComponent<ecs::TransformComponent>(m_transform->m_position, m_transform->m_direction, 0.f);
 		missile->AddComponent<ecs::SpriteComponent>("missile");
 		missile->AddComponent<ecs::BoxColliderComponent>(0, 0, 10, 10);

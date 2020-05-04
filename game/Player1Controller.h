@@ -2,6 +2,7 @@
 #define __PLAYER_CONTROLLER_H__
 
 #include "../engine/Engine.h"
+#include "../engine/InputSystem.h"
 #include "../engine/Component.h"
 #include "../engine/TransformComponent.h"
 #include "../lib/glm/gtx/rotate_vector.hpp"
@@ -25,7 +26,7 @@ public:
 
 	virtual void Update(float dt) override
 	{
-		auto events = ecs::Engine::InputMgr->GetEvents();
+		auto events = ecs::Engine::InputSys->GetEvents();
 		for (auto event : events)
 		{
 			if (event.type == SDL_KEYDOWN)

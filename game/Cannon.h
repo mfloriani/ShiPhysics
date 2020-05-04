@@ -29,7 +29,7 @@ public:
 	{
 		if (m_cooldown > 0) return;
 
-		ecs::GameObject* projectile = ecs::Engine::GameObjectMgr->AddGameObject();
+		ecs::GameObject* projectile = ecs::Engine::GameObjectMgr->NewGameObject();
 		projectile->AddComponent<ecs::TransformComponent>(m_transform->m_position, m_transform->m_direction, 0.f);
 		projectile->AddComponent<ecs::SpriteComponent>("bullet1");
 		projectile->AddComponent<ecs::BoxColliderComponent>(0, 0, 10, 10);

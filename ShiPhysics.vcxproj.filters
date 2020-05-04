@@ -51,9 +51,6 @@
     <ClCompile Include="engine\MusicManager.cpp">
       <Filter>engine</Filter>
     </ClCompile>
-    <ClCompile Include="engine\InputManager.cpp">
-      <Filter>engine</Filter>
-    </ClCompile>
     <ClCompile Include="engine\RigidbodyComponent.cpp">
       <Filter>engine</Filter>
     </ClCompile>
@@ -64,6 +61,21 @@
       <Filter>engine</Filter>
     </ClCompile>
     <ClCompile Include="engine\Subject.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\CollisionObserver.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\InputSystem.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\PhysicsSystem.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\GameObjectManager.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\GameObject.cpp">
       <Filter>engine</Filter>
     </ClCompile>
   </ItemGroup>
@@ -134,9 +146,6 @@
     <ClInclude Include="engine\BoxColliderComponent.h">
       <Filter>engine</Filter>
     </ClInclude>
-    <ClInclude Include="engine\InputManager.h">
-      <Filter>engine</Filter>
-    </ClInclude>
     <ClInclude Include="game\Player1Controller.h">
       <Filter>game</Filter>
     </ClInclude>
@@ -159,6 +168,21 @@
       <Filter>engine</Filter>
     </ClInclude>
     <ClInclude Include="engine\Subject.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\PhysicsSystem.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\Event.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\CollisionObserver.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\CollisionEvent.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\InputSystem.h">
       <Filter>engine</Filter>
     </ClInclude>
   </ItemGroup>

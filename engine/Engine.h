@@ -2,13 +2,14 @@
 #define __ENGINE_H__
 
 #include <SDL.h>
-#include <SDL_image.h>
-#include "AssetManager.h"
-#include "GameObjectManager.h"
-#include "InputManager.h"
 
 namespace ecs
 {
+	class AssetManager;
+	class GameObjectManager;
+	class InputSystem;
+	class PhysicsSystem;
+
 	class Engine
 	{
 	public:
@@ -16,7 +17,8 @@ namespace ecs
 		static SDL_Rect*			Camera;
 		static AssetManager*		AssetMgr;
 		static GameObjectManager*	GameObjectMgr;
-		static InputManager*		InputMgr;
+		static InputSystem*			InputSys;
+		static PhysicsSystem*		PhysicsSys;
 
 		bool Init();
 		void Quit();

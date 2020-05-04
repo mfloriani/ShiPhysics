@@ -2,6 +2,7 @@
 #define __TRANSFORM_COMPONENT_H__
 
 #include "../lib/glm/glm.hpp"
+#include "Component.h"
 
 namespace ecs
 {
