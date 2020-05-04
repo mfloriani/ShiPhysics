@@ -40,4 +40,9 @@ namespace ecs
 	{
 		SDL_RenderCopyEx(Engine::Renderer, texture, srcRect, dstRect, angle, NULL, flip);
 	}
+
+	void TextureManager::Free(SDL_Texture* texture)
+	{
+		SDL_DestroyTexture(texture);
+	}
 }

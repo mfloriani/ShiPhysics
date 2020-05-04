@@ -22,7 +22,7 @@ Animation::~Animation()
 }
 
 
-bool Animation::Draw(float secs, int x, int y)
+bool Animation::Draw(int x, int y)
 {
 	if (++m_currentFrameTime >= 12)//keep twelve frames the same frame
 	{

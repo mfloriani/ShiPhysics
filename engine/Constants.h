@@ -28,4 +28,7 @@ const int UI_LIFE_P2_Y = UI_ARMOR_P2_Y + 32;
 const int UI_GAMEOVER_X = WINDOW_WIDTH/2;
 const int UI_GAMEOVER_Y = WINDOW_HEIGHT/2;
 
+const int SOUND_VOLUME = 20;
+const int MUSIC_VOLUME = 20;
+
 #endif

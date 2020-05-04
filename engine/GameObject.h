@@ -1,52 +1,53 @@
 #ifndef __GAMEOBJECT_H__
 #define __GAMEOBJECT_H__
 
-#include "../lib/glm/glm.hpp"
-#include <string>
-#include <SDL.h>
+#include <vector>
+#include <map>
+#include <typeinfo>
 
-class GameObject
+namespace ecs
 {
-public:
-	GameObject(std::string tag, glm::vec2 position, float mass, SDL_Texture* sprite);
-	GameObject(std::string tag, glm::vec2 position, float mass, SDL_Texture* sprite, glm::vec2 direction);
-	
-	virtual ~GameObject();
+	class Component;
 
-	void virtual Update(float secs);
-	void virtual Draw(float secs);
-	SDL_Rect GetCollider();
-	glm::vec2 GetPosition();
-	glm::vec2 GetDirection();
-	glm::vec2 GetMomentum();
-	float GetMaxVelocity()const { return m_maxVelocity; };
-	std::string GetTag();
-	bool IsActive();
-	enum States{alive, dying, respawning, dead};
-	int GetCurrentState();
+	class GameObject
+	{
+	public:
+		GameObject() {}
+		~GameObject();
 
-protected:
-	glm::vec2 m_position;
-	glm::vec2 m_momentum;
-	SDL_Texture* m_sprite;
-	SDL_Rect m_collider;
-	glm::vec2 m_direction;
-	float m_mass;
-	float m_angleRadian;
-	float m_angleDegree;
-	float m_maxVelocity;
-	std::string m_tag;
-	bool m_active;
-	int m_currentState;
-	
-	//glm::vec2 virtual CalculateSteering();
-	glm::vec2 virtual CalculateForces();
-	void SetCollider();
-	void GameObject::UpdateDirection();
+		template<typename T, typename... TArgs>
+		T* AddComponent(TArgs&&... args)
+		{
+			T* component(new T(std::forward<TArgs>(args)...));
+			component->m_owner = this;
+			component->Init();
 
-private:
-	
-	
-};
+			m_components.emplace_back(component);
+			m_componentType[&typeid(*component)] = component;
 
-#endif
+			return component;
+		}
+
+		template<typename T>
+		T* GetComponent()
+		{
+			return static_cast<T*>(m_componentType[&typeid(T)]);
+		}
+
+		template<typename T>
+		bool HasComponent() const
+		{
+			return m_componentType.count(&typeid(T));
+		}
+
+		void Update(float dt);
+		void Render();
+		void Free();
+
+	private:
+		std::vector<Component*>						m_components;
+		std::map<const std::type_info*, Component*>	m_componentType;
+	};
+}
+
+#endif // !__GAMEOBJECT_H__

@@ -15,12 +15,6 @@
     <ClCompile Include="engine\Animation.cpp">
       <Filter>engine</Filter>
     </ClCompile>
-    <ClCompile Include="engine\GameObject.cpp">
-      <Filter>engine</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\SteeringBehavior.cpp">
-      <Filter>engine</Filter>
-    </ClCompile>
     <ClCompile Include="engine\Timer.cpp">
       <Filter>engine</Filter>
     </ClCompile>
@@ -30,22 +24,10 @@
     <ClCompile Include="game\Asteroid.cpp">
       <Filter>game</Filter>
     </ClCompile>
-    <ClCompile Include="game\Bullet.cpp">
-      <Filter>game</Filter>
-    </ClCompile>
-    <ClCompile Include="game\Flare.cpp">
-      <Filter>game</Filter>
-    </ClCompile>
     <ClCompile Include="game\Main.cpp">
       <Filter>game</Filter>
     </ClCompile>
     <ClCompile Include="game\Missile.cpp">
-      <Filter>game</Filter>
-    </ClCompile>
-    <ClCompile Include="game\Player1.cpp">
-      <Filter>game</Filter>
-    </ClCompile>
-    <ClCompile Include="game\Player2.cpp">
       <Filter>game</Filter>
     </ClCompile>
     <ClCompile Include="game\Ship.cpp">
@@ -60,21 +42,45 @@
     <ClCompile Include="engine\AssetManager.cpp">
       <Filter>engine</Filter>
     </ClCompile>
-    <ClCompile Include="engine\XTexture.cpp">
+    <ClCompile Include="engine\FontManager.cpp">
       <Filter>engine</Filter>
     </ClCompile>
-    <ClCompile Include="engine\FontManager.cpp">
+    <ClCompile Include="engine\SoundManager.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\MusicManager.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\RigidbodyComponent.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\SteeringComponent.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\BoxColliderComponent.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\Subject.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\CollisionObserver.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\InputSystem.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\PhysicsSystem.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\GameObjectManager.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\GameObject.cpp">
       <Filter>engine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine\Animation.h">
-      <Filter>engine</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\GameObject.h">
-      <Filter>engine</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\SteeringBehavior.h">
       <Filter>engine</Filter>
     </ClInclude>
     <ClInclude Include="engine\Timer.h">
@@ -86,19 +92,7 @@
     <ClInclude Include="game\Asteroid.h">
       <Filter>game</Filter>
     </ClInclude>
-    <ClInclude Include="game\Bullet.h">
-      <Filter>game</Filter>
-    </ClInclude>
-    <ClInclude Include="game\Flare.h">
-      <Filter>game</Filter>
-    </ClInclude>
     <ClInclude Include="game\Missile.h">
-      <Filter>game</Filter>
-    </ClInclude>
-    <ClInclude Include="game\Player1.h">
-      <Filter>game</Filter>
-    </ClInclude>
-    <ClInclude Include="game\Player2.h">
       <Filter>game</Filter>
     </ClInclude>
     <ClInclude Include="game\Ship.h">
@@ -116,9 +110,6 @@
     <ClInclude Include="engine\Constants.h">
       <Filter>engine</Filter>
     </ClInclude>
-    <ClInclude Include="engine\XTexture.h">
-      <Filter>engine</Filter>
-    </ClInclude>
     <ClInclude Include="engine\FontManager.h">
       <Filter>engine</Filter>
     </ClInclude>
@@ -129,6 +120,69 @@
       <Filter>engine</Filter>
     </ClInclude>
     <ClInclude Include="engine\Component.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\SoundManager.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\MusicManager.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\InputComponent.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\TransformComponent.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\GameObject.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\GameObjectManager.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\RigidbodyComponent.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\BoxColliderComponent.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Player1Controller.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Cannon.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="game\MissileLauncher.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="game\FlareLauncher.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\SteeringComponent.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\CollisionSystem.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\Observer.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\Subject.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\PhysicsSystem.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\Event.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\CollisionObserver.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\CollisionEvent.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\InputSystem.h">
       <Filter>engine</Filter>
     </ClInclude>
   </ItemGroup>

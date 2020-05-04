@@ -10,6 +10,7 @@ namespace ecs
 	public:
 		static TTF_Font* LoadFromFile(const char* filename, int size);
 		static void Render(SDL_Texture* texture, SDL_Rect position);
+		static void Free(TTF_Font* font);
 	};
 }
 

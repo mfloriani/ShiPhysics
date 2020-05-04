@@ -14,6 +14,7 @@ namespace ecs
 		static void Render(SDL_Texture* texture, SDL_Rect* srcRect, SDL_Rect* dstRect, float angle);
 		static void Render(SDL_Texture* texture, SDL_Rect* dstRect, float angle);
 		static void Render(SDL_Texture* texture, SDL_Rect* srcRect, SDL_Rect* dstRect, float angle, SDL_RendererFlip flip);
+		static void Free(SDL_Texture* texture);
 	};
 }
 

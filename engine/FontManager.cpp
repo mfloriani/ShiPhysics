@@ -12,4 +12,9 @@ namespace ecs
 	{
 		SDL_RenderCopy(Engine::Renderer, texture, NULL, &position);
 	}
+
+	void FontManager::Free(TTF_Font* font)
+	{
+		TTF_CloseFont(font);
+	}
 }
