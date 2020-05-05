@@ -14,7 +14,7 @@ namespace ecs
 	class AnimationComponent : public Component
 	{
 	public:
-		AnimationComponent(FrameClips clips, bool loop);
+		AnimationComponent(FrameClips clips, Uint32 frameRate, bool loop);
 		~AnimationComponent();
 		
 		virtual void Init() override;
@@ -25,6 +25,7 @@ namespace ecs
 	private:
 		FrameClips			m_frameClips;
 		Uint32				m_frameCount;
+		Uint32				m_frameRate;
 		bool				m_loop;
 		bool				m_ended;
 		SpriteComponent*	m_spriteComponent;

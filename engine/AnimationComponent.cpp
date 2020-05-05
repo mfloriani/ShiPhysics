@@ -4,9 +4,10 @@
 
 namespace ecs
 {
-	AnimationComponent::AnimationComponent(FrameClips clips, bool loop) :
+	AnimationComponent::AnimationComponent(FrameClips clips, Uint32 frameRate, bool loop) :
 		m_frameClips(clips),
 		m_frameCount(clips.size()),
+		m_frameRate(frameRate),
 		m_loop(loop),
 		m_ended(false)
 	{
@@ -38,7 +39,7 @@ namespace ecs
 		//SDL_Rect dstRect{ x,  y, 60, 59 }; //remove fixed size
 		//ecs::TextureManager::Render(m_spriteSheet, &clip, &dstRect);
 
-		int frame = static_cast<int>((SDL_GetTicks() / 200) % m_frameCount);
+		int frame = static_cast<int>((SDL_GetTicks() / m_frameRate) % m_frameCount);
 
 		m_spriteComponent->m_srcrect = m_frameClips[frame];
 		m_spriteComponent->m_dstrect.w = m_frameClips[frame].w;

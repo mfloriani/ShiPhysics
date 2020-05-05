@@ -121,7 +121,7 @@ bool Load()
 	ecs::GameObject* explosion = engine->GameObjectMgr->NewGameObject();
 	explosion->AddComponent<ecs::TransformComponent>(glm::vec2(100, 100), glm::vec2(0, 0), 0.f);
 	explosion->AddComponent<ecs::SpriteComponent>("explosion_spritesheet");
-	explosion->AddComponent<ecs::AnimationComponent>(explosionClips, false);
+	explosion->AddComponent<ecs::AnimationComponent>(explosionClips, 200, false);
 
 	return true;
 }
