@@ -12,9 +12,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="engine\Animation.cpp">
-      <Filter>engine</Filter>
-    </ClCompile>
     <ClCompile Include="engine\Timer.cpp">
       <Filter>engine</Filter>
     </ClCompile>
@@ -78,11 +75,17 @@
     <ClCompile Include="engine\GameObject.cpp">
       <Filter>engine</Filter>
     </ClCompile>
+    <ClCompile Include="game\AsteroidScript.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\AnimationComponent.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\SpriteComponent.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="engine\Animation.h">
-      <Filter>engine</Filter>
-    </ClInclude>
     <ClInclude Include="engine\Timer.h">
       <Filter>engine</Filter>
     </ClInclude>
@@ -183,6 +186,12 @@
       <Filter>engine</Filter>
     </ClInclude>
     <ClInclude Include="engine\InputSystem.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="game\AsteroidScript.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\AnimationComponent.h">
       <Filter>engine</Filter>
     </ClInclude>
   </ItemGroup>

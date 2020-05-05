@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="engine\Animation.cpp" />
+    <ClCompile Include="engine\AnimationComponent.cpp" />
     <ClCompile Include="engine\AssetManager.cpp" />
     <ClCompile Include="engine\BoxColliderComponent.cpp" />
     <ClCompile Include="engine\CollisionObserver.cpp" />
@@ -24,18 +24,20 @@
     <ClCompile Include="engine\RigidbodyComponent.cpp" />
     <ClCompile Include="engine\MusicManager.cpp" />
     <ClCompile Include="engine\SoundManager.cpp" />
+    <ClCompile Include="engine\SpriteComponent.cpp" />
     <ClCompile Include="engine\SteeringComponent.cpp" />
     <ClCompile Include="engine\Subject.cpp" />
     <ClCompile Include="engine\TextureManager.cpp" />
     <ClCompile Include="engine\Timer.cpp" />
     <ClCompile Include="game\Arena.cpp" />
     <ClCompile Include="game\Asteroid.cpp" />
+    <ClCompile Include="game\AsteroidScript.cpp" />
     <ClCompile Include="game\Main.cpp" />
     <ClCompile Include="game\Missile.cpp" />
     <ClCompile Include="game\Ship.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="engine\Animation.h" />
+    <ClInclude Include="engine\AnimationComponent.h" />
     <ClInclude Include="engine\AssetManager.h" />
     <ClInclude Include="engine\BoxColliderComponent.h" />
     <ClInclude Include="engine\CollisionEvent.h" />
@@ -64,6 +66,7 @@
     <ClInclude Include="engine\TransformComponent.h" />
     <ClInclude Include="game\Arena.h" />
     <ClInclude Include="game\Asteroid.h" />
+    <ClInclude Include="game\AsteroidScript.h" />
     <ClInclude Include="game\Cannon.h" />
     <ClInclude Include="game\FlareLauncher.h" />
     <ClInclude Include="game\MissileLauncher.h" />
