@@ -10,15 +10,15 @@
     <Filter Include="assets">
       <UniqueIdentifier>{09e59806-de90-4d34-9077-8cfddf172ff4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="engine\components">
+      <UniqueIdentifier>{6237be65-ee85-4410-8859-64775102f7fe}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engine\Timer.cpp">
       <Filter>engine</Filter>
     </ClCompile>
     <ClCompile Include="game\Arena.cpp">
-      <Filter>game</Filter>
-    </ClCompile>
-    <ClCompile Include="game\Asteroid.cpp">
       <Filter>game</Filter>
     </ClCompile>
     <ClCompile Include="game\Main.cpp">
@@ -48,15 +48,6 @@
     <ClCompile Include="engine\MusicManager.cpp">
       <Filter>engine</Filter>
     </ClCompile>
-    <ClCompile Include="engine\RigidbodyComponent.cpp">
-      <Filter>engine</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\SteeringComponent.cpp">
-      <Filter>engine</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\BoxColliderComponent.cpp">
-      <Filter>engine</Filter>
-    </ClCompile>
     <ClCompile Include="engine\Subject.cpp">
       <Filter>engine</Filter>
     </ClCompile>
@@ -79,10 +70,22 @@
       <Filter>game</Filter>
     </ClCompile>
     <ClCompile Include="engine\AnimationComponent.cpp">
-      <Filter>engine</Filter>
+      <Filter>engine\components</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\BoxColliderComponent.cpp">
+      <Filter>engine\components</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\RigidbodyComponent.cpp">
+      <Filter>engine\components</Filter>
     </ClCompile>
     <ClCompile Include="engine\SpriteComponent.cpp">
-      <Filter>engine</Filter>
+      <Filter>engine\components</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\SteeringComponent.cpp">
+      <Filter>engine\components</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\TextComponent.cpp">
+      <Filter>engine\components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -90,9 +93,6 @@
       <Filter>engine</Filter>
     </ClInclude>
     <ClInclude Include="game\Arena.h">
-      <Filter>game</Filter>
-    </ClInclude>
-    <ClInclude Include="game\Asteroid.h">
       <Filter>game</Filter>
     </ClInclude>
     <ClInclude Include="game\Missile.h">
@@ -116,25 +116,10 @@
     <ClInclude Include="engine\FontManager.h">
       <Filter>engine</Filter>
     </ClInclude>
-    <ClInclude Include="engine\TextComponent.h">
-      <Filter>engine</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\SpriteComponent.h">
-      <Filter>engine</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\Component.h">
-      <Filter>engine</Filter>
-    </ClInclude>
     <ClInclude Include="engine\SoundManager.h">
       <Filter>engine</Filter>
     </ClInclude>
     <ClInclude Include="engine\MusicManager.h">
-      <Filter>engine</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\InputComponent.h">
-      <Filter>engine</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\TransformComponent.h">
       <Filter>engine</Filter>
     </ClInclude>
     <ClInclude Include="engine\GameObject.h">
@@ -143,26 +128,8 @@
     <ClInclude Include="engine\GameObjectManager.h">
       <Filter>engine</Filter>
     </ClInclude>
-    <ClInclude Include="engine\RigidbodyComponent.h">
-      <Filter>engine</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\BoxColliderComponent.h">
-      <Filter>engine</Filter>
-    </ClInclude>
     <ClInclude Include="game\Player1Controller.h">
       <Filter>game</Filter>
-    </ClInclude>
-    <ClInclude Include="game\Cannon.h">
-      <Filter>game</Filter>
-    </ClInclude>
-    <ClInclude Include="game\MissileLauncher.h">
-      <Filter>game</Filter>
-    </ClInclude>
-    <ClInclude Include="game\FlareLauncher.h">
-      <Filter>game</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\SteeringComponent.h">
-      <Filter>engine</Filter>
     </ClInclude>
     <ClInclude Include="engine\CollisionSystem.h">
       <Filter>engine</Filter>
@@ -191,8 +158,41 @@
     <ClInclude Include="game\AsteroidScript.h">
       <Filter>game</Filter>
     </ClInclude>
+    <ClInclude Include="game\MissileLauncher.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="game\FlareLauncher.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Cannon.h">
+      <Filter>game</Filter>
+    </ClInclude>
     <ClInclude Include="engine\AnimationComponent.h">
-      <Filter>engine</Filter>
+      <Filter>engine\components</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\BoxColliderComponent.h">
+      <Filter>engine\components</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\Component.h">
+      <Filter>engine\components</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\RigidbodyComponent.h">
+      <Filter>engine\components</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\SpriteComponent.h">
+      <Filter>engine\components</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\SteeringComponent.h">
+      <Filter>engine\components</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\TransformComponent.h">
+      <Filter>engine\components</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\TextComponent.h">
+      <Filter>engine\components</Filter>
+    </ClInclude>
+    <ClInclude Include="game\FPSScript.h">
+      <Filter>game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

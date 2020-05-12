@@ -9,6 +9,7 @@
 #include "PhysicsSystem.h"
 #include "GameObject.h"
 
+
 namespace ecs
 {
 	SDL_Renderer*		Engine::Renderer = nullptr;
@@ -33,7 +34,7 @@ namespace ecs
 			return false;
 		}
 
-		Renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED);
+		Renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 		if (!Renderer)
 		{
 			SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Failed to create SDL_RENDERER: %s", SDL_GetError());
@@ -99,13 +100,10 @@ namespace ecs
 
 	void Engine::GameLoop()
 	{
-		Uint32 ticksLastFrame = SDL_GetTicks();
+		m_ticksLastFrame = SDL_GetTicks();
 		while (m_running)
 		{
-			//TODO: move to a function
-			while (!SDL_TICKS_PASSED(SDL_GetTicks(), ticksLastFrame + FRAME_LENGTH));
-			m_deltaTime = (SDL_GetTicks() - ticksLastFrame) / 1000.f;
-			if (m_deltaTime > 0.1f) m_deltaTime = 0.1f;
+			HandleFPS();
 
 			ProcessInput();
 
@@ -117,12 +115,20 @@ namespace ecs
 		}
 	}
 
-	void Engine::ProcessInput()
+	inline void Engine::HandleFPS()
+	{
+		while (!SDL_TICKS_PASSED(SDL_GetTicks(), m_ticksLastFrame + FRAME_LENGTH));
+		m_deltaTime = (SDL_GetTicks() - m_ticksLastFrame) / 1000.f;
+		m_ticksLastFrame = SDL_GetTicks();
+		if (m_deltaTime > 0.1f) m_deltaTime = 0.1f;
+	}
+
+	inline void Engine::ProcessInput()
 	{
 		InputSys->Update();
 	}
 
-	void Engine::HandleGameEvents()
+	inline void Engine::HandleGameEvents()
 	{
 		for (auto event : InputSys->GetEvents())
 		{
@@ -133,7 +139,7 @@ namespace ecs
 		}
 	}
 
-	void Engine::Update()
+	inline void Engine::Update()
 	{
 		for (auto go : GameObjectMgr->m_gameObjects)
 		{
@@ -145,7 +151,7 @@ namespace ecs
 		GameObjectMgr->AddNewGameObjectsToPipeline();
 	}
 
-	void Engine::Render()
+	inline void Engine::Render()
 	{
 		SDL_SetRenderDrawColor(Renderer, 0, 0, 0, 0xFF);
 		SDL_RenderClear(Renderer);

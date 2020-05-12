@@ -26,19 +26,7 @@ namespace ecs
 	void AnimationComponent::Update(float dt)
 	{
 		if (m_ended) return;
-		//if (++m_currentFrameTime >= 12)//keep twelve frames the same frame
-		//{
-		//	++m_currentFrame;
-		//	if (m_currentFrame >= m_frames)
-		//	{
-		//		m_currentFrame = 0;
-		//		return true;
-		//	}
-		//}
-		//SDL_Rect clip = m_frameClips[m_currentFrame];
-		//SDL_Rect dstRect{ x,  y, 60, 59 }; //remove fixed size
-		//ecs::TextureManager::Render(m_spriteSheet, &clip, &dstRect);
-
+		
 		int frame = static_cast<int>((SDL_GetTicks() / m_frameRate) % m_frameCount);
 
 		m_spriteComponent->m_srcrect = m_frameClips[frame];

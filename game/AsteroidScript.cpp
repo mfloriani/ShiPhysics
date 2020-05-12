@@ -8,7 +8,7 @@ void AsteroidScript::Init()
 
 void AsteroidScript::Update(float dt) 
 {
-	m_transform->m_angle += 0.01f * dt;
+	m_transform->m_angle += 1.f * dt;
 }
 
 void AsteroidScript::Render() 

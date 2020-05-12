@@ -23,6 +23,7 @@ namespace ecs
 		bool Init();
 		void Quit();
 		void GameLoop();
+		void HandleFPS();
 		void ProcessInput();
 		void HandleGameEvents();
 		void Update();
@@ -32,6 +33,7 @@ namespace ecs
 		SDL_Window* m_window;
 		bool		m_running;
 		float		m_deltaTime;
+		Uint32		m_ticksLastFrame;
 
 	};
 }

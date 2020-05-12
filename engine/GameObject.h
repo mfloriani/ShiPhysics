@@ -20,6 +20,9 @@ namespace ecs
 		{
 			T* component(new T(std::forward<TArgs>(args)...));
 			component->m_owner = this;
+
+			//TODO: move component init to another place to avoid inter-dependencies
+			//      might be a good idea to call it when all components are already added
 			component->Init();
 
 			m_components.emplace_back(component);

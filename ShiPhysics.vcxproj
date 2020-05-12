@@ -27,10 +27,10 @@
     <ClCompile Include="engine\SpriteComponent.cpp" />
     <ClCompile Include="engine\SteeringComponent.cpp" />
     <ClCompile Include="engine\Subject.cpp" />
+    <ClCompile Include="engine\TextComponent.cpp" />
     <ClCompile Include="engine\TextureManager.cpp" />
     <ClCompile Include="engine\Timer.cpp" />
     <ClCompile Include="game\Arena.cpp" />
-    <ClCompile Include="game\Asteroid.cpp" />
     <ClCompile Include="game\AsteroidScript.cpp" />
     <ClCompile Include="game\Main.cpp" />
     <ClCompile Include="game\Missile.cpp" />
@@ -54,7 +54,6 @@
     <ClInclude Include="engine\Observer.h" />
     <ClInclude Include="engine\PhysicsSystem.h" />
     <ClInclude Include="engine\RigidbodyComponent.h" />
-    <ClInclude Include="engine\InputComponent.h" />
     <ClInclude Include="engine\MusicManager.h" />
     <ClInclude Include="engine\SoundManager.h" />
     <ClInclude Include="engine\SpriteComponent.h" />
@@ -65,10 +64,10 @@
     <ClInclude Include="engine\Timer.h" />
     <ClInclude Include="engine\TransformComponent.h" />
     <ClInclude Include="game\Arena.h" />
-    <ClInclude Include="game\Asteroid.h" />
     <ClInclude Include="game\AsteroidScript.h" />
     <ClInclude Include="game\Cannon.h" />
     <ClInclude Include="game\FlareLauncher.h" />
+    <ClInclude Include="game\FPSScript.h" />
     <ClInclude Include="game\MissileLauncher.h" />
     <ClInclude Include="game\Player1Controller.h" />
     <ClInclude Include="game\Missile.h" />

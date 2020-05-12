@@ -22,6 +22,10 @@ public:
 		m_cannon = m_owner->GetComponent<Cannon>();
 		m_missileLauncher = m_owner->GetComponent<MissileLauncher>();
 		m_flareLauncher = m_owner->GetComponent<FlareLauncher>();
+
+		//TODO: load from config file
+		m_thurstForce = 300.f;
+		m_rotationSpeed = 10.f;
 	};
 
 	virtual void Update(float dt) override
@@ -35,17 +39,17 @@ public:
 				{
 				case SDLK_RIGHT:
 				{
-					m_transform->m_angle += glm::radians(180.0f) * dt;
+					m_transform->m_angle += m_rotationSpeed * dt;
 					break;
 				}
 				case SDLK_LEFT:
 				{
-					m_transform->m_angle -= glm::radians(180.0f) * dt;
+					m_transform->m_angle -= m_rotationSpeed * dt;
 					break;
 				}
 				case SDLK_UP:
 				{
-					glm::vec2 force = glm::rotate(glm::vec2(1, 0) * 1.f, m_transform->m_angle);
+					glm::vec2 force = glm::rotate(glm::vec2(1, 0) * m_thurstForce, m_transform->m_angle);
 					m_rigidbody->AddForce(force);
 					break;
 				}
@@ -77,6 +81,8 @@ public:
 				}
 			}
 		}
+
+		//SDL_Log("x=%f y=%f", m_transform->m_position.x, m_transform->m_position.y);
 	};
 
 	virtual void Render() override {};
@@ -88,6 +94,8 @@ private:
 	MissileLauncher*			m_missileLauncher;
 	FlareLauncher*				m_flareLauncher;
 
+	float						m_rotationSpeed;
+	float						m_thurstForce;
 	
 };
 

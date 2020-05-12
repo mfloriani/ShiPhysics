@@ -3,8 +3,8 @@
 
 #include <string>
 
-const int WINDOW_WIDTH{ 1024 };
-const int WINDOW_HEIGHT{ 768 };
+const int WINDOW_WIDTH{ 1440 };
+const int WINDOW_HEIGHT{ 900 };
 
 const int FPS{ 60 };
 const float FRAME_LENGTH{ 1000 / FPS };
