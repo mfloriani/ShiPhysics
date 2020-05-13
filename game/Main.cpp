@@ -18,10 +18,10 @@
 #include "../engine/PhysicsSystem.h"
 #include "../engine/AnimationComponent.h"
 #include "../engine/TextComponent.h"
-#include "Player1Controller.h"
-#include "Cannon.h"
-#include "MissileLauncher.h"
-#include "FlareLauncher.h"
+#include "Player1Script.h"
+#include "CannonScript.h"
+#include "MissileLauncherScript.h"
+#include "FlareLauncherScript.h"
 #include "AsteroidScript.h"
 #include "FPSScript.h"
 
@@ -60,40 +60,40 @@ bool Load()
 	ecs::GameObject* player1 = engine->GameObjectMgr->NewGameObject();
 	player1->AddComponent<ecs::TransformComponent>(glm::vec2(10, 10), glm::vec2(0, 0), 0.f);
 	player1->AddComponent<ecs::SpriteComponent>("ship1");
-	//player1->AddComponent<ecs::BoxColliderComponent>(0, 0, 32, 32);	
+	player1->AddComponent<ecs::BoxColliderComponent>(0, 0, 32, 32);	
 	player1->AddComponent<ecs::RigidbodyComponent>(1.f, 200.f);
-	//player1->AddComponent<Cannon>(3.f); //TODO: solve inter dependencies between components
-	//player1->AddComponent<MissileLauncher>(5.f); //TODO: solve inter dependencies between components
-	player1->AddComponent<Player1Controller>();
+	player1->AddComponent<CannonScript>(3.f); //TODO: solve inter dependencies between components
+	player1->AddComponent<MissileLauncherScript>(5.f); //TODO: solve inter dependencies between components
+	player1->AddComponent<Player1Script>();
 	
-	//ecs::GameObject* player2 = engine->GameObjectMgr->NewGameObject();
-	//player2->AddComponent<ecs::TransformComponent>(glm::vec2(500, 500), glm::vec2(0, 0), 0.f);
-	//player2->AddComponent<ecs::SpriteComponent>("ship2");
-	//player2->AddComponent<ecs::BoxColliderComponent>(0, 0, 32, 32);
-	//player2->AddComponent<ecs::RigidbodyComponent>(1.f, 1.f);
-	//player2->AddComponent<FlareLauncher>(1.f);
-	//player2->AddComponent<Player1Controller>();
+	ecs::GameObject* player2 = engine->GameObjectMgr->NewGameObject();
+	player2->AddComponent<ecs::TransformComponent>(glm::vec2(500, 500), glm::vec2(0, 0), 0.f);
+	player2->AddComponent<ecs::SpriteComponent>("ship2");
+	player2->AddComponent<ecs::BoxColliderComponent>(0, 0, 32, 32);
+	player2->AddComponent<ecs::RigidbodyComponent>(1.f, 100.f);
+	player2->AddComponent<FlareLauncherScript>(1.f);
+	//player2->AddComponent<Player1Script>();
 
-	//ecs::GameObject* asteroid = engine->GameObjectMgr->NewGameObject();
-	//asteroid->AddComponent<ecs::TransformComponent>(glm::vec2(1400, 300), glm::vec2(0, 0), 0.f);
-	//asteroid->AddComponent<ecs::SpriteComponent>("asteroid");
-	//glm::vec2 force{ -10000,0 };
-	//asteroid->AddComponent<ecs::RigidbodyComponent>(1.f, 100.f)->AddForce(force);
-	//asteroid->AddComponent<ecs::BoxColliderComponent>(0, 0, 60, 60);
-	//ecs::SteeringComponent* steering = asteroid->AddComponent<ecs::SteeringComponent>();
-	//steering->SetTarget(player1);
-	//auto current = steering->Enable(ecs::BehaviorsType::Pursuit);
-	//asteroid->AddComponent<AsteroidScript>();
+	ecs::GameObject* asteroid = engine->GameObjectMgr->NewGameObject();
+	asteroid->AddComponent<ecs::TransformComponent>(glm::vec2(1400, 300), glm::vec2(0, 0), 0.f);
+	asteroid->AddComponent<ecs::SpriteComponent>("asteroid");
+	glm::vec2 force{ -10000,0 };
+	asteroid->AddComponent<ecs::RigidbodyComponent>(1.f, 100.f)->AddForce(force);
+	asteroid->AddComponent<ecs::BoxColliderComponent>(0, 0, 60, 60);
+	ecs::SteeringComponent* steering = asteroid->AddComponent<ecs::SteeringComponent>();
+	steering->SetTarget(player1);
+	auto current = steering->Enable(ecs::BehaviorsType::Pursuit);
+	asteroid->AddComponent<AsteroidScript>();
 
-	//ecs::SteeringComponent* steering2 = player2->AddComponent<ecs::SteeringComponent>();
-	//steering2->SetTarget(asteroid);
-	//steering2->Enable(ecs::BehaviorsType::Flee);
+	ecs::SteeringComponent* steering2 = player2->AddComponent<ecs::SteeringComponent>();
+	steering2->SetTarget(asteroid);
+	steering2->Enable(ecs::BehaviorsType::Flee);
 
 	//TODO: create explosion when asteroids and ships explode
-	//ecs::GameObject* explosion = engine->GameObjectMgr->NewGameObject();
-	//explosion->AddComponent<ecs::TransformComponent>(glm::vec2(100, 100), glm::vec2(0, 0), 0.f);
-	//explosion->AddComponent<ecs::SpriteComponent>("explosion_spritesheet");
-	//explosion->AddComponent<ecs::AnimationComponent>(explosionClips, 200, false);
+	ecs::GameObject* explosion = engine->GameObjectMgr->NewGameObject();
+	explosion->AddComponent<ecs::TransformComponent>(glm::vec2(100, 100), glm::vec2(0, 0), 0.f);
+	explosion->AddComponent<ecs::SpriteComponent>("explosion_spritesheet");
+	explosion->AddComponent<ecs::AnimationComponent>(explosionClips, 200, false);
 
 	ecs::GameObject* fps = engine->GameObjectMgr->NewGameObject();
 	fps->AddComponent<ecs::TransformComponent>(glm::vec2(0, 0), glm::vec2(0, 0), 0.f);

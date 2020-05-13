@@ -32,8 +32,12 @@
     <ClCompile Include="engine\Timer.cpp" />
     <ClCompile Include="game\Arena.cpp" />
     <ClCompile Include="game\AsteroidScript.cpp" />
+    <ClCompile Include="game\CannonScript.cpp" />
+    <ClCompile Include="game\FlareLauncherScript.cpp" />
+    <ClCompile Include="game\HealthScript.cpp" />
     <ClCompile Include="game\Main.cpp" />
-    <ClCompile Include="game\Missile.cpp" />
+    <ClCompile Include="game\MissileLauncherScript.cpp" />
+    <ClCompile Include="game\Player1Script.cpp" />
     <ClCompile Include="game\Ship.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -65,12 +69,12 @@
     <ClInclude Include="engine\TransformComponent.h" />
     <ClInclude Include="game\Arena.h" />
     <ClInclude Include="game\AsteroidScript.h" />
-    <ClInclude Include="game\Cannon.h" />
-    <ClInclude Include="game\FlareLauncher.h" />
+    <ClInclude Include="game\CannonScript.h" />
+    <ClInclude Include="game\FlareLauncherScript.h" />
     <ClInclude Include="game\FPSScript.h" />
-    <ClInclude Include="game\MissileLauncher.h" />
-    <ClInclude Include="game\Player1Controller.h" />
-    <ClInclude Include="game\Missile.h" />
+    <ClInclude Include="game\HealthScript.h" />
+    <ClInclude Include="game\MissileLauncherScript.h" />
+    <ClInclude Include="game\Player1Script.h" />
     <ClInclude Include="game\Ship.h" />
   </ItemGroup>
   <ItemGroup>

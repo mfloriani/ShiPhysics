@@ -9,7 +9,7 @@ namespace ecs
 {
 	void PhysicsSystem::Update(float dt)
 	{
-		FreePreviusCollisionEvents();
+		FreePreviousCollisionEvents();
 
 		for (unsigned int i = 0; i < m_gameObjectMgr->m_gameObjects.size(); ++i)
 		{
@@ -43,7 +43,7 @@ namespace ecs
 		}
 	}
 
-	void PhysicsSystem::FreePreviusCollisionEvents()
+	void PhysicsSystem::FreePreviousCollisionEvents()
 	{
 		for (auto e : m_collisionEvents)
 		{
