@@ -20,7 +20,7 @@ namespace ecs
 
 		~PhysicsSystem()
 		{
-			FreePreviusCollisionEvents();
+			FreePreviousCollisionEvents();
 		}
 
 		void Update(float dt);
@@ -30,9 +30,11 @@ namespace ecs
 	private:
 		Subject							m_onCollisionEvent;
 		GameObjectManager*				m_gameObjectMgr;
+
+		//TODO: create an event system to handle the pending events, instead of inside physicsSystem
 		std::vector<CollisionEvent*>	m_collisionEvents;
 
-		void FreePreviusCollisionEvents();
+		void FreePreviousCollisionEvents();
 	};
 }
 

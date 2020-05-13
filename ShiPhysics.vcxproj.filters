@@ -10,180 +10,216 @@
     <Filter Include="assets">
       <UniqueIdentifier>{09e59806-de90-4d34-9077-8cfddf172ff4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="engine\components">
+      <UniqueIdentifier>{6237be65-ee85-4410-8859-64775102f7fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\core">
+      <UniqueIdentifier>{38e5151c-60a9-47ee-b49e-9f3326723673}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\systems">
+      <UniqueIdentifier>{07e31583-1170-4445-a88e-e0bf61a2ca65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\misc">
+      <UniqueIdentifier>{bbfd26a1-58a7-4877-a652-d033bd486f32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\events">
+      <UniqueIdentifier>{6d87c03d-4acd-4a2d-85f9-f6ca3eaf914f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\old">
+      <UniqueIdentifier>{cb88e664-af3a-41ec-815b-8d48a11b5dc6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="engine\Animation.cpp">
-      <Filter>engine</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\Timer.cpp">
-      <Filter>engine</Filter>
-    </ClCompile>
-    <ClCompile Include="game\Arena.cpp">
-      <Filter>game</Filter>
-    </ClCompile>
-    <ClCompile Include="game\Asteroid.cpp">
-      <Filter>game</Filter>
-    </ClCompile>
     <ClCompile Include="game\Main.cpp">
       <Filter>game</Filter>
     </ClCompile>
-    <ClCompile Include="game\Missile.cpp">
+    <ClCompile Include="game\AsteroidScript.cpp">
       <Filter>game</Filter>
     </ClCompile>
-    <ClCompile Include="game\Ship.cpp">
-      <Filter>game</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\TextureManager.cpp">
-      <Filter>engine</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\Engine.cpp">
-      <Filter>engine</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\AssetManager.cpp">
-      <Filter>engine</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\FontManager.cpp">
-      <Filter>engine</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\SoundManager.cpp">
-      <Filter>engine</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\MusicManager.cpp">
-      <Filter>engine</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\RigidbodyComponent.cpp">
-      <Filter>engine</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\SteeringComponent.cpp">
-      <Filter>engine</Filter>
+    <ClCompile Include="engine\AnimationComponent.cpp">
+      <Filter>engine\components</Filter>
     </ClCompile>
     <ClCompile Include="engine\BoxColliderComponent.cpp">
-      <Filter>engine</Filter>
+      <Filter>engine\components</Filter>
     </ClCompile>
-    <ClCompile Include="engine\Subject.cpp">
-      <Filter>engine</Filter>
+    <ClCompile Include="engine\RigidbodyComponent.cpp">
+      <Filter>engine\components</Filter>
     </ClCompile>
-    <ClCompile Include="engine\CollisionObserver.cpp">
-      <Filter>engine</Filter>
+    <ClCompile Include="engine\SpriteComponent.cpp">
+      <Filter>engine\components</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\SteeringComponent.cpp">
+      <Filter>engine\components</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\TextComponent.cpp">
+      <Filter>engine\components</Filter>
+    </ClCompile>
+    <ClCompile Include="game\HealthScript.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\AssetManager.cpp">
+      <Filter>engine\core</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\Engine.cpp">
+      <Filter>engine\core</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\FontManager.cpp">
+      <Filter>engine\core</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\MusicManager.cpp">
+      <Filter>engine\core</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\SoundManager.cpp">
+      <Filter>engine\core</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\TextureManager.cpp">
+      <Filter>engine\core</Filter>
     </ClCompile>
     <ClCompile Include="engine\InputSystem.cpp">
-      <Filter>engine</Filter>
+      <Filter>engine\systems</Filter>
     </ClCompile>
     <ClCompile Include="engine\PhysicsSystem.cpp">
-      <Filter>engine</Filter>
+      <Filter>engine\systems</Filter>
     </ClCompile>
     <ClCompile Include="engine\GameObjectManager.cpp">
-      <Filter>engine</Filter>
+      <Filter>engine\core</Filter>
     </ClCompile>
     <ClCompile Include="engine\GameObject.cpp">
-      <Filter>engine</Filter>
+      <Filter>engine\core</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\CollisionObserver.cpp">
+      <Filter>engine\events</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\Subject.cpp">
+      <Filter>engine\events</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\Timer.cpp">
+      <Filter>engine\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="game\Player1Script.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="game\CannonScript.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="game\MissileLauncherScript.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="game\FlareLauncherScript.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="game\Arena.cpp">
+      <Filter>game\old</Filter>
+    </ClCompile>
+    <ClCompile Include="game\Ship.cpp">
+      <Filter>game\old</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="engine\Animation.h">
-      <Filter>engine</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\Timer.h">
-      <Filter>engine</Filter>
-    </ClInclude>
-    <ClInclude Include="game\Arena.h">
+    <ClInclude Include="game\AsteroidScript.h">
       <Filter>game</Filter>
     </ClInclude>
-    <ClInclude Include="game\Asteroid.h">
-      <Filter>game</Filter>
-    </ClInclude>
-    <ClInclude Include="game\Missile.h">
-      <Filter>game</Filter>
-    </ClInclude>
-    <ClInclude Include="game\Ship.h">
-      <Filter>game</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\TextureManager.h">
-      <Filter>engine</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\Engine.h">
-      <Filter>engine</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\AssetManager.h">
-      <Filter>engine</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\Constants.h">
-      <Filter>engine</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\FontManager.h">
-      <Filter>engine</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\TextComponent.h">
-      <Filter>engine</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\SpriteComponent.h">
-      <Filter>engine</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\Component.h">
-      <Filter>engine</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\SoundManager.h">
-      <Filter>engine</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\MusicManager.h">
-      <Filter>engine</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\InputComponent.h">
-      <Filter>engine</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\TransformComponent.h">
-      <Filter>engine</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\GameObject.h">
-      <Filter>engine</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\GameObjectManager.h">
-      <Filter>engine</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\RigidbodyComponent.h">
-      <Filter>engine</Filter>
+    <ClInclude Include="engine\AnimationComponent.h">
+      <Filter>engine\components</Filter>
     </ClInclude>
     <ClInclude Include="engine\BoxColliderComponent.h">
-      <Filter>engine</Filter>
+      <Filter>engine\components</Filter>
     </ClInclude>
-    <ClInclude Include="game\Player1Controller.h">
-      <Filter>game</Filter>
+    <ClInclude Include="engine\Component.h">
+      <Filter>engine\components</Filter>
     </ClInclude>
-    <ClInclude Include="game\Cannon.h">
-      <Filter>game</Filter>
+    <ClInclude Include="engine\RigidbodyComponent.h">
+      <Filter>engine\components</Filter>
     </ClInclude>
-    <ClInclude Include="game\MissileLauncher.h">
-      <Filter>game</Filter>
-    </ClInclude>
-    <ClInclude Include="game\FlareLauncher.h">
-      <Filter>game</Filter>
+    <ClInclude Include="engine\SpriteComponent.h">
+      <Filter>engine\components</Filter>
     </ClInclude>
     <ClInclude Include="engine\SteeringComponent.h">
-      <Filter>engine</Filter>
+      <Filter>engine\components</Filter>
     </ClInclude>
-    <ClInclude Include="engine\CollisionSystem.h">
-      <Filter>engine</Filter>
+    <ClInclude Include="engine\TransformComponent.h">
+      <Filter>engine\components</Filter>
     </ClInclude>
-    <ClInclude Include="engine\Observer.h">
-      <Filter>engine</Filter>
+    <ClInclude Include="engine\TextComponent.h">
+      <Filter>engine\components</Filter>
     </ClInclude>
-    <ClInclude Include="engine\Subject.h">
-      <Filter>engine</Filter>
+    <ClInclude Include="game\FPSScript.h">
+      <Filter>game</Filter>
     </ClInclude>
-    <ClInclude Include="engine\PhysicsSystem.h">
-      <Filter>engine</Filter>
+    <ClInclude Include="game\HealthScript.h">
+      <Filter>game</Filter>
     </ClInclude>
-    <ClInclude Include="engine\Event.h">
-      <Filter>engine</Filter>
+    <ClInclude Include="engine\AssetManager.h">
+      <Filter>engine\core</Filter>
     </ClInclude>
-    <ClInclude Include="engine\CollisionObserver.h">
-      <Filter>engine</Filter>
+    <ClInclude Include="engine\Engine.h">
+      <Filter>engine\core</Filter>
     </ClInclude>
-    <ClInclude Include="engine\CollisionEvent.h">
-      <Filter>engine</Filter>
+    <ClInclude Include="engine\FontManager.h">
+      <Filter>engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\MusicManager.h">
+      <Filter>engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\SoundManager.h">
+      <Filter>engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\TextureManager.h">
+      <Filter>engine\core</Filter>
     </ClInclude>
     <ClInclude Include="engine\InputSystem.h">
-      <Filter>engine</Filter>
+      <Filter>engine\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\PhysicsSystem.h">
+      <Filter>engine\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\CollisionSystem.h">
+      <Filter>engine\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\Timer.h">
+      <Filter>engine\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\GameObjectManager.h">
+      <Filter>engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\GameObject.h">
+      <Filter>engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\Constants.h">
+      <Filter>engine\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\CollisionEvent.h">
+      <Filter>engine\events</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\CollisionObserver.h">
+      <Filter>engine\events</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\Event.h">
+      <Filter>engine\events</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\Observer.h">
+      <Filter>engine\events</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\Subject.h">
+      <Filter>engine\events</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Player1Script.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="game\CannonScript.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="game\MissileLauncherScript.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="game\FlareLauncherScript.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Arena.h">
+      <Filter>game\old</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Ship.h">
+      <Filter>game\old</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
