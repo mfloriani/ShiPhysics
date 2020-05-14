@@ -14,7 +14,6 @@
     <ClCompile Include="engine\AnimationComponent.cpp" />
     <ClCompile Include="engine\AssetManager.cpp" />
     <ClCompile Include="engine\BoxColliderComponent.cpp" />
-    <ClCompile Include="engine\CollisionObserver.cpp" />
     <ClCompile Include="engine\Engine.cpp" />
     <ClCompile Include="engine\FontManager.cpp" />
     <ClCompile Include="engine\GameObject.cpp" />
@@ -45,16 +44,18 @@
     <ClInclude Include="engine\AssetManager.h" />
     <ClInclude Include="engine\BoxColliderComponent.h" />
     <ClInclude Include="engine\CollisionEvent.h" />
-    <ClInclude Include="engine\CollisionObserver.h" />
     <ClInclude Include="engine\CollisionSystem.h" />
     <ClInclude Include="engine\Component.h" />
     <ClInclude Include="engine\Constants.h" />
     <ClInclude Include="engine\Engine.h" />
     <ClInclude Include="engine\Event.h" />
+    <ClInclude Include="engine\EventSystem.h" />
     <ClInclude Include="engine\FontManager.h" />
+    <ClInclude Include="engine\FunctionHandler.h" />
     <ClInclude Include="engine\GameObject.h" />
     <ClInclude Include="engine\GameObjectManager.h" />
     <ClInclude Include="engine\InputSystem.h" />
+    <ClInclude Include="engine\MemberFunctionHandler.h" />
     <ClInclude Include="engine\Observer.h" />
     <ClInclude Include="engine\PhysicsSystem.h" />
     <ClInclude Include="engine\RigidbodyComponent.h" />

@@ -4,13 +4,13 @@
 #include "CollisionSystem.h"
 #include "CollisionEvent.h"
 #include "GameObject.h"
+#include "Engine.h"
+#include "EventSystem.h"
 
 namespace ecs
 {
 	void PhysicsSystem::Update(float dt)
 	{
-		FreePreviousCollisionEvents();
-
 		for (unsigned int i = 0; i < m_gameObjectMgr->m_gameObjects.size(); ++i)
 		{
 			GameObject* goL = m_gameObjectMgr->m_gameObjects[i];
@@ -33,28 +33,13 @@ namespace ecs
 							//TODO: split collision in enter, on, exit
 							
 							CollisionEvent* event = new CollisionEvent{ goL , goR};
-							m_collisionEvents.push_back(event);
-
-							m_onCollisionEvent.Notify(event);
+							
+							//TODO: publish the event to EventSystem
+							Engine::EventSys->Publish(event);
 						}
 					}
 				}
 			}
 		}
-	}
-
-	void PhysicsSystem::FreePreviousCollisionEvents()
-	{
-		for (auto e : m_collisionEvents)
-		{
-			delete e;
-			e = nullptr;
-		}
-		m_collisionEvents.clear();
-	}
-
-	Subject& PhysicsSystem::OnCollisionEvent()
-	{
-		return m_onCollisionEvent;
 	}
 }

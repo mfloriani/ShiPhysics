@@ -7,18 +7,15 @@ namespace ecs
 {
 	class GameObject;
 
-	class CollisionEvent : public Event
+	struct CollisionEvent : public Event
 	{
-	public:
-		CollisionEvent(GameObject* goLeft, GameObject* goRight) :
-			m_gameObjectLeft(goLeft),
-			m_gameObjectRight(goRight),
-			Event(EventType::COLLISION)
+		CollisionEvent(GameObject* left, GameObject* right) :
+			m_gameObjectLeft(left),
+			m_gameObjectRight(right)
 		{}
 
 		~CollisionEvent() {}
 
-	private:
 		GameObject* m_gameObjectLeft;
 		GameObject* m_gameObjectRight;
 	};

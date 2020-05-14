@@ -9,6 +9,7 @@ namespace ecs
 	class GameObjectManager;
 	class InputSystem;
 	class PhysicsSystem;
+	class EventSystem;
 
 	class Engine
 	{
@@ -19,6 +20,7 @@ namespace ecs
 		static GameObjectManager*	GameObjectMgr;
 		static InputSystem*			InputSys;
 		static PhysicsSystem*		PhysicsSys;
+		static EventSystem*			EventSys;
 
 		bool Init();
 		void Quit();

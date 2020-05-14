@@ -1,7 +1,6 @@
 #include "BoxColliderComponent.h"
 #include "Engine.h"
 #include "TransformComponent.h"
-#include "CollisionObserver.h"
 #include "GameObject.h"
 #include "PhysicsSystem.h"
 
@@ -12,17 +11,14 @@ namespace ecs
 		m_offsetY(offsetY),
 		m_width(width),
 		m_height(height),
-		m_collision(nullptr),
 		m_transform(nullptr)
 	{
-		m_collision = new CollisionObserver();
-		Engine::PhysicsSys->OnCollisionEvent().Register(m_collision);
+		
 	}
 
 	BoxColliderComponent::~BoxColliderComponent()
 	{
-		delete m_collision;
-		m_collision = nullptr;
+		
 	}
 
 	void BoxColliderComponent::Init() 

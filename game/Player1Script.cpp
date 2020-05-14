@@ -5,6 +5,8 @@
 #include "../engine/RigidbodyComponent.h"
 #include "../engine/InputSystem.h"
 #include "../engine/Engine.h"
+#include "../engine/EventSystem.h"
+#include "../engine/CollisionEvent.h"
 #include "CannonScript.h"
 #include "MissileLauncherScript.h"
 #include "FlareLauncherScript.h"
@@ -20,7 +22,14 @@ void Player1Script::Init()
 	//TODO: load fixed values from config file
 	m_thurstForce = 300.f;
 	m_rotationSpeed = 10.f;
+
+	ecs::Engine::EventSys->Subscribe(this, &Player1Script::OnCollisionEvent);
 };
+
+void Player1Script::OnCollisionEvent(ecs::CollisionEvent* e)
+{
+	SDL_Log("getting collision event");
+}
 
 void Player1Script::Update(float dt)
 {

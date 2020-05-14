@@ -8,7 +8,7 @@
 #include "InputSystem.h"
 #include "PhysicsSystem.h"
 #include "GameObject.h"
-
+#include "EventSystem.h"
 
 namespace ecs
 {
@@ -18,7 +18,7 @@ namespace ecs
 	GameObjectManager*	Engine::GameObjectMgr = nullptr;
 	InputSystem*		Engine::InputSys = nullptr;
 	PhysicsSystem*		Engine::PhysicsSys = nullptr;
-	
+	EventSystem*		Engine::EventSys = nullptr;
 
 	bool Engine::Init()
 	{
@@ -63,6 +63,7 @@ namespace ecs
 		GameObjectMgr = new GameObjectManager;
 		InputSys = new InputSystem;
 		PhysicsSys = new PhysicsSystem(GameObjectMgr);
+		EventSys = new EventSystem;
 
 		m_running = true;
 

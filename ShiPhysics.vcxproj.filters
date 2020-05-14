@@ -87,9 +87,6 @@
     <ClCompile Include="engine\GameObject.cpp">
       <Filter>engine\core</Filter>
     </ClCompile>
-    <ClCompile Include="engine\CollisionObserver.cpp">
-      <Filter>engine\events</Filter>
-    </ClCompile>
     <ClCompile Include="engine\Subject.cpp">
       <Filter>engine\events</Filter>
     </ClCompile>
@@ -191,9 +188,6 @@
     <ClInclude Include="engine\CollisionEvent.h">
       <Filter>engine\events</Filter>
     </ClInclude>
-    <ClInclude Include="engine\CollisionObserver.h">
-      <Filter>engine\events</Filter>
-    </ClInclude>
     <ClInclude Include="engine\Event.h">
       <Filter>engine\events</Filter>
     </ClInclude>
@@ -220,6 +214,15 @@
     </ClInclude>
     <ClInclude Include="game\Ship.h">
       <Filter>game\old</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\EventSystem.h">
+      <Filter>engine\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\FunctionHandler.h">
+      <Filter>engine\events</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\MemberFunctionHandler.h">
+      <Filter>engine\events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
