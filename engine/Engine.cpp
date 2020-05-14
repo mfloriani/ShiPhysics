@@ -72,6 +72,9 @@ namespace ecs
 
 	void Engine::Quit()
 	{
+		delete EventSys;
+		EventSys = nullptr;
+
 		delete PhysicsSys;
 		PhysicsSys = nullptr;
 
@@ -149,7 +152,8 @@ namespace ecs
 
 		PhysicsSys->Update(m_deltaTime);
 
-		GameObjectMgr->AddNewGameObjectsToPipeline();
+		GameObjectMgr->RemoveFromPipeline();
+		GameObjectMgr->AddToPipeline();
 	}
 
 	inline void Engine::Render()

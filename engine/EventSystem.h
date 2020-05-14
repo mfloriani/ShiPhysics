@@ -13,6 +13,22 @@ namespace ecs
 	class EventSystem
 	{
 	public:
+		~EventSystem()
+		{
+			for (auto [type, handlers] : m_subscribers)
+			{
+				if (!handlers) continue;
+
+				for (auto handler : *handlers)
+				{
+					delete handler;
+					handler = nullptr;
+				}
+				delete handlers;
+				handlers = nullptr;
+			}
+		}
+
 		template<typename EventType>
 		void Publish(EventType* e)
 		{
@@ -39,8 +55,6 @@ namespace ecs
 
 			handlers->push_back(new MemberFunctionHandler<T, EventType>(instance, memberFunction));
 		}
-
-		//TODO: delete handlers
 
 	private:
 		std::map<std::type_index, Handlers*> m_subscribers;

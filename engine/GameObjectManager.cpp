@@ -7,14 +7,14 @@ namespace ecs
 	{
 		Free();
 	}
-	GameObject* GameObjectManager::NewGameObject()
+	GameObject* GameObjectManager::Instantiate()
 	{
 		GameObject* go = new GameObject;
 		m_newGameObjects.emplace_back(go);
 		return go;
 	}
 
-	void GameObjectManager::AddNewGameObjectsToPipeline()
+	void GameObjectManager::AddToPipeline()
 	{
 		for (auto go : m_newGameObjects)
 		{
@@ -27,8 +27,31 @@ namespace ecs
 	{
 		for (auto go : m_gameObjects)
 		{
+			if (!go) continue;
 			delete go;
+			go = nullptr;
 		}
 		m_gameObjects.clear();
+	}
+
+	void GameObjectManager::Destroy(GameObject* gameobject)
+	{
+		m_destroyedGameObjects.push_back(gameobject);
+	}
+
+	void GameObjectManager::RemoveFromPipeline()
+	{
+		for (auto toDestroy : m_destroyedGameObjects)
+		{
+			auto it = std::find(m_gameObjects.begin(), m_gameObjects.end(), toDestroy);
+			if (it == m_gameObjects.end()) continue;
+			
+			std::swap(*it, *(--m_gameObjects.end()));
+			m_gameObjects.pop_back();
+
+			delete toDestroy;
+			toDestroy = nullptr;
+		}
+		m_destroyedGameObjects.clear();
 	}
 }

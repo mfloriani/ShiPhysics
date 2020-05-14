@@ -15,9 +15,11 @@ namespace ecs
 	public:
 		~GameObjectManager();
 
-		GameObject* NewGameObject();
-		void AddNewGameObjectsToPipeline();
+		GameObject* Instantiate();
+		void AddToPipeline();
 		void Free();
+		void Destroy(GameObject* gameobject);
+		void RemoveFromPipeline();
 
 		friend class Engine;
 		friend class PhysicsSystem;
@@ -25,6 +27,7 @@ namespace ecs
 	private:
 		GameObjectVector	m_gameObjects;
 		GameObjectVector	m_newGameObjects;
+		GameObjectVector	m_destroyedGameObjects;
 	};
 }
 

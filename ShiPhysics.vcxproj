@@ -47,6 +47,7 @@
     <ClInclude Include="engine\CollisionSystem.h" />
     <ClInclude Include="engine\Component.h" />
     <ClInclude Include="engine\Constants.h" />
+    <ClInclude Include="engine\DestroyEvent.h" />
     <ClInclude Include="engine\Engine.h" />
     <ClInclude Include="engine\Event.h" />
     <ClInclude Include="engine\EventSystem.h" />

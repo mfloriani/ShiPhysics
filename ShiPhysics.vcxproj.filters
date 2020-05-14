@@ -224,6 +224,9 @@
     <ClInclude Include="engine\MemberFunctionHandler.h">
       <Filter>engine\events</Filter>
     </ClInclude>
+    <ClInclude Include="engine\DestroyEvent.h">
+      <Filter>engine\events</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Font Include="assets\arial.ttf">

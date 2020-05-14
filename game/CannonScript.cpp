@@ -27,7 +27,7 @@ void CannonScript::Shoot()
 	//TODO: 1) load values from file
 	//		2) move the object creation to a proper place
 
-	ecs::GameObject* projectile = ecs::Engine::GameObjectMgr->NewGameObject();
+	ecs::GameObject* projectile = ecs::Engine::GameObjectMgr->Instantiate();
 	projectile->AddComponent<ecs::TransformComponent>(m_transform->m_position, m_transform->m_direction, 0.f);
 	projectile->AddComponent<ecs::SpriteComponent>("bullet1");
 	projectile->AddComponent<ecs::BoxColliderComponent>(0, 0, 10, 10);

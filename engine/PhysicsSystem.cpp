@@ -28,13 +28,11 @@ namespace ecs
 
 						if (CheckBoxCollision(&boxL, &boxR))
 						{
-							//SDL_Log("Collision happened");
+							SDL_Log("collided");
 
 							//TODO: split collision in enter, on, exit
 							
-							CollisionEvent* event = new CollisionEvent{ goL , goR};
-							
-							//TODO: publish the event to EventSystem
+							CollisionEvent* event = new CollisionEvent{ goL , goR};							
 							Engine::EventSys->Publish(event);
 						}
 					}

@@ -23,9 +23,7 @@ public:
 	virtual void Init() override;
 	virtual void Update(float dt) override;
 	virtual void Render() override;
-
-	void OnCollisionEvent(ecs::CollisionEvent* e);
-
+	
 private:
 	ecs::TransformComponent*	m_transform;
 	ecs::RigidbodyComponent*	m_rigidbody;
