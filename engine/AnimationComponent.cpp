@@ -1,6 +1,8 @@
 #include "AnimationComponent.h"
 #include "GameObject.h"
 #include "SpriteComponent.h"
+#include "Engine.h"
+#include "GameObjectManager.h"
 
 namespace ecs
 {
@@ -20,7 +22,7 @@ namespace ecs
 
 	void AnimationComponent::Init()
 	{
-		m_spriteComponent = m_owner->GetComponent<SpriteComponent>();
+		m_spriteComponent = Engine::GameObjectMgr->Get(m_owner)->GetComponent<SpriteComponent>();
 	}
 
 	void AnimationComponent::Update(float dt)

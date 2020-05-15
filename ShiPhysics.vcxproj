@@ -29,10 +29,12 @@
     <ClCompile Include="engine\TextComponent.cpp" />
     <ClCompile Include="engine\TextureManager.cpp" />
     <ClCompile Include="engine\Timer.cpp" />
+    <ClCompile Include="engine\TransformComponent.cpp" />
     <ClCompile Include="game\Arena.cpp" />
     <ClCompile Include="game\AsteroidScript.cpp" />
     <ClCompile Include="game\CannonScript.cpp" />
     <ClCompile Include="game\FlareLauncherScript.cpp" />
+    <ClCompile Include="game\FPSScript.cpp" />
     <ClCompile Include="game\HealthScript.cpp" />
     <ClCompile Include="game\Main.cpp" />
     <ClCompile Include="game\MissileLauncherScript.cpp" />

@@ -5,19 +5,17 @@
 
 namespace ecs
 {
-	class GameObject;
-
 	struct CollisionEvent : public Event
 	{
-		CollisionEvent(GameObject* left, GameObject* right) :
-			m_gameObjectLeft(left),
-			m_gameObjectRight(right)
+		CollisionEvent(uint32_t left, uint32_t right) :
+			m_leftGameObjectId(left),
+			m_rightGameObjectId(right)
 		{}
 
 		~CollisionEvent() {}
 
-		GameObject* m_gameObjectLeft;
-		GameObject* m_gameObjectRight;
+		uint32_t m_leftGameObjectId;
+		uint32_t m_rightGameObjectId;
 	};
 }
 

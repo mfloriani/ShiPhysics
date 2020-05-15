@@ -8,7 +8,7 @@
 
 void FlareLauncherScript::Init()
 {
-	m_transform = m_owner->GetComponent<ecs::TransformComponent>();
+	m_transform = ecs::Engine::GameObjectMgr->Get(m_owner)->GetComponent<ecs::TransformComponent>();
 }
 
 void FlareLauncherScript::Update(float dt)

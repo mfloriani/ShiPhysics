@@ -3,6 +3,7 @@
 #include "TransformComponent.h"
 #include "GameObject.h"
 #include "PhysicsSystem.h"
+#include "GameObjectManager.h"
 
 namespace ecs
 {
@@ -23,7 +24,7 @@ namespace ecs
 
 	void BoxColliderComponent::Init() 
 	{
-		m_transform = m_owner->GetComponent<TransformComponent>();
+		m_transform = Engine::GameObjectMgr->Get(m_owner)->GetComponent<TransformComponent>();
 		m_collider.x = static_cast<int>(m_transform->m_position.x) + m_offsetX;
 		m_collider.y = static_cast<int>(m_transform->m_position.y) + m_offsetY;
 		m_collider.w = m_width;

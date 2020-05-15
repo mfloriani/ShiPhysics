@@ -111,6 +111,12 @@
     <ClCompile Include="game\Ship.cpp">
       <Filter>game\old</Filter>
     </ClCompile>
+    <ClCompile Include="game\FPSScript.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\TransformComponent.cpp">
+      <Filter>engine\components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game\AsteroidScript.h">

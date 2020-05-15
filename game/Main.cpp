@@ -83,12 +83,12 @@ bool Load()
 	asteroid->AddComponent<ecs::RigidbodyComponent>(1.f, 100.f)->AddForce(force);
 	asteroid->AddComponent<ecs::BoxColliderComponent>(0, 0, 60, 60);
 	ecs::SteeringComponent* steering = asteroid->AddComponent<ecs::SteeringComponent>();
-	steering->SetTarget(player1);
+	steering->SetTarget(player1->Id());
 	auto current = steering->Enable(ecs::BehaviorsType::Pursuit);
 	asteroid->AddComponent<AsteroidScript>();
 
 	ecs::SteeringComponent* steering2 = player2->AddComponent<ecs::SteeringComponent>();
-	steering2->SetTarget(asteroid);
+	steering2->SetTarget(asteroid->Id());
 	steering2->Enable(ecs::BehaviorsType::Flee);
 
 	{
@@ -99,11 +99,11 @@ bool Load()
 		asteroid->AddComponent<ecs::RigidbodyComponent>(1.f, 100.f)->AddForce(force);
 		asteroid->AddComponent<ecs::BoxColliderComponent>(0, 0, 60, 60);
 		ecs::SteeringComponent* steering = asteroid->AddComponent<ecs::SteeringComponent>();
-		steering->SetTarget(player1);
+		steering->SetTarget(player1->Id());
 		auto current = steering->Enable(ecs::BehaviorsType::Pursuit);
 		asteroid->AddComponent<AsteroidScript>();
 	}
-
+	
 	{
 		ecs::GameObject* asteroid = engine->GameObjectMgr->Instantiate();
 		asteroid->AddComponent<ecs::TransformComponent>(glm::vec2(1400, 600), glm::vec2(0, 0), 0.f);
@@ -112,7 +112,7 @@ bool Load()
 		asteroid->AddComponent<ecs::RigidbodyComponent>(1.f, 100.f)->AddForce(force);
 		asteroid->AddComponent<ecs::BoxColliderComponent>(0, 0, 60, 60);
 		ecs::SteeringComponent* steering = asteroid->AddComponent<ecs::SteeringComponent>();
-		steering->SetTarget(player1);
+		steering->SetTarget(player1->Id());
 		auto current = steering->Enable(ecs::BehaviorsType::Pursuit);
 		asteroid->AddComponent<AsteroidScript>();
 	}
@@ -122,7 +122,7 @@ bool Load()
 	explosion->AddComponent<ecs::TransformComponent>(glm::vec2(100, 100), glm::vec2(0, 0), 0.f);
 	explosion->AddComponent<ecs::SpriteComponent>("explosion_spritesheet");
 	explosion->AddComponent<ecs::AnimationComponent>(explosionClips, 200, false);
-
+	
 	ecs::GameObject* fps = engine->GameObjectMgr->Instantiate();
 	fps->AddComponent<ecs::TransformComponent>(glm::vec2(0, 0), glm::vec2(0, 0), 0.f);
 	SDL_Color gray{ 0, 100, 100, 100 };

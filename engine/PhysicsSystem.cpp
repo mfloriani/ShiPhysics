@@ -21,6 +21,8 @@ namespace ecs
 				{
 					GameObject* goR = m_gameObjectMgr->m_gameObjects[j];
 
+					//if (goL->Id() == goR->Id()) continue;
+
 					if (m_gameObjectMgr->m_gameObjects[j]->HasComponent<BoxColliderComponent>())
 					{
 						SDL_Rect boxL = goL->GetComponent<BoxColliderComponent>()->GetCollider();
@@ -32,7 +34,7 @@ namespace ecs
 
 							//TODO: split collision in enter, on, exit
 							
-							CollisionEvent* event = new CollisionEvent{ goL , goR};							
+							CollisionEvent* event = new CollisionEvent{ goL->Id() , goR->Id()};							
 							Engine::EventSys->Publish(event);
 						}
 					}

@@ -7,17 +7,18 @@
 #include "../engine/Engine.h"
 #include "../engine/EventSystem.h"
 #include "../engine/CollisionEvent.h"
+#include "../engine/GameObjectManager.h"
 #include "CannonScript.h"
 #include "MissileLauncherScript.h"
 #include "FlareLauncherScript.h"
 
 void Player1Script::Init()
 {
-	m_transform = m_owner->GetComponent<ecs::TransformComponent>();
-	m_rigidbody = m_owner->GetComponent<ecs::RigidbodyComponent>();
-	m_cannon = m_owner->GetComponent<CannonScript>();
-	m_missileLauncher = m_owner->GetComponent<MissileLauncherScript>();
-	m_flareLauncher = m_owner->GetComponent<FlareLauncherScript>();
+	m_transform = ecs::Engine::GameObjectMgr->Get(m_owner)->GetComponent<ecs::TransformComponent>();
+	m_rigidbody = ecs::Engine::GameObjectMgr->Get(m_owner)->GetComponent<ecs::RigidbodyComponent>();
+	m_cannon = ecs::Engine::GameObjectMgr->Get(m_owner)->GetComponent<CannonScript>();
+	m_missileLauncher = ecs::Engine::GameObjectMgr->Get(m_owner)->GetComponent<MissileLauncherScript>();
+	m_flareLauncher = ecs::Engine::GameObjectMgr->Get(m_owner)->GetComponent<FlareLauncherScript>();
 
 	//TODO: load fixed values from config file
 	m_thurstForce = 300.f;

@@ -4,6 +4,7 @@
 #include "AssetManager.h"
 #include "GameObject.h"
 #include "TransformComponent.h"
+#include "GameObjectManager.h"
 
 namespace ecs
 {
@@ -55,7 +56,7 @@ namespace ecs
 
 	void TextComponent::Init()
 	{
-		m_transform = m_owner->GetComponent<TransformComponent>();
+		m_transform = Engine::GameObjectMgr->Get(m_owner)->GetComponent<TransformComponent>();
 		m_position.x = static_cast<int>(m_transform->m_position.x);
 		m_position.y = static_cast<int>(m_transform->m_position.y);
 

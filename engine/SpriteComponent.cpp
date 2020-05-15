@@ -5,6 +5,7 @@
 #include "TextureManager.h"
 #include "TransformComponent.h"
 #include "GameObject.h"
+#include "GameObjectManager.h"
 
 namespace ecs
 {
@@ -20,7 +21,7 @@ namespace ecs
 
 	void SpriteComponent::Init()
 	{
-		m_transform = m_owner->GetComponent<TransformComponent>();
+		m_transform = Engine::GameObjectMgr->Get(m_owner)->GetComponent<TransformComponent>();
 		SDL_QueryTexture(m_sprite, NULL, NULL, &m_dstrect.w, &m_dstrect.h);
 		m_srcrect = { 0, 0, m_dstrect.w , m_dstrect.h };
 	}

@@ -25,8 +25,8 @@ namespace ecs
 	{
 	public:
 		SteeringComponent() :
-			m_agent(nullptr),
-			m_target(nullptr),
+			m_agent(0),
+			m_target(0),
 			m_agentTransform(nullptr),
 			m_agentRigidbody(nullptr),
 			m_targetTransform(nullptr),
@@ -40,7 +40,7 @@ namespace ecs
 		glm::vec2 Pursuit();
 		glm::vec2 Flee();
 
-		void		SetTarget(GameObject* target);
+		void		SetTarget(uint32_t target);
 		Behaviors	Enable(Behaviors behaviors);
 		Behaviors	Disable(Behaviors behaviors);
 		bool		IsEnabled(Behaviors behaviors);
@@ -50,8 +50,8 @@ namespace ecs
 		virtual void Render() override {}
 
 	private:
-		GameObject*			m_agent;
-		GameObject*			m_target;
+		uint32_t			m_agent;
+		uint32_t			m_target;
 		TransformComponent* m_agentTransform;
 		RigidbodyComponent* m_agentRigidbody;
 		TransformComponent* m_targetTransform;

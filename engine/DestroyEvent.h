@@ -5,15 +5,13 @@
 
 namespace ecs
 {
-	class GameObject;
-
 	struct DestroyEvent : public Event
 	{
-		DestroyEvent(GameObject* go) : 
-			m_gameObject(go)
+		DestroyEvent(uint32_t id) : 
+			m_gameObjectId(id)
 		{}
 
-		GameObject* m_gameObject;
+		uint32_t m_gameObjectId;
 	};
 }
 

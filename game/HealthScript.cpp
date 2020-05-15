@@ -4,6 +4,7 @@
 #include "../engine/CollisionEvent.h"
 #include "../engine/DestroyEvent.h"
 #include "../engine/GameObjectManager.h"
+#include "../engine/GameObject.h"
 
 HealthScript::~HealthScript() 
 {
@@ -17,7 +18,10 @@ void HealthScript::Init()
 
 void HealthScript::OnCollisionEvent(ecs::CollisionEvent* e)
 {
-	SDL_Log("collision %i", m_health);
+	
+	if (e->m_leftGameObjectId != m_owner && e->m_rightGameObjectId != m_owner) return;
+
+	SDL_Log("collision - current health %i", m_health);
 	if (m_health <= 0) return;
 	
 	m_health -= 10;

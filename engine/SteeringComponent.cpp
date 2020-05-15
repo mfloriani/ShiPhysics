@@ -2,6 +2,8 @@
 #include "GameObject.h"
 #include "TransformComponent.h"
 #include "RigidbodyComponent.h"
+#include "Engine.h"
+#include "GameObjectManager.h"
 
 namespace ecs
 {
@@ -33,18 +35,18 @@ namespace ecs
 		return (desired - m_agentRigidbody->GetMomentum());
 	}
 
-	void SteeringComponent::SetTarget(GameObject* target)
+	void SteeringComponent::SetTarget(uint32_t id)
 	{
-		m_target = target;
-		m_targetTransform = m_target->GetComponent<TransformComponent>();
-		m_targetRigidbody = m_target->GetComponent<RigidbodyComponent>();
+		m_target = id;
+		m_targetTransform = Engine::GameObjectMgr->Get(m_target)->GetComponent<TransformComponent>();
+		m_targetRigidbody = Engine::GameObjectMgr->Get(m_target)->GetComponent<RigidbodyComponent>();
 	}
 
 	void SteeringComponent::Init()
 	{
 		m_agent = m_owner;
-		m_agentTransform = m_agent->GetComponent<TransformComponent>();
-		m_agentRigidbody = m_agent->GetComponent<RigidbodyComponent>();
+		m_agentTransform = Engine::GameObjectMgr->Get(m_agent)->GetComponent<TransformComponent>();
+		m_agentRigidbody = Engine::GameObjectMgr->Get(m_agent)->GetComponent<RigidbodyComponent>();
 	}
 	
 	void SteeringComponent::Update(float dt)
