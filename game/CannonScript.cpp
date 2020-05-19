@@ -7,6 +7,7 @@
 #include "../engine/RigidbodyComponent.h"
 #include "../engine/BoxColliderComponent.h"
 #include "../lib/glm/gtx/rotate_vector.hpp"
+#include "HealthScript.h"
 
 void CannonScript::Init() 
 {
@@ -28,11 +29,13 @@ void CannonScript::Shoot()
 	//		2) move the object creation to a proper place
 
 	ecs::GameObject* projectile = ecs::Engine::GameObjectMgr->Instantiate();
+	projectile->Parent(m_owner);
 	projectile->AddComponent<ecs::TransformComponent>(m_transform->m_position, m_transform->m_direction, 0.f);
 	projectile->AddComponent<ecs::SpriteComponent>("bullet1");
 	projectile->AddComponent<ecs::BoxColliderComponent>(0, 0, 10, 10);
-	glm::vec2 force = glm::rotate(glm::vec2(1, 0) * 200000.f, m_transform->m_angle);
+	glm::vec2 force = glm::rotate(glm::vec2(1, 0) * 50000.f, m_transform->m_angle);
 	projectile->AddComponent<ecs::RigidbodyComponent>(1.f, 1000.f)->AddForce(force);
+	projectile->AddComponent<HealthScript>(20);
 
 	//TODO: handle shooting sound
 

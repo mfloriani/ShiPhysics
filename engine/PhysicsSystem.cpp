@@ -21,7 +21,7 @@ namespace ecs
 				{
 					GameObject* goR = m_gameObjectMgr->m_gameObjects[j];
 
-					//if (goL->Id() == goR->Id()) continue;
+					if (goL->Id() == goR->Parent() || goL->Parent() == goR->Id()) continue;
 
 					if (m_gameObjectMgr->m_gameObjects[j]->HasComponent<BoxColliderComponent>())
 					{

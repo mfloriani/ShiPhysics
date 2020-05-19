@@ -117,6 +117,9 @@
     <ClCompile Include="engine\TransformComponent.cpp">
       <Filter>engine\components</Filter>
     </ClCompile>
+    <ClCompile Include="game\ExplosionScript.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game\AsteroidScript.h">
@@ -232,6 +235,12 @@
     </ClInclude>
     <ClInclude Include="engine\DestroyEvent.h">
       <Filter>engine\events</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\Animation.h">
+      <Filter>engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="game\ExplosionScript.h">
+      <Filter>game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

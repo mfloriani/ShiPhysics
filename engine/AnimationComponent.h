@@ -8,25 +8,21 @@
 namespace ecs
 {
 	class SpriteComponent;
-
-	typedef std::vector<SDL_Rect> FrameClips;
+	struct Animation;
 
 	class AnimationComponent : public Component
 	{
 	public:
-		AnimationComponent(FrameClips clips, Uint32 frameRate, bool loop);
+		AnimationComponent(std::string id);
 		~AnimationComponent();
 		
 		virtual void Init() override;
 		virtual void Update(float dt) override;
 		virtual void Render() override;
 
-
 	private:
-		FrameClips			m_frameClips;
+		Animation*			m_animation;
 		Uint32				m_frameCount;
-		Uint32				m_frameRate;
-		bool				m_loop;
 		bool				m_ended;
 		SpriteComponent*	m_spriteComponent;
 

@@ -27,6 +27,7 @@ void MissileLauncherScript::Launch()
 	//TODO: load values from file
 
 	ecs::GameObject* missile = ecs::Engine::GameObjectMgr->Instantiate();
+	missile->Parent(m_owner);
 	missile->AddComponent<ecs::TransformComponent>(m_transform->m_position, m_transform->m_direction, 0.f);
 	missile->AddComponent<ecs::SpriteComponent>("missile");
 	missile->AddComponent<ecs::BoxColliderComponent>(0, 0, 10, 10);

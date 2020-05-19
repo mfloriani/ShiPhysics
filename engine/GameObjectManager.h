@@ -24,7 +24,7 @@ namespace ecs
 		void Destroy(uint32_t id);
 		void RemoveFromPipeline();
 		GameObject* Get(uint32_t id);
-
+		
 		friend class Engine;
 		friend class PhysicsSystem;
 

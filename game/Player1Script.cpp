@@ -22,7 +22,7 @@ void Player1Script::Init()
 
 	//TODO: load fixed values from config file
 	m_thurstForce = 300.f;
-	m_rotationSpeed = 10.f;
+	m_rotationSpeed = 2.f;
 };
 
 void Player1Script::Update(float dt)

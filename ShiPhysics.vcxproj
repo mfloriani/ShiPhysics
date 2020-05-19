@@ -33,6 +33,7 @@
     <ClCompile Include="game\Arena.cpp" />
     <ClCompile Include="game\AsteroidScript.cpp" />
     <ClCompile Include="game\CannonScript.cpp" />
+    <ClCompile Include="game\ExplosionScript.cpp" />
     <ClCompile Include="game\FlareLauncherScript.cpp" />
     <ClCompile Include="game\FPSScript.cpp" />
     <ClCompile Include="game\HealthScript.cpp" />
@@ -42,6 +43,7 @@
     <ClCompile Include="game\Ship.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="engine\Animation.h" />
     <ClInclude Include="engine\AnimationComponent.h" />
     <ClInclude Include="engine\AssetManager.h" />
     <ClInclude Include="engine\BoxColliderComponent.h" />
@@ -74,6 +76,7 @@
     <ClInclude Include="game\Arena.h" />
     <ClInclude Include="game\AsteroidScript.h" />
     <ClInclude Include="game\CannonScript.h" />
+    <ClInclude Include="game\ExplosionScript.h" />
     <ClInclude Include="game\FlareLauncherScript.h" />
     <ClInclude Include="game\FPSScript.h" />
     <ClInclude Include="game\HealthScript.h" />
