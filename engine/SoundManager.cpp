@@ -23,4 +23,10 @@ namespace ecs
 	{
 		Mix_FreeChunk(music);
 	}
+
+	void SoundManager::Play(Mix_Chunk* sound)
+	{
+		if (!sound) return;
+		Mix_PlayChannel(-1, sound, 0);
+	}
 }

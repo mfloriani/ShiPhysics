@@ -8,8 +8,7 @@
 namespace ecs
 {
 	class TransformComponent;
-	class CollisionObserver;
-
+	
 	class BoxColliderComponent : public Component
 	{
 	public:
@@ -31,7 +30,6 @@ namespace ecs
 		int					m_offsetY;
 		int					m_width;
 		int					m_height;
-		CollisionObserver*  m_collision;
 	};
 }
 

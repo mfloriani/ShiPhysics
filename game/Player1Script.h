@@ -6,7 +6,8 @@
 namespace ecs
 {
 	class RigidbodyComponent;
-	class TransformComponent;	
+	class TransformComponent;
+	struct CollisionEvent;
 }
 
 class CannonScript;
@@ -22,7 +23,7 @@ public:
 	virtual void Init() override;
 	virtual void Update(float dt) override;
 	virtual void Render() override;
-
+	
 private:
 	ecs::TransformComponent*	m_transform;
 	ecs::RigidbodyComponent*	m_rigidbody;

@@ -3,18 +3,10 @@
 
 namespace ecs
 {
-	enum EventType
+	struct Event
 	{
-		COLLISION = 1
-	};
-
-	class Event
-	{
-	public:
-		Event(EventType type) : m_type(type) {}
-		virtual ~Event(){}
-	protected:
-		EventType m_type;
+		Event() {}
+		virtual ~Event(){}	
 	};
 }
 

@@ -12,6 +12,7 @@ namespace ecs
 		static Mix_Chunk* LoadFromFile(const char* fileName, int volume);
 		static void SetVolume(Mix_Chunk* sound, int volume);
 		static void Free(Mix_Chunk* sound);
+		static void Play(Mix_Chunk* sound);
 	};
 }
 

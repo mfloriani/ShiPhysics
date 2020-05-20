@@ -3,13 +3,14 @@
 
 #include <SDL.h>
 #include <vector>
+#include "System.h"
 
 namespace ecs
 {
-	class InputSystem
+	class InputSystem : public System
 	{
 	public:
-		void Update();
+		virtual void Update(float dt) override;
 		const std::vector<SDL_Event>& GetEvents()const { return m_events; }
 
 	private:

@@ -87,9 +87,6 @@
     <ClCompile Include="engine\GameObject.cpp">
       <Filter>engine\core</Filter>
     </ClCompile>
-    <ClCompile Include="engine\CollisionObserver.cpp">
-      <Filter>engine\events</Filter>
-    </ClCompile>
     <ClCompile Include="engine\Subject.cpp">
       <Filter>engine\events</Filter>
     </ClCompile>
@@ -113,6 +110,21 @@
     </ClCompile>
     <ClCompile Include="game\Ship.cpp">
       <Filter>game\old</Filter>
+    </ClCompile>
+    <ClCompile Include="game\FPSScript.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\TransformComponent.cpp">
+      <Filter>engine\components</Filter>
+    </ClCompile>
+    <ClCompile Include="game\ExplosionScript.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="game\ProjectileScript.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\AudioSystem.cpp">
+      <Filter>engine\systems</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -191,9 +203,6 @@
     <ClInclude Include="engine\CollisionEvent.h">
       <Filter>engine\events</Filter>
     </ClInclude>
-    <ClInclude Include="engine\CollisionObserver.h">
-      <Filter>engine\events</Filter>
-    </ClInclude>
     <ClInclude Include="engine\Event.h">
       <Filter>engine\events</Filter>
     </ClInclude>
@@ -220,6 +229,36 @@
     </ClInclude>
     <ClInclude Include="game\Ship.h">
       <Filter>game\old</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\EventSystem.h">
+      <Filter>engine\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\FunctionHandler.h">
+      <Filter>engine\events</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\MemberFunctionHandler.h">
+      <Filter>engine\events</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\DestroyEvent.h">
+      <Filter>engine\events</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\Animation.h">
+      <Filter>engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="game\ExplosionScript.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="game\ProjectileScript.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\AudioSystem.h">
+      <Filter>engine\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\System.h">
+      <Filter>engine\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\PlaySoundEvent.h">
+      <Filter>engine\events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

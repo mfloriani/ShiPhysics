@@ -2,16 +2,15 @@
 #define __PHYSICS_SYSTEM_H__
 
 #include <vector>
-#include "Subject.h"
+#include "System.h"
 
 namespace ecs
 {
 	class GameObjectManager;
-	class CollisionEvent;
 
 	//TODO: turn it a singleton
 	//		create System interface class
-	class PhysicsSystem
+	class PhysicsSystem : public System
 	{
 	public:
 		PhysicsSystem(GameObjectManager* goMgr) : 
@@ -20,21 +19,13 @@ namespace ecs
 
 		~PhysicsSystem()
 		{
-			FreePreviousCollisionEvents();
+			
 		}
 
-		void Update(float dt);
-
-		Subject& OnCollisionEvent();
+		virtual void Update(float dt) override;
 		
 	private:
-		Subject							m_onCollisionEvent;
-		GameObjectManager*				m_gameObjectMgr;
-
-		//TODO: create an event system to handle the pending events, instead of inside physicsSystem
-		std::vector<CollisionEvent*>	m_collisionEvents;
-
-		void FreePreviousCollisionEvents();
+		GameObjectManager*	m_gameObjectMgr;
 	};
 }
 

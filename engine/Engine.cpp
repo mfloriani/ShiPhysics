@@ -8,7 +8,8 @@
 #include "InputSystem.h"
 #include "PhysicsSystem.h"
 #include "GameObject.h"
-
+#include "EventSystem.h"
+#include "AudioSystem.h"
 
 namespace ecs
 {
@@ -18,7 +19,8 @@ namespace ecs
 	GameObjectManager*	Engine::GameObjectMgr = nullptr;
 	InputSystem*		Engine::InputSys = nullptr;
 	PhysicsSystem*		Engine::PhysicsSys = nullptr;
-	
+	EventSystem*		Engine::EventSys = nullptr;
+	AudioSystem*		Engine::AudioSys = nullptr;
 
 	bool Engine::Init()
 	{
@@ -27,7 +29,7 @@ namespace ecs
 			SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Failed to initialize SDL! SDL_Error: %s", SDL_GetError());
 			return false;
 		}
-		m_window = SDL_CreateWindow("ShiPhysics", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_BORDERLESS);
+		m_window = SDL_CreateWindow("ShiPhysics", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, NULL);
 		if (!m_window)
 		{
 			SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Failed to create SDL_WINDOW: %s", SDL_GetError());
@@ -63,6 +65,8 @@ namespace ecs
 		GameObjectMgr = new GameObjectManager;
 		InputSys = new InputSystem;
 		PhysicsSys = new PhysicsSystem(GameObjectMgr);
+		EventSys = new EventSystem;
+		AudioSys = new AudioSystem;
 
 		m_running = true;
 
@@ -71,6 +75,12 @@ namespace ecs
 
 	void Engine::Quit()
 	{
+		delete AudioSys;
+		AudioSys = nullptr;
+
+		delete EventSys;
+		EventSys = nullptr;
+
 		delete PhysicsSys;
 		PhysicsSys = nullptr;
 
@@ -125,7 +135,7 @@ namespace ecs
 
 	inline void Engine::ProcessInput()
 	{
-		InputSys->Update();
+		InputSys->Update(m_deltaTime);
 	}
 
 	inline void Engine::HandleGameEvents()
@@ -135,6 +145,10 @@ namespace ecs
 			if (event.type == SDL_QUIT || (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE))
 			{
 				m_running = false;
+			}
+			else if(event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_RETURN)
+			{
+				AudioSys->ToggleMusic();
 			}
 		}
 	}
@@ -148,7 +162,10 @@ namespace ecs
 
 		PhysicsSys->Update(m_deltaTime);
 
-		GameObjectMgr->AddNewGameObjectsToPipeline();
+		GameObjectMgr->RemoveFromPipeline();
+		GameObjectMgr->AddToPipeline();
+
+		AudioSys->Update(m_deltaTime);
 	}
 
 	inline void Engine::Render()

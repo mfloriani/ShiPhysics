@@ -1,13 +1,15 @@
 #include "RigidbodyComponent.h"
+#include <SDL.h>
 #include "GameObject.h"
 #include "TransformComponent.h"
-#include <SDL.h>
+#include "Engine.h"
+#include "GameObjectManager.h"
 
 namespace ecs
 {
 	void RigidbodyComponent::Init()
 	{
-		m_transform = m_owner->GetComponent<TransformComponent>();
+		m_transform = Engine::GameObjectMgr->Get(m_owner)->GetComponent<TransformComponent>();
 	}
 
 	void RigidbodyComponent::Update(float dt)

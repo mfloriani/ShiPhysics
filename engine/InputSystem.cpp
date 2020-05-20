@@ -2,7 +2,7 @@
 
 namespace ecs
 {
-	void InputSystem::Update()
+	void InputSystem::Update(float dt)
 	{
 		m_events.clear();
 		SDL_Event event;

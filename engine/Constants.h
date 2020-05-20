@@ -6,8 +6,8 @@
 const int WINDOW_WIDTH{ 1440 };
 const int WINDOW_HEIGHT{ 900 };
 
-const int FPS{ 60 };
-const float FRAME_LENGTH{ 1000 / FPS };
+const float FPS{ 60.f };
+const float FRAME_LENGTH{ 1000.f / FPS };
 
 const int SHIP_SIZE{ 32 };
 
@@ -30,5 +30,7 @@ const int UI_GAMEOVER_Y = WINDOW_HEIGHT/2;
 
 const int SOUND_VOLUME = 20;
 const int MUSIC_VOLUME = 20;
+
+const int MAX_AUDIO_PENDING = 16;
 
 #endif

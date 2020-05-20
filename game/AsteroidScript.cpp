@@ -1,9 +1,13 @@
 #include "AsteroidScript.h"
+#include "../engine/TransformComponent.h"
+#include "../engine/Engine.h"
 #include "../engine/GameObject.h"
+#include "../engine/GameObjectManager.h"
 
 void AsteroidScript::Init() 
 {
-	m_transform = m_owner->GetComponent<ecs::TransformComponent>();
+	m_transform = ecs::Engine::GameObjectMgr->Get(m_owner)->GetComponent<ecs::TransformComponent>();
+
 }
 
 void AsteroidScript::Update(float dt) 

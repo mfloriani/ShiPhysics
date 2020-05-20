@@ -4,6 +4,7 @@
 #include "SoundManager.h"
 #include "MusicManager.h"
 #include "Constants.h"
+#include "Animation.h"
 
 namespace ecs
 {
@@ -60,6 +61,14 @@ namespace ecs
 		return true;
 	}
 
+	//TODO: should load from a file, not receive the animation data
+	bool AssetManager::AddAnimation(std::string id, std::vector<SDL_Rect> clips, uint32_t frameRate, bool loop)
+	{
+		Animation* animation = new Animation(clips, frameRate, loop);
+		_animations.insert(std::make_pair(id, animation));
+		return true;
+	}
+
 	SDL_Texture* AssetManager::GetTexture(std::string id) const
 	{
 		auto texture = _textures.find(id);
@@ -100,6 +109,16 @@ namespace ecs
 		return nullptr;
 	}
 
+	Animation* AssetManager::GetAnimation(std::string id) const
+	{
+		auto animation = _animations.find(id);
+		if (animation != _animations.end())
+		{
+			return animation->second;
+		}
+		return nullptr;
+	}
+
 	bool AssetManager::HasTexture(std::string id) const
 	{
 		if (_textures.find(id) != _textures.end())
@@ -136,19 +155,13 @@ namespace ecs
 		return false;
 	}
 
-	void AssetManager::PlayMusic(std::string id)
+	bool AssetManager::HasAnimation(std::string id) const
 	{
-		if (!HasMusic(id))
+		if (_animations.find(id) != _animations.end())
 		{
-			return;
+			return true;
 		}
-		MusicManager::SetVolume(MUSIC_VOLUME);
-		MusicManager::Play(GetMusic(id));
-	}
-
-	void AssetManager::PlaySound(std::string id)
-	{
-
+		return false;
 	}
 
 	void AssetManager::Free()
@@ -176,5 +189,12 @@ namespace ecs
 			MusicManager::Free(music);
 		}
 		_musics.clear();
+
+		for (auto [id, animation] : _animations)
+		{
+			delete animation;
+			animation = nullptr;
+		}
+		_animations.clear();
 	}
 }
