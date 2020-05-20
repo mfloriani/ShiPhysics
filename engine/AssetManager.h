@@ -35,9 +35,6 @@ namespace ecs
 		bool HasSound(std::string id) const;
 		bool HasAnimation(std::string id) const;
 
-		void PlayMusic(std::string id);
-		void PlaySound(std::string id);
-
 		void Free();
 
 	private:

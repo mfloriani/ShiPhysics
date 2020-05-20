@@ -10,6 +10,7 @@ namespace ecs
 	class InputSystem;
 	class PhysicsSystem;
 	class EventSystem;
+	class AudioSystem;
 
 	class Engine
 	{
@@ -21,6 +22,7 @@ namespace ecs
 		static InputSystem*			InputSys;
 		static PhysicsSystem*		PhysicsSys;
 		static EventSystem*			EventSys;
+		static AudioSystem*			AudioSys;
 
 		bool Init();
 		void Quit();

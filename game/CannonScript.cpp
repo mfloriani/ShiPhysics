@@ -7,6 +7,7 @@
 #include "../engine/RigidbodyComponent.h"
 #include "../engine/BoxColliderComponent.h"
 #include "../lib/glm/gtx/rotate_vector.hpp"
+#include "../engine/AudioSystem.h"
 #include "ProjectileScript.h"
 
 void CannonScript::Init() 
@@ -37,7 +38,8 @@ void CannonScript::Shoot()
 	projectile->AddComponent<ecs::RigidbodyComponent>(1.f, 1000.f)->AddForce(force);
 	projectile->AddComponent<ProjectileScript>();
 
-	//TODO: handle shooting sound
+	//TODO: should be an audio component? How to handle this?
+	ecs::Engine::AudioSys->PlaySound("shot1", 10);
 
 	m_cooldown = m_rateOfFire;
 }

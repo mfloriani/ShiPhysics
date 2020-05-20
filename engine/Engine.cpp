@@ -9,6 +9,7 @@
 #include "PhysicsSystem.h"
 #include "GameObject.h"
 #include "EventSystem.h"
+#include "AudioSystem.h"
 
 namespace ecs
 {
@@ -19,6 +20,7 @@ namespace ecs
 	InputSystem*		Engine::InputSys = nullptr;
 	PhysicsSystem*		Engine::PhysicsSys = nullptr;
 	EventSystem*		Engine::EventSys = nullptr;
+	AudioSystem*		Engine::AudioSys = nullptr;
 
 	bool Engine::Init()
 	{
@@ -64,6 +66,7 @@ namespace ecs
 		InputSys = new InputSystem;
 		PhysicsSys = new PhysicsSystem(GameObjectMgr);
 		EventSys = new EventSystem;
+		AudioSys = new AudioSystem;
 
 		m_running = true;
 
@@ -72,6 +75,9 @@ namespace ecs
 
 	void Engine::Quit()
 	{
+		delete AudioSys;
+		AudioSys = nullptr;
+
 		delete EventSys;
 		EventSys = nullptr;
 
@@ -129,7 +135,7 @@ namespace ecs
 
 	inline void Engine::ProcessInput()
 	{
-		InputSys->Update();
+		InputSys->Update(m_deltaTime);
 	}
 
 	inline void Engine::HandleGameEvents()
@@ -139,6 +145,10 @@ namespace ecs
 			if (event.type == SDL_QUIT || (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE))
 			{
 				m_running = false;
+			}
+			else if(event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_RETURN)
+			{
+				AudioSys->ToggleMusic();
 			}
 		}
 	}
@@ -154,6 +164,8 @@ namespace ecs
 
 		GameObjectMgr->RemoveFromPipeline();
 		GameObjectMgr->AddToPipeline();
+
+		AudioSys->Update(m_deltaTime);
 	}
 
 	inline void Engine::Render()

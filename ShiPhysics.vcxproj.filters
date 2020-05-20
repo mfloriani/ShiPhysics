@@ -123,6 +123,9 @@
     <ClCompile Include="game\ProjectileScript.cpp">
       <Filter>game</Filter>
     </ClCompile>
+    <ClCompile Include="engine\AudioSystem.cpp">
+      <Filter>engine\systems</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game\AsteroidScript.h">
@@ -247,6 +250,15 @@
     </ClInclude>
     <ClInclude Include="game\ProjectileScript.h">
       <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\AudioSystem.h">
+      <Filter>engine\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\System.h">
+      <Filter>engine\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\PlaySoundEvent.h">
+      <Filter>engine\events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

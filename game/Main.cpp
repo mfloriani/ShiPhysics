@@ -18,6 +18,7 @@
 #include "../engine/PhysicsSystem.h"
 #include "../engine/AnimationComponent.h"
 #include "../engine/TextComponent.h"
+#include "../engine/AudioSystem.h"
 #include "Player1Script.h"
 #include "CannonScript.h"
 #include "MissileLauncherScript.h"
@@ -56,7 +57,9 @@ bool Load()
 
 	ecs::Engine::AssetMgr->AddFont("arial", "./assets/arial.ttf", 18);
 
-	//engine->AssetMgr->PlayMusic("battle2");
+	engine->AudioSys->PlayMusic("battle2");
+	engine->AudioSys->ToggleMusic();
+
 
 	//TODO: load gameobjects from file
 

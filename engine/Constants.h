@@ -31,4 +31,6 @@ const int UI_GAMEOVER_Y = WINDOW_HEIGHT/2;
 const int SOUND_VOLUME = 20;
 const int MUSIC_VOLUME = 20;
 
+const int MAX_AUDIO_PENDING = 16;
+
 #endif

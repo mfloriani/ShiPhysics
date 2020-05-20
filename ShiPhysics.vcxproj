@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClCompile Include="engine\AnimationComponent.cpp" />
     <ClCompile Include="engine\AssetManager.cpp" />
+    <ClCompile Include="engine\AudioSystem.cpp" />
     <ClCompile Include="engine\BoxColliderComponent.cpp" />
     <ClCompile Include="engine\Engine.cpp" />
     <ClCompile Include="engine\FontManager.cpp" />
@@ -47,6 +48,7 @@
     <ClInclude Include="engine\Animation.h" />
     <ClInclude Include="engine\AnimationComponent.h" />
     <ClInclude Include="engine\AssetManager.h" />
+    <ClInclude Include="engine\AudioSystem.h" />
     <ClInclude Include="engine\BoxColliderComponent.h" />
     <ClInclude Include="engine\CollisionEvent.h" />
     <ClInclude Include="engine\CollisionSystem.h" />
@@ -64,12 +66,14 @@
     <ClInclude Include="engine\MemberFunctionHandler.h" />
     <ClInclude Include="engine\Observer.h" />
     <ClInclude Include="engine\PhysicsSystem.h" />
+    <ClInclude Include="engine\PlaySoundEvent.h" />
     <ClInclude Include="engine\RigidbodyComponent.h" />
     <ClInclude Include="engine\MusicManager.h" />
     <ClInclude Include="engine\SoundManager.h" />
     <ClInclude Include="engine\SpriteComponent.h" />
     <ClInclude Include="engine\SteeringComponent.h" />
     <ClInclude Include="engine\Subject.h" />
+    <ClInclude Include="engine\System.h" />
     <ClInclude Include="engine\TextComponent.h" />
     <ClInclude Include="engine\TextureManager.h" />
     <ClInclude Include="engine\Timer.h" />

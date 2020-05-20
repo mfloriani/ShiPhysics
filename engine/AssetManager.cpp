@@ -164,21 +164,6 @@ namespace ecs
 		return false;
 	}
 
-	void AssetManager::PlayMusic(std::string id)
-	{
-		if (!HasMusic(id))
-		{
-			return;
-		}
-		MusicManager::SetVolume(MUSIC_VOLUME);
-		MusicManager::Play(GetMusic(id));
-	}
-
-	void AssetManager::PlaySound(std::string id)
-	{
-
-	}
-
 	void AssetManager::Free()
 	{
 		for (auto const&[id, texture] : _textures)

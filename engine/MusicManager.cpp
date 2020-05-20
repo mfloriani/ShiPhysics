@@ -20,6 +20,7 @@ namespace ecs
 
 	void MusicManager::Play(Mix_Music* music)
 	{
+		if (!music) return;
 		Mix_PlayMusic(music, -1);
 	}
 

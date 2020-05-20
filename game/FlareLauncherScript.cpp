@@ -5,6 +5,7 @@
 #include "../engine/TransformComponent.h"
 #include "../engine/SpriteComponent.h"
 #include "../engine/BoxColliderComponent.h"
+#include "../engine/AudioSystem.h"
 
 void FlareLauncherScript::Init()
 {
@@ -30,7 +31,8 @@ void FlareLauncherScript::Launch()
 	//glm::vec2 force = glm::rotate(glm::vec2(1, 0) * 20.f, m_transform->m_angle);
 	//flare->AddComponent<ecs::RigidbodyComponent>()->AddForce(force);
 
-	//TODO: handle sound
+	//TODO: should be an audio component? How to handle this?
+	ecs::Engine::AudioSys->PlaySound("missile1", 10);
 
 	m_cooldown = m_rateOfFire;
 }

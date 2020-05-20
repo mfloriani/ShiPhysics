@@ -2,6 +2,7 @@
 #define __PHYSICS_SYSTEM_H__
 
 #include <vector>
+#include "System.h"
 
 namespace ecs
 {
@@ -9,7 +10,7 @@ namespace ecs
 
 	//TODO: turn it a singleton
 	//		create System interface class
-	class PhysicsSystem
+	class PhysicsSystem : public System
 	{
 	public:
 		PhysicsSystem(GameObjectManager* goMgr) : 
@@ -21,7 +22,7 @@ namespace ecs
 			
 		}
 
-		void Update(float dt);
+		virtual void Update(float dt) override;
 		
 	private:
 		GameObjectManager*	m_gameObjectMgr;

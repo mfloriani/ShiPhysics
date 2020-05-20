@@ -7,6 +7,7 @@
 #include "../engine/SpriteComponent.h"
 #include "../engine/AnimationComponent.h"
 #include "../engine/DestroyEvent.h"
+#include "../engine/AudioSystem.h"
 
 void ExplosionScript::Init()
 {
@@ -34,4 +35,7 @@ void ExplosionScript::OnDestroyEvent(ecs::DestroyEvent* e)
 	explosion->AddComponent<ecs::TransformComponent>(m_transform->m_position, glm::vec2(0, 0), 0.f);
 	explosion->AddComponent<ecs::SpriteComponent>("explosion_spritesheet");
 	explosion->AddComponent<ecs::AnimationComponent>("explosion");
+
+	//TODO: should be an audio component? How to handle this?
+	ecs::Engine::AudioSys->PlaySound("explosion1", 10);
 }
