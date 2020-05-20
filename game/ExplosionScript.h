@@ -16,7 +16,7 @@ public:
 	virtual void Update(float dt) override;
 	virtual void Render() override;
 
-	void ExplosionScript::OnCollisionEvent(ecs::DestroyEvent* e);
+	void ExplosionScript::OnDestroyEvent(ecs::DestroyEvent* e);
 
 private:
 	ecs::TransformComponent* m_transform;

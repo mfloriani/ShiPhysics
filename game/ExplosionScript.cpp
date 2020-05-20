@@ -11,7 +11,7 @@
 void ExplosionScript::Init()
 {
 	m_transform = ecs::Engine::GameObjectMgr->Get(m_owner)->GetComponent<ecs::TransformComponent>();
-	ecs::Engine::EventSys->Subscribe(this, &ExplosionScript::OnCollisionEvent);
+	ecs::Engine::EventSys->Subscribe(this, &ExplosionScript::OnDestroyEvent);
 }
 
 void ExplosionScript::Update(float dt)
@@ -24,7 +24,7 @@ void ExplosionScript::Render()
 
 }
 
-void ExplosionScript::OnCollisionEvent(ecs::DestroyEvent* e)
+void ExplosionScript::OnDestroyEvent(ecs::DestroyEvent* e)
 {
 	if (m_owner != e->m_gameObjectId) return;
 	SDL_Log("Destroy event caught %i", e->m_gameObjectId);

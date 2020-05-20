@@ -11,6 +11,7 @@ namespace ecs
 {
 	void PhysicsSystem::Update(float dt)
 	{
+		//TODO: change the engine to keep track of the gameobjects with colliders instead of looping throgh entire vector
 		for (unsigned int i = 0; i < m_gameObjectMgr->m_gameObjects.size(); ++i)
 		{
 			GameObject* goL = m_gameObjectMgr->m_gameObjects[i];
@@ -30,10 +31,11 @@ namespace ecs
 
 						if (CheckBoxCollision(&boxL, &boxR))
 						{
-							SDL_Log("collided");
+							SDL_Log("collision between %i and %i", goL->Id(), goR->Id());
 
 							//TODO: split collision in enter, on, exit
 							
+							//TODO: split in 2 events, one for each GO??
 							CollisionEvent* event = new CollisionEvent{ goL->Id() , goR->Id()};							
 							Engine::EventSys->Publish(event);
 						}

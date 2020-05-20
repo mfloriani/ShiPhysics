@@ -27,7 +27,7 @@ namespace ecs
 			SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Failed to initialize SDL! SDL_Error: %s", SDL_GetError());
 			return false;
 		}
-		m_window = SDL_CreateWindow("ShiPhysics", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_BORDERLESS);
+		m_window = SDL_CreateWindow("ShiPhysics", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, NULL);
 		if (!m_window)
 		{
 			SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Failed to create SDL_WINDOW: %s", SDL_GetError());

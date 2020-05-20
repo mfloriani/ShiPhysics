@@ -7,7 +7,7 @@
 #include "../engine/RigidbodyComponent.h"
 #include "../engine/BoxColliderComponent.h"
 #include "../lib/glm/gtx/rotate_vector.hpp"
-#include "HealthScript.h"
+#include "ProjectileScript.h"
 
 void CannonScript::Init() 
 {
@@ -35,7 +35,7 @@ void CannonScript::Shoot()
 	projectile->AddComponent<ecs::BoxColliderComponent>(0, 0, 10, 10);
 	glm::vec2 force = glm::rotate(glm::vec2(1, 0) * 50000.f, m_transform->m_angle);
 	projectile->AddComponent<ecs::RigidbodyComponent>(1.f, 1000.f)->AddForce(force);
-	projectile->AddComponent<HealthScript>(20);
+	projectile->AddComponent<ProjectileScript>();
 
 	//TODO: handle shooting sound
 

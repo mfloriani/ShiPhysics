@@ -48,7 +48,6 @@ bool Load()
 		{240,0,60,59}
 	};
 	engine->AssetMgr->AddAnimation("explosion", explosionClips, 200, false);
-
 	
 	if (!engine->AssetMgr->AddMusic("battle2", "./assets/Battle2.mp3")) return false;
 	if (!engine->AssetMgr->AddSound("shot1", "./assets/shot1.wav")) return false;

@@ -120,6 +120,9 @@
     <ClCompile Include="game\ExplosionScript.cpp">
       <Filter>game</Filter>
     </ClCompile>
+    <ClCompile Include="game\ProjectileScript.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game\AsteroidScript.h">
@@ -240,6 +243,9 @@
       <Filter>engine\core</Filter>
     </ClInclude>
     <ClInclude Include="game\ExplosionScript.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="game\ProjectileScript.h">
       <Filter>game</Filter>
     </ClInclude>
   </ItemGroup>

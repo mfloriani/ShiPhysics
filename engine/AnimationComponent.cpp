@@ -23,6 +23,9 @@ namespace ecs
 	{
 		m_frameCount = m_animation->m_clips.size();
 		m_spriteComponent = Engine::GameObjectMgr->Get(m_owner)->GetComponent<SpriteComponent>();
+		m_spriteComponent->m_srcrect = m_animation->m_clips[0];
+		m_spriteComponent->m_dstrect.w = m_animation->m_clips[0].w;
+		m_spriteComponent->m_dstrect.h = m_animation->m_clips[0].h;
 	}
 
 	void AnimationComponent::Update(float dt)

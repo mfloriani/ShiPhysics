@@ -24,6 +24,8 @@ namespace ecs
 		m_transform = Engine::GameObjectMgr->Get(m_owner)->GetComponent<TransformComponent>();
 		SDL_QueryTexture(m_sprite, NULL, NULL, &m_dstrect.w, &m_dstrect.h);
 		m_srcrect = { 0, 0, m_dstrect.w , m_dstrect.h };
+		m_dstrect.x = static_cast<int>(m_transform->m_position.x);
+		m_dstrect.y = static_cast<int>(m_transform->m_position.y);
 	}
 
 	void SpriteComponent::Update(float dt)

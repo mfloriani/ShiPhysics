@@ -20,7 +20,7 @@ void HealthScript::OnCollisionEvent(ecs::CollisionEvent* e)
 {
 	if (e->m_leftGameObjectId != m_owner && e->m_rightGameObjectId != m_owner) return;
 
-	SDL_Log("collision - current health %i", m_health);
+	SDL_Log("collision event (%i) - current health %i", m_owner, m_health);
 	if (m_health <= 0) return;
 	//TODO: sort out how to calculate damage, not use it fixed
 	m_health -= 10;
