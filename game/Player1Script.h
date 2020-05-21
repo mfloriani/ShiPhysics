@@ -32,6 +32,9 @@ private:
 	FlareLauncherScript*		m_flareLauncher;
 	float						m_rotationSpeed;
 	float						m_thurstForce;
+
+	inline void HandleInput(float dt);
+	inline void HandleOffScreen();
 };
 
 #endif // !__PLAYER1_SCRIPT_H__

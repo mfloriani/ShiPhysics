@@ -8,6 +8,7 @@
 #include "../engine/BoxColliderComponent.h"
 #include "../lib/glm/gtx/rotate_vector.hpp"
 #include "../engine/AudioSystem.h"
+#include "ProjectileScript.h"
 
 void MissileLauncherScript::Init() 
 {
@@ -34,6 +35,7 @@ void MissileLauncherScript::Launch()
 	missile->AddComponent<ecs::BoxColliderComponent>(0, 0, 10, 10);
 	glm::vec2 force = glm::rotate(glm::vec2(1, 0) * 50000.f, m_transform->m_angle);
 	missile->AddComponent<ecs::RigidbodyComponent>(1.f, 5000.f)->AddForce(force);
+	missile->AddComponent<ProjectileScript>();
 
 	//TODO: should be an audio component? How to handle this?
 	ecs::Engine::AudioSys->PlaySound("missile1", 10);
