@@ -6,6 +6,7 @@
 namespace ecs
 {
 	struct CollisionEvent;
+	class TransformComponent;
 }
 
 class ProjectileScript : public ecs::Component
@@ -16,6 +17,9 @@ public:
 	virtual void Render() override;
 
 	void ProjectileScript::OnCollisionEvent(ecs::CollisionEvent* e);
+
+private:
+	ecs::TransformComponent* m_transform;
 };
 
 #endif // !__PROJECTILE_SCRIPT_H__

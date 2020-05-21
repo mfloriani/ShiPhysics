@@ -71,7 +71,8 @@ bool Load()
 	player1->AddComponent<CannonScript>(1.f); //TODO: solve inter dependencies between components
 	player1->AddComponent<MissileLauncherScript>(3.f); //TODO: solve inter dependencies between components
 	player1->AddComponent<Player1Script>();
-	//player1->AddComponent<HealthScript>(100);
+	player1->AddComponent<ExplosionScript>();
+	player1->AddComponent<HealthScript>(100);
 	
 	ecs::GameObject* player2 = engine->GameObjectMgr->Instantiate();
 	player2->AddComponent<ecs::TransformComponent>(glm::vec2(500, 500), glm::vec2(0, 0), 0.f);
