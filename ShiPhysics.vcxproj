@@ -31,7 +31,6 @@
     <ClCompile Include="engine\TextureManager.cpp" />
     <ClCompile Include="engine\Timer.cpp" />
     <ClCompile Include="engine\TransformComponent.cpp" />
-    <ClCompile Include="game\Arena.cpp" />
     <ClCompile Include="game\AsteroidScript.cpp" />
     <ClCompile Include="game\CannonScript.cpp" />
     <ClCompile Include="game\ExplosionScript.cpp" />
@@ -42,7 +41,6 @@
     <ClCompile Include="game\MissileLauncherScript.cpp" />
     <ClCompile Include="game\Player1Script.cpp" />
     <ClCompile Include="game\ProjectileScript.cpp" />
-    <ClCompile Include="game\Ship.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine\Animation.h" />
@@ -78,7 +76,6 @@
     <ClInclude Include="engine\TextureManager.h" />
     <ClInclude Include="engine\Timer.h" />
     <ClInclude Include="engine\TransformComponent.h" />
-    <ClInclude Include="game\Arena.h" />
     <ClInclude Include="game\AsteroidScript.h" />
     <ClInclude Include="game\CannonScript.h" />
     <ClInclude Include="game\ExplosionScript.h" />
@@ -88,7 +85,6 @@
     <ClInclude Include="game\MissileLauncherScript.h" />
     <ClInclude Include="game\Player1Script.h" />
     <ClInclude Include="game\ProjectileScript.h" />
-    <ClInclude Include="game\Ship.h" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="assets\arial.ttf" />

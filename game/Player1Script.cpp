@@ -27,6 +27,25 @@ void Player1Script::Init()
 
 void Player1Script::Update(float dt)
 {
+	HandleOffScreen();
+	HandleInput(dt);
+};
+
+inline void Player1Script::HandleOffScreen()
+{
+	if (m_transform->m_position.x < 0)
+		m_transform->m_position.x = static_cast<float>(ecs::Engine::Camera->w);
+	else if (m_transform->m_position.x > ecs::Engine::Camera->w)
+		m_transform->m_position.x = 0.f;
+
+	if (m_transform->m_position.y < 0)
+		m_transform->m_position.y = static_cast<float>(ecs::Engine::Camera->h);
+	else if (m_transform->m_position.y > ecs::Engine::Camera->h)
+		m_transform->m_position.y = 0.f;
+}
+
+inline void Player1Script::HandleInput(float dt)
+{
 	auto events = ecs::Engine::InputSys->GetEvents();
 	for (auto event : events)
 	{
@@ -56,7 +75,6 @@ void Player1Script::Update(float dt)
 				{
 					m_cannon->Shoot();
 				}
-
 				break;
 			}
 			case SDLK_RCTRL:
@@ -78,8 +96,6 @@ void Player1Script::Update(float dt)
 			}
 		}
 	}
-
-	//SDL_Log("x=%f y=%f", m_transform->m_position.x, m_transform->m_position.y);
-};
+}
 
 void Player1Script::Render() {}

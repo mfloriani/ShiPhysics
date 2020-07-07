@@ -25,9 +25,6 @@
     <Filter Include="engine\events">
       <UniqueIdentifier>{6d87c03d-4acd-4a2d-85f9-f6ca3eaf914f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="game\old">
-      <UniqueIdentifier>{cb88e664-af3a-41ec-815b-8d48a11b5dc6}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="game\Main.cpp">
@@ -104,12 +101,6 @@
     </ClCompile>
     <ClCompile Include="game\FlareLauncherScript.cpp">
       <Filter>game</Filter>
-    </ClCompile>
-    <ClCompile Include="game\Arena.cpp">
-      <Filter>game\old</Filter>
-    </ClCompile>
-    <ClCompile Include="game\Ship.cpp">
-      <Filter>game\old</Filter>
     </ClCompile>
     <ClCompile Include="game\FPSScript.cpp">
       <Filter>game</Filter>
@@ -223,12 +214,6 @@
     </ClInclude>
     <ClInclude Include="game\FlareLauncherScript.h">
       <Filter>game</Filter>
-    </ClInclude>
-    <ClInclude Include="game\Arena.h">
-      <Filter>game\old</Filter>
-    </ClInclude>
-    <ClInclude Include="game\Ship.h">
-      <Filter>game\old</Filter>
     </ClInclude>
     <ClInclude Include="engine\EventSystem.h">
       <Filter>engine\systems</Filter>

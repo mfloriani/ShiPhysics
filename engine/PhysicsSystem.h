@@ -26,6 +26,8 @@ namespace ecs
 		
 	private:
 		GameObjectManager*	m_gameObjectMgr;
+
+		inline void PhysicsSystem::CheckCollisions();
 	};
 }
 

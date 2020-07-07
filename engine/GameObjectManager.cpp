@@ -1,5 +1,8 @@
 #include "GameObjectManager.h"
 #include "GameObject.h"
+#include "DestroyEvent.h"
+#include "Engine.h"
+#include "EventSystem.h"
 
 namespace ecs
 {
@@ -45,6 +48,8 @@ namespace ecs
 	void GameObjectManager::Destroy(uint32_t id)
 	{
 		m_destroyedGameObjects.push_back(id);
+		Engine::EventSys->Publish(new ecs::DestroyEvent(id));
+		SDL_Log("Destroying %i", id);
 	}
 
 	void GameObjectManager::RemoveFromPipeline()

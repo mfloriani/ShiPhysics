@@ -6,9 +6,10 @@ namespace ecs
 	{
 		m_events.clear();
 		SDL_Event event;
-		while (SDL_PollEvent(&event) != 0)
-		{
-			m_events.push_back(event);
-		}
+		//while (SDL_PollEvent(&event) != 0)
+		//{
+		SDL_PollEvent(&event);
+		m_events.push_back(event);
+		//}
 	}
 }
