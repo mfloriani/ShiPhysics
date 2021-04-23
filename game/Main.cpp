@@ -68,8 +68,8 @@ bool Load()
 	player1->AddComponent<ecs::SpriteComponent>("ship1");
 	player1->AddComponent<ecs::BoxColliderComponent>(0, 0, 32, 32);	
 	player1->AddComponent<ecs::RigidbodyComponent>(1.f, 200.f);
-	player1->AddComponent<CannonScript>(1.f); //TODO: solve inter dependencies between components
-	player1->AddComponent<MissileLauncherScript>(3.f); //TODO: solve inter dependencies between components
+	player1->AddComponent<CannonScript>(1.f); //TODO: solve inter-dependencies between components
+	player1->AddComponent<MissileLauncherScript>(3.f); //TODO: solve inter-dependencies between components
 	player1->AddComponent<Player1Script>();
 	player1->AddComponent<ExplosionScript>();
 	player1->AddComponent<HealthScript>(100);
@@ -103,7 +103,7 @@ bool Load()
 
 	{
 		ecs::GameObject* asteroid = engine->GameObjectMgr->Instantiate();
-		asteroid->AddComponent<ecs::TransformComponent>(glm::vec2(1400, 400), glm::vec2(0, 0), 0.f);
+		asteroid->AddComponent<ecs::TransformComponent>(glm::vec2(800, 400), glm::vec2(0, 0), 0.f);
 		asteroid->AddComponent<ecs::SpriteComponent>("asteroid");
 		glm::vec2 force{ -100,0 };
 		asteroid->AddComponent<ecs::RigidbodyComponent>(1.f, 100.f)->AddForce(force);
@@ -118,9 +118,84 @@ bool Load()
 	
 	{
 		ecs::GameObject* asteroid = engine->GameObjectMgr->Instantiate();
-		asteroid->AddComponent<ecs::TransformComponent>(glm::vec2(1400, 600), glm::vec2(0, 0), 0.f);
+		asteroid->AddComponent<ecs::TransformComponent>(glm::vec2(800, 600), glm::vec2(0, 0), 0.f);
 		asteroid->AddComponent<ecs::SpriteComponent>("asteroid");
-		glm::vec2 force{ -100,0 };
+		glm::vec2 force{ -100,100 };
+		asteroid->AddComponent<ecs::RigidbodyComponent>(1.f, 100.f)->AddForce(force);
+		asteroid->AddComponent<ecs::BoxColliderComponent>(0, 0, 60, 60);
+		//ecs::SteeringComponent* steering = asteroid->AddComponent<ecs::SteeringComponent>();
+		//steering->SetTarget(player1->Id());
+		//auto current = steering->Enable(ecs::BehaviorsType::Pursuit);
+		asteroid->AddComponent<AsteroidScript>();
+		asteroid->AddComponent<HealthScript>(20);
+		asteroid->AddComponent<ExplosionScript>();
+	}
+
+	{
+		ecs::GameObject* asteroid = engine->GameObjectMgr->Instantiate();
+		asteroid->AddComponent<ecs::TransformComponent>(glm::vec2(200, 200), glm::vec2(0, 0), 0.f);
+		asteroid->AddComponent<ecs::SpriteComponent>("asteroid");
+		glm::vec2 force{ 100,100 };
+		asteroid->AddComponent<ecs::RigidbodyComponent>(1.f, 100.f)->AddForce(force);
+		asteroid->AddComponent<ecs::BoxColliderComponent>(0, 0, 60, 60);
+		//ecs::SteeringComponent* steering = asteroid->AddComponent<ecs::SteeringComponent>();
+		//steering->SetTarget(player1->Id());
+		//auto current = steering->Enable(ecs::BehaviorsType::Pursuit);
+		asteroid->AddComponent<AsteroidScript>();
+		asteroid->AddComponent<HealthScript>(20);
+		asteroid->AddComponent<ExplosionScript>();
+	}
+
+	{
+		ecs::GameObject* asteroid = engine->GameObjectMgr->Instantiate();
+		asteroid->AddComponent<ecs::TransformComponent>(glm::vec2(700, 500), glm::vec2(0, 0), 0.f);
+		asteroid->AddComponent<ecs::SpriteComponent>("asteroid");
+		glm::vec2 force{ -100,-100 };
+		asteroid->AddComponent<ecs::RigidbodyComponent>(1.f, 100.f)->AddForce(force);
+		asteroid->AddComponent<ecs::BoxColliderComponent>(0, 0, 60, 60);
+		//ecs::SteeringComponent* steering = asteroid->AddComponent<ecs::SteeringComponent>();
+		//steering->SetTarget(player1->Id());
+		//auto current = steering->Enable(ecs::BehaviorsType::Pursuit);
+		asteroid->AddComponent<AsteroidScript>();
+		asteroid->AddComponent<HealthScript>(20);
+		asteroid->AddComponent<ExplosionScript>();
+	}
+
+	{
+		ecs::GameObject* asteroid = engine->GameObjectMgr->Instantiate();
+		asteroid->AddComponent<ecs::TransformComponent>(glm::vec2(600, 0), glm::vec2(0, 0), 0.f);
+		asteroid->AddComponent<ecs::SpriteComponent>("asteroid");
+		glm::vec2 force{ -100,100 };
+		asteroid->AddComponent<ecs::RigidbodyComponent>(1.f, 100.f)->AddForce(force);
+		asteroid->AddComponent<ecs::BoxColliderComponent>(0, 0, 60, 60);
+		//ecs::SteeringComponent* steering = asteroid->AddComponent<ecs::SteeringComponent>();
+		//steering->SetTarget(player1->Id());
+		//auto current = steering->Enable(ecs::BehaviorsType::Pursuit);
+		asteroid->AddComponent<AsteroidScript>();
+		asteroid->AddComponent<HealthScript>(20);
+		asteroid->AddComponent<ExplosionScript>();
+	}
+
+	{
+		ecs::GameObject* asteroid = engine->GameObjectMgr->Instantiate();
+		asteroid->AddComponent<ecs::TransformComponent>(glm::vec2(100, 400), glm::vec2(0, 0), 0.f);
+		asteroid->AddComponent<ecs::SpriteComponent>("asteroid");
+		glm::vec2 force{ 100,-100 };
+		asteroid->AddComponent<ecs::RigidbodyComponent>(1.f, 100.f)->AddForce(force);
+		asteroid->AddComponent<ecs::BoxColliderComponent>(0, 0, 60, 60);
+		//ecs::SteeringComponent* steering = asteroid->AddComponent<ecs::SteeringComponent>();
+		//steering->SetTarget(player1->Id());
+		//auto current = steering->Enable(ecs::BehaviorsType::Pursuit);
+		asteroid->AddComponent<AsteroidScript>();
+		asteroid->AddComponent<HealthScript>(20);
+		asteroid->AddComponent<ExplosionScript>();
+	}
+
+	{
+		ecs::GameObject* asteroid = engine->GameObjectMgr->Instantiate();
+		asteroid->AddComponent<ecs::TransformComponent>(glm::vec2(100, 300), glm::vec2(0, 0), 0.f);
+		asteroid->AddComponent<ecs::SpriteComponent>("asteroid");
+		glm::vec2 force{ 100,0 };
 		asteroid->AddComponent<ecs::RigidbodyComponent>(1.f, 100.f)->AddForce(force);
 		asteroid->AddComponent<ecs::BoxColliderComponent>(0, 0, 60, 60);
 		//ecs::SteeringComponent* steering = asteroid->AddComponent<ecs::SteeringComponent>();

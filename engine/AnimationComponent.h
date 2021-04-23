@@ -2,6 +2,7 @@
 #define __ANIMATION_COMPONENT_H__
 
 #include <vector>
+#include <string>
 #include "SDL.h"
 #include "Component.h"
 

@@ -39,8 +39,8 @@ namespace ecs
 
 	void BoxColliderComponent::Render()
 	{
-		SDL_SetRenderDrawColor(Engine::Renderer, 255, 0, 0, 255);
-		SDL_RenderDrawRect(Engine::Renderer, &m_collider);
+		//SDL_SetRenderDrawColor(Engine::Renderer, 255, 0, 0, 255);
+		//SDL_RenderDrawRect(Engine::Renderer, &m_collider);
 	}
 
 	const SDL_Rect& BoxColliderComponent::GetCollider() const

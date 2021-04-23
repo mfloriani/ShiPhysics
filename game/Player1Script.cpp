@@ -47,7 +47,7 @@ inline void Player1Script::HandleOffScreen()
 inline void Player1Script::HandleInput(float dt)
 {
 	auto events = ecs::Engine::InputSys->GetEvents();
-	for (auto event : events)
+	for (const auto& event : events)
 	{
 		if (event.type == SDL_KEYDOWN)
 		{
